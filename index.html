@@ -15,10 +15,16 @@
             body {
                 margin: 0;
                 padding: 0;
-                min-height: 100vh; /* 화면 전체 높이 */
+                min-height: 100vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                background-color: rgb(38, 38, 38);
+                background-size: cover;
+                background-position: center center; /* 정확히 중앙 정렬 */
+                background-repeat: no-repeat;
+                background-attachment: fixed; /* 스크롤 시 배경 고정 (멋있게 보임) */
+                position: relative;
             }
 
             /* 이미지 컨테이너 */
@@ -36,13 +42,13 @@
             /* 텍스트 스타일 */
             .text_title {
                 font-size: 83px;
-                color: #333;
+                color: #ffffff;
                 font-family: 'Polygothic', sans-serif;
             }
 
             .text_default {
                 font-size: 30px;
-                color: #333;
+                color: #ffffff;
                 font-family: 'Polygothic', sans-serif;
                 margin: 0; /* 기본 마진 제거 */
                 line-height: 1.1; /* 줄 간격 조정 */
@@ -67,7 +73,7 @@
 
             .text_down {
                 font-size: 25px;
-                color: #333;
+                color: #ffffff;
                 font-family: 'Polygothic', sans-serif;
                 margin: 0; /* 기본 마진 제거 */
                 line-height: 5.0; /* 줄 간격 조정 */
@@ -75,7 +81,7 @@
 
             /* 링크 스타일 */
             .text_default a {
-                color: #1a73e8; /* 링크 색상 */
+                color: #00d5ff; /* 링크 색상 */
                 text-decoration: none; /* 밑줄 제거 */
             }
 
@@ -87,7 +93,7 @@
 
     <body>
         <div class="logo-container">
-            <img src="./srcs/logos/SG_Logo_Title_Black.png" alt="Logo" class="logo">
+            <img src="./srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
             <p class="text_title">반갑습니다.</p>
             <p class="text_default">SkagoGames라는 팀으로 활동하고 있는 !CyberApex (최예찬)의 개인 블로그입니다.</p>
             <p class="text_default">저는 2018년도부터 게임개발을 입문 및 시작하였으며, 지금까지 다양한 게임을 제작해왔습니다.</p>
@@ -102,7 +108,7 @@
             <p class="text_default"><a href="https://x.com/Skago_CyberApex" target="_blank">X (SNS) - @Skago_CyberApex</a></p>
             <p class="text_default"><a href="https://www.threads.net/@cyberapex6344" target="_blank">Threads - @cyberapex6344</a></p>
             <p class="text_default"><a href="https://bsky.app/profile/cyberapex6344.bsky.social" target="_blank">Bluesky -@cyberapex6344.bsky.social</a></p>
-            <p class="text_default"><a href="https://cyberapex.itch.io/" target="_blank">My itch.io</a></p>
+            <p class="text_default"><a href="https://cyberapex.itch.io/" target="_blank">My itch.io Page.</a></p>
 
             <p class="text_title">프로젝트 Project</p>
             <p class="text_blog_title"><a href="ydkk2025.html">Super Kingcrab Simulator (2025)</a></p>
