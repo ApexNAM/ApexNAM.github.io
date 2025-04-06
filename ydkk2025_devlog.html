@@ -1,0 +1,237 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name ="Super Kingcrab Simulator Devlog" content="Super Kingcrab Simulator's Blog">
+        <title>Super Kingcrab Simulator's Devlog (Korean)</title>
+        <style>
+            /* TTF 폰트 정의 */
+            @font-face {
+                font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
+                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+                font-weight: normal;
+                font-style: normal;
+            }
+
+                        /* TTF 폰트 정의 */
+            @font-face {
+                font-family: 'Yeongdeok'; /* 폰트 이름 자유롭게 지정 */
+                src: url('./srcs/fonts/Yeongdeok Sea.ttf') format('truetype'); /* 폰트 경로 */
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-image: url('./srcs/imgs/SuperKingcrabSimulator_Screenshot_2025-03-09-17-54-17.png');
+                background-size: cover;
+                background-position: center center; /* 정확히 중앙 정렬 */
+                background-repeat: no-repeat;
+                background-attachment: fixed; /* 스크롤 시 배경 고정 (멋있게 보임) */
+                position: relative;
+            }
+            
+            
+            /* 어두운 오버레이 추가 */
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.16); /* 검정색 반투명 오버레이 */
+                z-index: 1; /* 배경 이미지 위, 콘텐츠 아래 */
+            }
+            
+            .logo-container {
+                text-align: center;
+                background-color: rgba(23, 23, 23, 0.8);
+                padding: 20px;
+                border-radius: 10px;
+                position: relative; /* 오버레이 위에 표시 */
+                z-index: 2; /* 콘텐츠가 오버레이 위로 */
+            }
+
+            /* 이미지 컨테이너 */
+            .logo-container {
+                text-align: center;
+            }
+
+            /* 로고 이미지 스타일 */
+            .logo {
+                max-width: 100%; /* 반응형 유지 */
+                height: auto;    /* 비율 유지 */
+                width: 700px;    /* 원하는 크기 조절 */
+            }
+
+            .content {
+                font-size: 25px;
+                color: #ffffff;
+                font-family: 'Yeongdeok', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                margin: 40px;
+                line-height: 1; /* 줄 간격 조정 */
+                margin-bottom: 20px; /* 텍스트 아래쪽 간격 */
+            }
+
+            /* 텍스트 스타일 */
+            .text_title {
+                font-size: 83px;
+                color: #ffffff;
+                font-family: 'Polygothic', sans-serif;
+                line-height: 0.5; /* 줄 간격 조정 */
+            }
+
+            .text_default {
+                font-size: 30px;
+                color: #ffffff;
+                font-family: 'Yeongdeok', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                margin: 40px;
+                line-height: 1; /* 줄 간격 조정 */
+            }
+
+            .text_blog_title {
+                font-size: 45px;
+                color: peru;
+                font-family: 'Polygothic', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                line-height: 1.5; /* 줄 간격 조정 */
+            }
+
+            .text_blog_title_older {
+                font-size: 35px;
+                color: rgb(179, 179, 179);
+                font-family: 'Polygothic', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                line-height: 1.1; /* 줄 간격 조정 */
+            }
+
+
+            .text_down {
+                font-size: 25px;
+                color: #ffffff;
+                font-family: 'Polygothic', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                line-height: 5.0; /* 줄 간격 조정 */
+            }
+
+            /* 링크 스타일 */
+            .text_default a {
+                color: #1a73e8; /* 링크 색상 */
+                text-decoration: none; /* 밑줄 제거 */
+            }
+
+            .text_default a:hover {
+                text-decoration: underline; /* 마우스 오버 시 밑줄 */
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="logo-container">
+            <img src="./srcs/logos/SUPER_KINGCRAB_SIMULATOR_LOGO_EN.png" alt="Logo" class="logo">
+            
+            <p class="text_title">개발일지 이야기</p>
+
+            <div class="content">
+                이 홈페이지를 방문해주시고, 이 페이지를 방문해주셔서 고맙습니다.<br>
+                이 페이지는 개발중인 Super Kingcrab Simulator에 대한 이야기를 담고 있습니다.<br><br>
+                그럼 이야기를 시작해볼까요?<br>
+            </div>
+
+            <p class="text_title">어쩌다가 이 게임을 개발하기 시작한건가?</p>
+            <p class="text_default">이 게임이 만들어진 계기를 알기 위해서는, 저의 2023년 11월 2일의 이야기를 설명해야합니다.</p>
+
+            <img src="./srcs\imgs\rdc_train\20231102_162231.jpg" alt="Logo" class="logo">
+            <img src="./srcs\imgs\rdc_train\20231102_175327.jpg" alt="Logo" class="logo">
+            <img src="./srcs\imgs\rdc_train\20231102_162254.jpg" alt="Logo" class="logo">
+            <img src="./srcs\imgs\rdc_train\20231102_175906.jpg" alt="Logo" class="logo">
+
+            <div class="content">
+                사진 속 기차는 동대구에서 포항을 거치다가 포항에서 영덕까지 운행했던..<br>
+                RDC 디젤동차 기반의 무궁화호 열차입니다. 지금은 노후화로 인해 퇴역되어, 역사 속으로 사라졌죠.<br><br>
+                이 무궁화호가 Super Kingcrab Simulator와 무슨 관계가 있느냐? 바로 이 기차가 개발의 동기부여를 만들어줬기 때문이죠.<br><br>
+                저는 이 무궁화호를 타고 영덕역까지 방문했습니다.<br>
+                이때, 영덕이라는 동네는 저에게 낯선 동네였고, 이 동네가 대게로 유명하다는 사실도 알게 되었습니다.<br>
+                더 구경하고 싶은 동네였지만.. 기차 시간표가 촉박했기 때문에 아쉬운 마음으로 바로 기차로 돌아갈 수 밖에 없었습니다.<br><br>
+
+                시간은 빠르게 지나갔습니다. 그 기차여행의 기억이 아직도 남았습니다.<br>
+                그리고 2024년 후반기가 되면서 그때의 기차여행을 생각하며, 영덕군의 무언가를 알리고 싶었습니다.<br>
+                대게로 유명했기 때문에.. 저는 영덕대게를 소재로 대게가 대게를 해방시키는 모험의 이야기를 담는 게임을 제작하기로 결심했습니다.<br>
+           </div>
+            
+           <img src="./srcs\imgs\game_logs\2025-04-06 113403.png" alt="Logo" class="logo">
+           <img src="./srcs\imgs\game_logs\Yeongdeok_Kingcrab_Screenshot_2024-11-29_17-21-12.png" alt="Logo" class="logo">
+           <img src="./srcs\imgs\game_logs\Yeongdeok_Kingcrab_Screenshot_2024-12-03_16-18-46.png" alt="Logo" class="logo">
+           <img src="./srcs\imgs\game_logs\Yeongdeok_Kingcrab_Screenshot_2024-12-10_14-38-54.png" alt="Logo" class="logo">
+
+           <p class="text_title">프로젝트 영덕대게</p>
+           <div class="content">
+                2024년 10월 14일, 초창기 모습은 아무것도 없었고, 대게 밖에 없었죠.<br>
+                그냥 걷고.. 점프하는.. 그런 대게의 움직임이였습니다.<br><br>
+
+                시간이 지나면서, 게임의 기본적인 모습이 만들어지기 시작했습니다.<br>
+                게임의 모습은 건물을 파괴하며, 대게를 해방시켜 대게들이 건물을 파괴하는 모습을 만들었습니다.<br>
+                게임의 최종적인 목표는 대게가 인간의 도시를 완전히 파괴하여, 더이상 대게가 잡아먹히지 않게 하는 것입니다.<br>
+                그런 의도가 정확히 나왔던 것이 기뻤습니다.<br>
+           </div>
+
+           <img src="./srcs\imgs\game_logs\Super_Kingcrab_Simulator_DEBUG_2025-01-17_6_05_40.png" alt="Logo" class="logo">
+           
+            <div class="content">
+                그러나, 기존 게임엔진의 한계로 인하여, 성능 문제로 인하여, 게임이 정상적인 플레이가 불가능할 정도였습니다.<br>
+                어떻게든.. 최적화를 진행하려고 노력했지만, 변화는 없었고 프로젝트가 무거워지면서 시간이 너무 지체되었습니다.<br>
+                결국, 원할한 게임을 제작하기 위해서는 게임엔진을 변경하고, 프로젝트를 다시 만들었어야 했습니다.<br><br>
+                그 당시 사용한 게임엔진은.. Godot Engine 4.3 이였습니다.<br><br>
+                또한 프로젝트의 명칭도 변경했습니다. 그것이 Super Kingcrab Simulator라는 명칭이 탄생한 순간이였죠.
+            </div>
+
+            <p class="text_title">Super Kingcrab Simulator</p>
+            <img src="./srcs\imgs\game_logs\SuperKingcrabSimulator_Screenshot_2025-02-12-20-11-13.png" alt="Logo" class="logo">
+            <img src="./srcs\imgs\game_logs\SuperKingcrabSimulator_Screenshot_2025-02-12-20-14-28.png" alt="Logo" class="logo">
+
+            <div class="content">
+                당시 2차 프로젝트의 초창기 모습입니다. 많이 발전되었음을 볼 수 있습니다.<br>
+                그리고 맵 크기 또한 거대해졌죠. 여러 지역을 돌아다니며, 건물을 파괴하면서 대게를 해방시키는 모습을 보여주고 싶었습니다.<br><br>
+                여담으로.. 건물이 파괴되면 대게가 바로 해방되는 방식이였지만.. 너무 직관적이고 심심하다는 느낌이 들었습니다.<br>
+                그래서 중후반기 떄는.. 파괴된 건물을 던질 수 있게 만들었고, 파괴된 대게식당을 잡거나 뽑으면, 대게들이 해방되는 방식으로 변경되었습니다.<br><br>
+                또한 대게를 해방시키는 것 뿐만 아니라..<br> 건물을 파괴하면서 던지고, 적을 공격하면서 던지고, 자동차를 던지며 건물을 파괴하는<br>
+                ..그런 강력한 주인공 "영덕대게"의 모습을 만들어보았습니다.<br>
+            </div>
+
+            <img src="./srcs\imgs\game_logs\SuperKingcrabSimulator_Screenshot_2025-03-09-17-54-17.png" alt="Logo" class="logo">
+            <img src="./srcs\imgs\game_logs\SuperKingcrabSimulator_Screenshot_2025-03-09-17-54-45.png" alt="Logo" class="logo">
+            <img src="./srcs\imgs\game_logs\SuperKingcrabSimulator_Screenshot_2025-03-12-12-45-24.png" alt="Logo" class="logo">
+            <img src="./srcs\imgs\game_logs\487472342_17900924751115224_1313850901162903331_n.jpg" alt="Logo" class="logo">
+            <p class="text_title">점점 기본기가 완성되어 가다.</p>
+
+            <div class="content">
+                Super Kingcrab Simulator의 기본적인 모습은 거의 완성되어 가고 있습니다.<br>
+                작 경찰드론, 소방로봇, 안드로이드 로봇, 그리고 인류저항군까지..<br><br>
+                다양한 적들도 추가되고, 다양한 로직들을 만들었습니다. (규모가 큰 건물을 들어가던가.. 뉴스 이벤트라던가..)<br><br>
+                이제.. 저는 어느정도 완성된 Super Kingcrab Simulator를 주변에 공개하기 위해 <br>여러 지역을 떠나거나 오프라인 시연회를 진행하기 시작했습니다.
+            </div>
+
+            <img src="./srcs\imgs\game_logs\SuperKingcrabSimulator_Demo_Showcase.png" alt="Logo" class="logo">
+            <p class="text_title">전국을 돌아다니며.. (공개시연회)</p>
+            <div class="content">
+                Super Kingcrab Simulator의 피드백을 받기 위해, 서울 영등포구 문래동에 위치한 어느 복합문화공간에<br>
+                대관을 신청하여, 공개시연회를 운영했습니다. 평일 기간이라 저조했지만, 그럼에도 불구하고 방문해주신 분들이 계셨습니다.<br><br>
+                방문해주신 분들의 피드백을 받으며, 게임을 개선해나갔습니다. 공개 시연회 외에도 아버지께서도 피드백을 주시면서 게임의 비주얼을 개선해나갔습니다.<br><br>
+                그 외에도.. 부산 해운대구의 어느 게임개발자 모임에서도 Super Kingcrab Simulator를 시연했었습니다.<br>
+                부산의 게임개발자분들도 게임플레이를 통해, 피드백과 응원 메세지를 남겨주시며 게임의 발전에 도움을 주셨습니다.<br><br>
+                게임에 관심을 주신 모든 분들께, 감사의 말씀을 드립니다!<br>
+            </div>
+
+            <p class="text_blog_title">추후 업데이트 예정..</p>
+
+            <p class="text_down">SkagoGames. made in Skago.</p>
+        </div>
+    </body>
+</html>
