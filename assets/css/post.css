@@ -14,7 +14,7 @@
 
 @font-face {
     font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
-    src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+    src: url('{{ site.baseurl }}/srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
     font-weight: normal;
     font-style: normal;
 }
