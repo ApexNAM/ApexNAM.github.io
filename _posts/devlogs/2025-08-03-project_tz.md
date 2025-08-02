@@ -4,7 +4,7 @@ excerpt: "프로젝트 TZ 개발일지 0편"
 layout: post
 
 categories: 
-  - devlogs
+  - gamedev
 tags:
   - [gamedev, devlog]
 
