@@ -1,0 +1,20 @@
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
+
+@font-face {
+    font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
+    src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+    font-weight: normal;
+    font-style: normal;
+}
