@@ -4,12 +4,9 @@ excerpt: "개발일지 포스트 테스트"
 layout: post
 
 categories:
-  - Gamedev
-  - devlog
-  - 게임개발
-  - 개발일지
+  - gamedev
 tags:
-  - [gamedev, devlog, 게임개발, 개발일지]
+  - [gamedev, devlog]
 
 toc: true
 toc_sticky: true
