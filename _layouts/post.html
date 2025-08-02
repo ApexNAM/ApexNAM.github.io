@@ -19,25 +19,23 @@
   </head>
 
   <body>
-    <div class="logo-container">
-      <header style="text-align:center; margin:30px 0;">
-          <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
+    <header style="text-align:center; margin:30px 0;">
+        <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
 
-          <h1 style="font-family:'Polygothic', sans-serif;">{{ page.title }}</h1>
-          {% if page.date %}
-            <p style="font-family:'Polygothic', sans-serif; color:gray;">{{ page.date | date: "%Y-%m-%d" }}</p>
-          {% endif %}
-      </header>
+        <h1 style="font-family:'Polygothic', sans-serif;">{{ page.title }}</h1>
+        {% if page.date %}
+          <p style="font-family:'Polygothic', sans-serif; color:gray;">{{ page.date | date: "%Y-%m-%d" }}</p>
+        {% endif %}
+    </header>
 
-      <main>
-        <div class="markdown-body">
-          {{ content }}
-        </div>
-      </main>
+    <main>
+      <div class="markdown-body">
+        {{ content }}
+      </div>
+    </main>
 
-      <footer style="text-align:center; margin:50px 0; font-family:'Polygothic', sans-serif; font-size:14px; color:gray;">
-        SkagoGames. made in Skago.
-      </footer>
-    </div>
+    <footer style="text-align:center; margin:50px 0; font-family:'Polygothic', sans-serif; font-size:14px; color:gray;">
+      SkagoGames. made in Skago.
+    </footer>
   </body>
 </html>
