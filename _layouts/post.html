@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
-</head>
-<body>
-  <div class="markdown-body">
-    {{ content }}
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{{ '/assets/css/post.css' | relative_url }}" rel="stylesheet">
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(38, 38, 38);
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header style="text-align:center; margin:30px 0;">
+      <h1 style="font-family:'Polygothic', sans-serif;">{{ page.title }}</h1>
+      {% if page.date %}
+        <p style="font-family:'Polygothic', sans-serif; color:gray;">{{ page.date | date: "%Y-%m-%d" }}</p>
+      {% endif %}
+    </header>
+
+    <main>
+      <div class="markdown-body">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer style="text-align:center; margin:50px 0; font-family:'Polygothic', sans-serif; font-size:14px; color:gray;">
+      SkagoGames. made in Skago.
+    </footer>
+  </body>
 </html>
