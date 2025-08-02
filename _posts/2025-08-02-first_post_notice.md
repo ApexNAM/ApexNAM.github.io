@@ -15,19 +15,6 @@ toc: true
 toc_sticky: true
 ---
 
-<style type="text/css">
-  @font-face {
-      font-family: 'Polygothic';
-      src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-  }
-
-  body {
-    font-family: 'Polygothic';
-  }
-</style>
-
 # [개발일지] 개발일지 테스트
 
 <h2>안녕하세요 아펙스입니다.</h2>
