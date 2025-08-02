@@ -11,6 +11,3 @@ plugins:
 
 paginate: 5       # 한 페이지에 표시할 포스트 수 (원하는 숫자로 조절)
 paginate_path: "/page/:num"   # 페이지 URL 패턴
-baseurl: "" # 깃허브 페이지 루트에 올린 경우 빈 문자열
-
-url: "https://ApexNAM.github.io" # 본인 깃허브 페이지 주소
