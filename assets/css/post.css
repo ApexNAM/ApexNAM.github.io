@@ -4,6 +4,7 @@
     max-width: 980px;
     margin: 0 auto;
     padding: 45px;
+    font-family: 'Polygothic', sans-serif;
 }
 
 @media (max-width: 767px) {
@@ -16,8 +17,3 @@
   font-family: 'Polygothic';
   src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
 }
-
-.markdown-body {
-  font-family: 'Polygothic', sans-serif;
-}
-
