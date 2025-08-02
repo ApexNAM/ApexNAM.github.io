@@ -3,8 +3,7 @@ title:  "[개발일지] 프로젝트 TZ 개발일지 0편"
 excerpt: "프로젝트 TZ 개발일지 0편"
 layout: post
 
-categories:
-  - gamedev
+categories: - devlogs
 tags:
   - [gamedev, devlog]
 
