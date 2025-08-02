@@ -6,6 +6,7 @@
   padding: 45px;
 }
 
+
 @media (max-width: 767px) {
   .markdown-body {
     padding: 15px;
@@ -33,4 +34,14 @@
 
 .markdown-body p {
   margin-bottom: 1em;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    width: 800px;
 }
