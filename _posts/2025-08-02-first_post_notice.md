@@ -19,8 +19,6 @@ toc_sticky: true
   @font-face {
       font-family: 'Polygothic';
       src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
   }
 
   body {
