@@ -4,9 +4,9 @@ excerpt: "개발일지 포스트 테스트"
 layout: post
 
 categories:
-  - gamedev
+  - talk
 tags:
-  - [gamedev, devlog]
+  - [talk]
 
 toc: true
 toc_sticky: true
