@@ -1,104 +1,131 @@
+---
+layout: default
+paginate: true
+---
+
 <html>
     <head>
         <meta charset="utf-8">
         <meta name ="SkagoGames" content="SkagoGame's Blog">
         <title>SkagoGames. made in Skago.</title>
-        <style>
-            /* TTF 폰트 정의 */
-            @font-face {
-                font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
-                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
-                font-weight: normal;
-                font-style: normal;
-            }
+    <style>
+        /* TTF 폰트 정의 */
+        @font-face {
+        font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
+        src: url('{{ site.baseurl }}/srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+        font-weight: normal;
+        font-style: normal;
+        }
 
-            body {
-                margin: 0;
-                padding: 0;
-                min-height: 100vh;
-                justify-content: center;
-                align-items: center;
-                background-color: rgb(38, 38, 38);
-                background-size: cover;
-                background-position: center center; /* 정확히 중앙 정렬 */
-                background-repeat: no-repeat;
-                background-attachment: fixed; /* 스크롤 시 배경 고정 (멋있게 보임) */
-                position: relative;
-            }
+        body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(38, 38, 38);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: relative;
+        font-family: 'Polygothic', sans-serif;
+        color: #fff;
+        }
 
-            /* 이미지 컨테이너 */
-            .logo-container {
-                text-align: center;
-            }
+        .logo-container {
+        text-align: center;
+        }
 
-            /* 로고 이미지 스타일 */
-            .logo {
-                max-width: 100%; /* 반응형 유지 */
-                height: auto;    /* 비율 유지 */
-                width: 800px;    /* 원하는 크기 조절 */
-            }
+        .logo {
+        max-width: 100%;
+        height: auto;
+        width: 800px;
+        }
 
-            /* 텍스트 스타일 */
-            .text_title {
-                font-size: 83px;
-                color: #ffffff;
-                font-family: 'Polygothic', sans-serif;
-            }
+        .text_title {
+        font-size: 83px;
+        color: #ffffff;
+        font-family: 'Polygothic', sans-serif;
+        }
 
-            .text_default {
-                font-size: 30px;
-                color: #ffffff;
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.1; /* 줄 간격 조정 */
-            }
+        .text_default {
+        font-size: 30px;
+        color: #ffffff;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 1.1;
+        }
 
-            .text_blog_title {
-                font-size: 45px;
-                color: peru;
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.5; /* 줄 간격 조정 */
-            }
+        .text_blog_title {
+        font-size: 45px;
+        color: peru;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 1.5;
+        }
 
-            .text_blog_title_older {
-                font-size: 35px;
-                color: gray;
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.1; /* 줄 간격 조정 */
-            }
+        .text_blog_title_older {
+        font-size: 35px;
+        color: gray;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 1.1;
+        }
 
+        .text_down {
+        font-size: 25px;
+        color: #ffffff;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 5.0;
+        }
 
-            .text_down {
-                font-size: 25px;
-                color: #ffffff;
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 5.0; /* 줄 간격 조정 */
-            }
+        .text_default a {
+        color: #00d5ff;
+        text-decoration: none;
+        }
 
-            /* 링크 스타일 */
-            .text_default a {
-                color: #00d5ff; /* 링크 색상 */
-                text-decoration: none; /* 밑줄 제거 */
-            }
+        .text_default a:hover {
+        text-decoration: underline;
+        }
 
-            .text_default a:hover {
-                text-decoration: underline; /* 마우스 오버 시 밑줄 */
-            }
+        .intro-kor,
+        .intro-eng {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        }
 
-            .intro-kor,
-            .intro-eng {
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }
-        </style>
+        /* 페이지네이션 기본 스타일 */
+        .pagination {
+        margin-top: 40px;
+        text-align: center;
+        }
+        .pagination a,
+        .pagination span {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 5px 10px;
+        color: #00d5ff;
+        text-decoration: none;
+        border: 1px solid #00d5ff;
+        border-radius: 4px;
+        }
+        .pagination span.current {
+        background-color: #00d5ff;
+        color: #fff;
+        font-weight: bold;
+        }
+        .pagination a:hover {
+        background-color: #0077aa;
+        border-color: #0077aa;
+        color: #fff;
+        }
+    </style>
     </head>
-
     <body>
         <div class="logo-container">
-            <img src="./srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
+            <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
             <p class="text_title">반갑습니다 Welcome!</p>
 
             <div class="intro-kor">
@@ -112,6 +139,38 @@
                 <p class="text_default">I started developing games since 2018, and I have produced various games so far.</p>
                 <p class="text_default">Now, I'm traveling to various places (In Korea), and I hope we can meet in various places in the future..</p>
             </div>
+
+            <p class="text_title">개발일지. Game devlog.</p>
+
+            <ul>
+            {% for post in paginator.posts %}
+                <p class="text_default">
+                    <a href="{{ post.url }}">{{ post.title }}<span> - {{ post.date | date: "%Y-%m-%d" }}</span></a>
+                </p>
+            {% endfor %}
+            </ul>
+
+            <div class="text_default">
+                {% if paginator.previous_page %}
+                    <a href="{{ paginator.previous_page_path }}" class="prev"><- 이전</a>
+                {% endif %}
+
+                {% for page in (1..paginator.total_pages) %}
+                    {% if page == paginator.page %}
+                        <b>{{ page }}</b>
+                    {% elsif page == 1 %}
+                        <a href="{{ '/' | relative_url }}">{{ page }}</a>
+                    {% else %}
+                        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if paginator.next_page %}
+                    <a href="{{ paginator.next_page_path }}" class="next">다음 -></a>
+                {% endif %}
+            </div>
+
+
 
             <p class="text_title">소속 학교 School</p>
             <div class="intro-kor">
@@ -135,10 +194,7 @@
             <p class="text_blog_title"><a href="ydkk2025.html">Super Kingcrab Simulator (2025)</a></p>
             <p class="text_blog_title_older">Roots Need Control 3.0 (2023)</p>
             <p class="text_blog_title_older">Assau!t (2019)</p>
-            
-            <p class="text_title">소재지 location</p>
-            <p class="text_default">332, Anaji-ro, Gyeyang-gu, Incheon, Republic of Korea</p>
-            <p class="text_default">인천광역시 계양구 아나지로332 (상세주소 가림)</P>
+
             <p class="text_down">SkagoGames. made in Skago.</p>
         </div>
     </body>

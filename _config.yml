@@ -1,0 +1,16 @@
+title: "SkagoGames website."
+description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
+baseurl: "" # custom 도메인이 없으면 빈 문자열
+url: "https://ApexNAM.github.io" # 본인의 GitHub Pages 주소
+
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+
+paginate: 5       # 한 페이지에 표시할 포스트 수 (원하는 숫자로 조절)
+paginate_path: "/page/:num"   # 페이지 URL 패턴
+baseurl: "" # 깃허브 페이지 루트에 올린 경우 빈 문자열
+
+url: "https://ApexNAM.github.io" # 본인 깃허브 페이지 주소
