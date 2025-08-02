@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-02T15:38:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SkagoGames website.</title><subtitle>SkagoGames 페이지에 방문해주셔서 감사합니다.</subtitle><entry><title type="html">타이틀 테스트 4</title><link href="http://localhost:4000/blog/2025/08/02/test-copy-5.html" rel="alternate" type="text/html" title="타이틀 테스트 4" /><published>2025-08-02T00:00:00+09:00</published><updated>2025-08-02T00:00:00+09:00</updated><id>http://localhost:4000/blog/2025/08/02/test%20copy%205</id><content type="html" xml:base="http://localhost:4000/blog/2025/08/02/test-copy-5.html"><![CDATA[<h1 id="hello-world">hello World!</h1>
+
+<p><br />
+나는 고라니에요</p>
+
+<h2 id="test">test</h2>]]></content><author><name></name></author><category term="Blog" /><category term="Blog" /><category term="jekyll" /><category term="Github" /><category term="Git" /><summary type="html"><![CDATA[블로그 테스트 4]]></summary></entry><entry><title type="html">타이틀 테스트 1</title><link href="http://localhost:4000/blog/2025/08/02/test-copy-2.html" rel="alternate" type="text/html" title="타이틀 테스트 1" /><published>2025-08-02T00:00:00+09:00</published><updated>2025-08-02T00:00:00+09:00</updated><id>http://localhost:4000/blog/2025/08/02/test%20copy%202</id><content type="html" xml:base="http://localhost:4000/blog/2025/08/02/test-copy-2.html"><![CDATA[<h1 id="hello-world">hello World!</h1>
+
+<p><br />
+나는 고라니에요</p>
+
+<h2 id="test">test</h2>]]></content><author><name></name></author><category term="Blog" /><category term="Blog" /><category term="jekyll" /><category term="Github" /><category term="Git" /><summary type="html"><![CDATA[블로그 테스트 1]]></summary></entry><entry><title type="html">타이틀 테스트 2</title><link href="http://localhost:4000/blog/2025/08/02/test-copy-3.html" rel="alternate" type="text/html" title="타이틀 테스트 2" /><published>2025-08-02T00:00:00+09:00</published><updated>2025-08-02T00:00:00+09:00</updated><id>http://localhost:4000/blog/2025/08/02/test%20copy%203</id><content type="html" xml:base="http://localhost:4000/blog/2025/08/02/test-copy-3.html"><![CDATA[<h1 id="hello-world">hello World!</h1>
+
+<p><br />
+나는 고라니에요</p>
+
+<h2 id="test">test</h2>]]></content><author><name></name></author><category term="Blog" /><category term="Blog" /><category term="jekyll" /><category term="Github" /><category term="Git" /><summary type="html"><![CDATA[블로그 테스트 2]]></summary></entry><entry><title type="html">타이틀 테스트 3</title><link href="http://localhost:4000/blog/2025/08/02/test-copy-4.html" rel="alternate" type="text/html" title="타이틀 테스트 3" /><published>2025-08-02T00:00:00+09:00</published><updated>2025-08-02T00:00:00+09:00</updated><id>http://localhost:4000/blog/2025/08/02/test%20copy%204</id><content type="html" xml:base="http://localhost:4000/blog/2025/08/02/test-copy-4.html"><![CDATA[<h1 id="hello-world">hello World!</h1>
+
+<p><br />
+나는 고라니에요</p>
+
+<h2 id="test">test</h2>]]></content><author><name></name></author><category term="Blog" /><category term="Blog" /><category term="jekyll" /><category term="Github" /><category term="Git" /><summary type="html"><![CDATA[블로그 테스트 3]]></summary></entry></feed>
