@@ -17,9 +17,5 @@ paginate_path: "/page/:num"   # 페이지 URL 패턴
 include:
   - assets
   - srcs
-
-categories:
-  - gamedev
-  - devlogs
-  - review
-  - talk
+  
+future: true
