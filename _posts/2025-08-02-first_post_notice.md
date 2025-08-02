@@ -22,6 +22,10 @@ toc_sticky: true
       font-weight: normal;
       font-style: normal;
   }
+
+  body {
+    font-family: 'Polygothic';
+  }
 </style>
 
 # [개발일지] 개발일지 테스트
