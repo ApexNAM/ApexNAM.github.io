@@ -9,9 +9,17 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
+permalink: /:categories/:year/:title/
+
 paginate: 5       # 한 페이지에 표시할 포스트 수 (원하는 숫자로 조절)
 paginate_path: "/page/:num"   # 페이지 URL 패턴
-permalink: /:categories/:year/:title/
 
 include:
   - assets
+  - srcs
+
+categories:
+  - gamedev
+  - devlogs
+  - review
+  - talk
