@@ -24,7 +24,7 @@ published : true
   }
 </style>
 
-![이미지 설명](/srcs/imgs/post_imgs/gamejam_image_250803.jpg)
+![이미지 설명](/srcs/imgs/post_imgs/gamejam_image_250803.jpg){: style="max-width: 400px; height: auto;" }
 
 <h1>개요</h1>
 
