@@ -1,6 +1,6 @@
 ---
-title:  "[개발일지] 개발일지 테스트"
-excerpt: "개발일지 포스트 테스트"
+title:  "[개발일지] 국제 게임잼 코리아 전주 2025 참여 후기"
+excerpt: "국제 게임잼 코리아 전주 2025 참여 후기"
 layout: post
 
 categories:
