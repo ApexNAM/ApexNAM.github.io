@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name ="Super Kingcrab Simulator" content="Super Kingcrab Simulator's Blog">
+        <title>Super Kingcrab Simulator</title>
+        <style>
+            /* TTF 폰트 정의 */
+            @font-face {
+                font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
+                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+                font-weight: normal;
+                font-style: normal;
+            }
+
+                        /* TTF 폰트 정의 */
+            @font-face {
+                font-family: 'Yeongdeok'; /* 폰트 이름 자유롭게 지정 */
+                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                justify-content: center;
+                align-items: center;
+                background-image: url("srcs/imgs/game_logs/Yeongdeok_Kingcrab_Screenshot_2024-12-03_16-18-46.png");
+                background-size: cover;
+                background-position: center center; /* 정확히 중앙 정렬 */
+                background-repeat: no-repeat;
+                background-attachment: fixed; /* 스크롤 시 배경 고정 (멋있게 보임) */
+                position: relative;
+            }
+            
+            
+            /* 어두운 오버레이 추가 */
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.16); /* 검정색 반투명 오버레이 */
+                z-index: 1; /* 배경 이미지 위, 콘텐츠 아래 */
+            }
+            
+            .logo-container {
+                text-align: center;
+                background-color: rgba(23, 23, 23, 0.8);
+                padding: 20px;
+                border-radius: 10px;
+                position: relative; /* 오버레이 위에 표시 */
+                z-index: 2; /* 콘텐츠가 오버레이 위로 */
+            }
+
+            /* 이미지 컨테이너 */
+            .logo-container {
+                text-align: center;
+            }
+
+            /* 로고 이미지 스타일 */
+            .logo {
+                max-width: 100%; /* 반응형 유지 */
+                height: auto;    /* 비율 유지 */
+                width: 700px;    /* 원하는 크기 조절 */
+            }
+
+            /* 텍스트 스타일 */
+            .text_title {
+                font-size: 83px;
+                color: #ffffff;
+                font-family: 'Polygothic', sans-serif;
+                line-height: 0.5; /* 줄 간격 조정 */
+            }
+
+            .text_default {
+                font-size: 30px;
+                color: #ffffff;
+                font-family: 'Yeongdeok', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                line-height: 1; /* 줄 간격 조정 */
+            }
+
+            .text_blog_title {
+                font-size: 45px;
+                color: peru;
+                font-family: 'Polygothic', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                line-height: 1.5; /* 줄 간격 조정 */
+            }
+
+            .text_blog_title_older {
+                font-size: 35px;
+                color: rgb(179, 179, 179);
+                font-family: 'Polygothic', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                line-height: 1.1; /* 줄 간격 조정 */
+            }
+
+
+            .text_down {
+                font-size: 25px;
+                color: #ffffff;
+                font-family: 'Polygothic', sans-serif;
+                margin: 0; /* 기본 마진 제거 */
+                line-height: 5.0; /* 줄 간격 조정 */
+            }
+
+            /* 링크 스타일 */
+            .text_default a {
+                color: #1a73e8; /* 링크 색상 */
+                text-decoration: none; /* 밑줄 제거 */
+            }
+
+            .text_default a:hover {
+                text-decoration: underline; /* 마우스 오버 시 밑줄 */
+            }
+
+            .intro-kor,
+            .intro-eng {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }           
+        </style>
+    </head>
+
+    <body>
+        <div class="logo-container">
+            <img src="./srcs/logos/Project_SuperLocal.png" alt="Logo" class="logo">
+
+            <p class="text_title">Like a playground.</p>
+
+            <div class="intro-kor">
+                <p class="text_default">"프로젝트 SuperLocal"은 다양한 지역들을 참고하고 영감을 얻어,</p>
+                <p class="text_default">그 지역의 특산품이나 상징을 모티브로 한 ‘즐겁고 자유로운 놀이터 같은 게임’을 만드는 프로젝트입니다.</p>
+            </div>
+
+            <div class="intro-eng">
+                <p class="text_default">"Project SuperLocal" is a creative initiative that draws inspiration from the unique charm and symbols of different regions,</p>
+                <p class="text_default">reimagining them into playful, game-like experiences that anyone can enjoy.</p>
+            </div>
+
+            <p class="text_title">Main Projects</p>
+            <iframe src="https://store.steampowered.com/widget/2425570/" frameborder="0" width="646" height="190"></iframe>
+            <iframe src="https://store.steampowered.com/widget/3773390/" frameborder="0" width="646" height="190"></iframe>
+
+            <p class="text_title">Other Projects</p>
+            <iframe frameborder="0" src="https://itch.io/embed/2802264?bg_color=000000&amp;fg_color=ff2a6e&amp;link_color=df4ffe&amp;border_color=333333" width="552" height="167"><a href="https://cyberapex.itch.io/pusanstaroika">Pusanstaroika by SkagoGames</a></iframe>
+            <iframe frameborder="0" src="https://itch.io/embed/2251901?border_width=3&amp;bg_color=000000&amp;fg_color=eeeeee&amp;link_color=30ff03&amp;border_color=df0000" width="556" height="171"><a href="https://cyberapex.itch.io/chungju-apple-clay">chungju apple clay by SkagoGames</a></iframe>
+            <iframe frameborder="0" src="https://itch.io/embed/2254485?bg_color=563200&amp;fg_color=44f700&amp;link_color=28b500&amp;border_color=333333" width="552" height="167"><a href="https://cyberapex.itch.io/bubal-z">Bubal Z by SkagoGames</a></iframe>
+            <iframe frameborder="0" src="https://itch.io/embed/2306794?bg_color=000000&amp;fg_color=eeeeee&amp;link_color=ff0d0d&amp;border_color=363636" width="552" height="167"><a href="https://cyberapex.itch.io/chickenbullet">ChickenBullet by SkagoGames</a></iframe>
+
+            <p class="text_down">SkagoGames 2025. made in Skago.</p>
+        </div>
+    </body>
+</html>
