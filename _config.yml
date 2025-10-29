@@ -1,7 +1,7 @@
 title: "SkagoGames. made in Skago."
 description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
 baseurl: "" # custom 도메인이 없으면 빈 문자열
-url: "http://skagogames.com" # 본인의 GitHub Pages 주소
+url: "https://ApexNAM.github.io" # 본인의 GitHub Pages 주소
 
 markdown: kramdown
 
