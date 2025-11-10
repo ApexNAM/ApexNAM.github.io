@@ -59,18 +59,19 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
                     <a href="{{ paginator.previous_page_path }}" class="center_font"><- PREV</a>
                 {% endif %}
 
-                <ul class="game-list center_font">
-                    {% for page in (1..paginator.total_pages) %}
-                        {% if page == paginator.page %}
+                {% for page in (1..paginator.total_pages) %}
+                    {% if page == paginator.page %}
+                        <ul class="game-list center_font">
                             <b>{{ page }}</b>
-                        {% elsif page == 1 %}
-                            <a href="{{ '/' | relative_url }}">{{ page }}</a>
-                        {% else %}
-                            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-                
+                        </ul>
+
+                    {% elsif page == 1 %}
+                        <a href="{{ '/' | relative_url }}">{{ page }}</a>
+                    {% else %}
+                        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+                    {% endif %}
+                {% endfor %}
+
                 {% if paginator.next_page %}
                     <a href="{{ paginator.next_page_path }}" class="center_font">NEXT -></a>
                 {% endif %}
