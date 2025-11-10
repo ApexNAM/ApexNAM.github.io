@@ -56,7 +56,7 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
             </ul>
             <div>
                 {% if paginator.previous_page %}
-                    <a href="{{ paginator.previous_page_path }}" class="prev"><- PREV</a>
+                    <a href="{{ paginator.previous_page_path }}" class="center_font"><- PREV</a>
                 {% endif %}
 
                 {% for page in (1..paginator.total_pages) %}
@@ -70,7 +70,7 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
                 {% endfor %}
 
                 {% if paginator.next_page %}
-                    <a href="{{ paginator.next_page_path }}" class="next">NEXT -></a>
+                    <a href="{{ paginator.next_page_path }}" class="center_font">NEXT -></a>
                 {% endif %}
             </div>
         </section>
