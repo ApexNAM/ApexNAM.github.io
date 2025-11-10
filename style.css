@@ -64,7 +64,7 @@ h1.center_font {
 
 .game-list a:hover {
     color: #0066ff;
-    font-size: 35px;
+    font-size: 25px;
     transition: font-size 0.2s ease;
 }
 
