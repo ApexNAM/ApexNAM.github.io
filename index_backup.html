@@ -1,0 +1,192 @@
+---
+layout: default
+paginate: true
+title: "SkagoGames. made in Skago."
+description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
+---
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name ="SkagoGames" content="SkagoGame's Website">
+        <title>{{ page.title | default: "SkagoGames" }}</title>
+    <style>
+        /* TTF 폰트 정의 */
+        @font-face {
+            font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
+            src: url('{{ site.baseurl }}/srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(38, 38, 38);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            font-family: 'Polygothic', sans-serif;
+            color: #fff;
+        }
+
+        .logo-container {
+        text-align: center;
+        }
+
+        .logo {
+        max-width: 100%;
+        height: auto;
+        width: 800px;
+        }
+
+        .text_title {
+        font-size: 83px;
+        color: #ffffff;
+        font-family: 'Polygothic', sans-serif;
+        }
+
+        .text_default {
+        font-size: 30px;
+        color: #ffffff;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 1.1;
+        }
+
+        .text_blog_title {
+        font-size: 45px;
+        color: peru;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 1.5;
+        }
+
+        .text_blog_title_older {
+        font-size: 35px;
+        color: gray;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 1.1;
+        }
+
+        .text_down {
+        font-size: 25px;
+        color: #ffffff;
+        font-family: 'Polygothic', sans-serif;
+        margin: 0;
+        line-height: 5.0;
+        }
+
+        .text_default a {
+        color: #00d5ff;
+        text-decoration: none;
+        }
+
+        .text_default a:hover {
+        text-decoration: underline;
+        }
+
+        .intro-kor,
+        .intro-eng {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        }
+
+        /* 페이지네이션 기본 스타일 */
+        .pagination {
+        margin-top: 40px;
+        text-align: center;
+        }
+        .pagination a,
+        .pagination span {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 5px 10px;
+        color: #00d5ff;
+        text-decoration: none;
+        border: 1px solid #00d5ff;
+        border-radius: 4px;
+        }
+        .pagination span.current {
+        background-color: #00d5ff;
+        color: #fff;
+        font-weight: bold;
+        }
+        .pagination a:hover {
+        background-color: #0077aa;
+        border-color: #0077aa;
+        color: #fff;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="logo-container">
+            <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
+
+            <div class="intro-kor">
+                <p class="text_default">SkagoGames는 다양하고 독특한 게임을 제작하고 있는 1인 인디게임 개발 팀입니다.</p>
+                <p class="text_default">대한민국, 인천에 소재하고 있지만, 여러 지역으로도 활동하고 있습니다.</p>
+            </div>
+
+            <div class="intro-eng">
+                <p class="text_default">SkagoGames is a solo Indie GameDev team creating diverse and unique games.</p>
+                <p class="text_default">based in Incheon, South Korea, but we also operate in various regions.</p>
+
+            </div>
+
+            <p class="text_title">Post</p>
+
+            <ul>
+            {% for post in paginator.posts %}
+                <p class="text_default">
+                    <a href="{{ post.url }}">{{ post.title }}<span> - {{ post.date | date: "%Y-%m-%d" }}</span></a>
+                </p>
+            {% endfor %}
+            </ul>
+
+            <div class="text_default">
+                {% if paginator.previous_page %}
+                    <a href="{{ paginator.previous_page_path }}" class="prev"><- 이전</a>
+                {% endif %}
+
+                {% for page in (1..paginator.total_pages) %}
+                    {% if page == paginator.page %}
+                        <b>{{ page }}</b>
+                    {% elsif page == 1 %}
+                        <a href="{{ '/' | relative_url }}">{{ page }}</a>
+                    {% else %}
+                        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if paginator.next_page %}
+                    <a href="{{ paginator.next_page_path }}" class="next">다음 -></a>
+                {% endif %}
+            </div>
+
+            <p class="text_title">SNS</p>
+            <p class="text_default"><a href="https://x.com/Skago_CyberApex" target="_blank">X (Twitter)</a></p>
+            <p class="text_default"><a href="https://www.threads.net/@cyberapex6344" target="_blank">Threads</a></p>
+            <p class="text_default"><a href="https://bsky.app/profile/cyberapex6344.bsky.social" target="_blank">Bluesky</a></p>
+            <p class="text_default"><a href="https://cyberapex.itch.io/" target="_blank">itch.io</a></p>
+            <p class="text_default">Email - jacksoworld@naver.com</p>
+
+            <p class="text_title">Project</p>
+            <p class="text_blog_title"><a href="torizon_telecom.html">Torizon : Telecom (Coming Soon)</a></p>
+            
+            <p class="text_blog_title"><a href="project_superlocal.html">Project SuperLocal</a></p>
+            <a href="ydkk2025.html">Super Kingcrab Simulator (2025)</a>
+
+            <p class="text_blog_title_older">Roots Need Control 3.0 (2023)</p>
+            <p class="text_blog_title_older">Assau!t (2019)</p>
+
+            <p class="text_down">SkagoGames. made in Skago.</p>
+        </div>
+    </body>
+</html>

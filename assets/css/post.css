@@ -14,12 +14,12 @@
 }
 
 @font-face {
-  font-family: 'Polygothic';
-  src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
+    font-family: Pretendard;
+    src: url('{{ site.baseurl }}/srcs/fonts/Pretendard/Pretendard-Medium.otf') format('truetype');
 }
 
 .markdown-body {
-  font-family: 'Polygothic', sans-serif;
+  font-family: 'Pretendard';
   line-height: 1.6;
   font-size: 18px;
 }
