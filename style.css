@@ -19,6 +19,23 @@ body {
     text-align: center;
 }
 
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination a, .pagination b {
+  margin: 0 10px;
+  font-family: Pretendard;
+  font-size: 18px;
+  text-decoration: none;
+  color: rgb(0, 166, 255);
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+}
+
 .about_font {
     font-family: Pretendard;
     text-align: center;
