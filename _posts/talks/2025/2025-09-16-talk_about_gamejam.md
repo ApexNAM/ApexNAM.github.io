@@ -13,17 +13,6 @@ toc_sticky: true
 published : true
 ---
 
-<style type="text/css">
-  @font-face {
-      font-family: 'Polygothic';
-      src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-  }
-
-  body {
-    font-family: 'Polygothic';
-  }
-</style>
-
 <h2>개요</h2>
 
 정리와 계산을 해보니 게임잼을 시작하고 5년이 지났다.\

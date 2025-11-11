@@ -13,17 +13,6 @@ toc_sticky: true
 published : true
 ---
 
-<style type="text/css">
-  @font-face {
-      font-family: 'Polygothic';
-      src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-  }
-
-  body {
-    font-family: 'Polygothic';
-  }
-</style>
-
 <h1>개요</h1>
 
 며칠 전에 순천에서 열린 게임잼에 하나 참여했습니다.\

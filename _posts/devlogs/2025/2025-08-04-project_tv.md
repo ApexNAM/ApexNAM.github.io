@@ -13,17 +13,6 @@ toc_sticky: true
 published : true
 ---
 
-<style type="text/css">
-  @font-face {
-      font-family: 'Polygothic';
-      src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-  }
-
-  body {
-    font-family: 'Polygothic';
-  }
-</style>
-
 ![이미지 설명](/srcs/imgs/post_imgs/project_tv/project_tv_0.png){: style="max-width: 600px; height: auto;" }
 
 

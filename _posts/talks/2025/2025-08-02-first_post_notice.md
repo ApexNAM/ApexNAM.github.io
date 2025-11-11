@@ -13,17 +13,6 @@ toc_sticky: true
 published : true
 ---
 
-<style type="text/css">
-  @font-face {
-      font-family: 'Polygothic';
-      src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-  }
-
-  body {
-    font-family: 'Polygothic';
-  }
-</style>
-
 <h2>안녕하세요 아펙스입니다.</h2>
 
 앞으로 개발일지 소식은 제 깃허브 웹사이트에서 통합합니다.\

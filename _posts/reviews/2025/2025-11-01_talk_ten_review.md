@@ -13,17 +13,6 @@ toc_sticky: true
 published : true
 ---
 
-<style type="text/css">
-  @font-face {
-      font-family: 'Polygothic';
-      src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-  }
-
-  body {
-    font-family: 'Polygothic';
-  }
-</style>
-
 간단하게 써보겠다.\
 올해 10월은 운좋은 소식들이 많았던 것 같다.
 

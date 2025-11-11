@@ -13,17 +13,6 @@ toc_sticky: true
 published : true
 ---
 
-<style type="text/css">
-  @font-face {
-      font-family: 'Polygothic';
-      src: url('/srcs/fonts/Polygothic-Light.ttf') format('truetype');
-  }
-
-  body {
-    font-family: 'Polygothic';
-  }
-</style>
-
 ![이미지 설명](/srcs/imgs/post_imgs/gamejam_image_250803.jpg){: style="max-width: 400px; height: auto;" }
 
 <h1>개요</h1>
