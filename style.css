@@ -68,13 +68,6 @@ h1.center_font { color: rgb(0, 166, 255); }
     margin-bottom: 10px;
 }
 
-.navBar__logo img {
-    max-height: 80px;   /* 세로 크기를 제한 */
-    height: auto;       /* 비율 유지 */
-    max-width: 100%;    /* 부모 영역을 넘지 않도록 */
-    width: auto;        /* 자동 비율 유지 */
-}
-
 .navBar {
     width: 100%;
     display: flex;
