@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Open Graph -->
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{{ page.excerpt | default: site.description }}">
     <meta property="og:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
@@ -12,11 +18,6 @@
     <meta name="twitter:title" content="{{ page.title }}">
     <meta name="twitter:description" content="{{ page.excerpt | default: site.description }}">
     <meta name="twitter:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
-
-    <meta charset="UTF-8">
-    <title>{{ page.title }}</title>
-    <meta name="description" content="{{ page.excerpt | default: site.description }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="{{ '/assets/css/post.css' | relative_url }}" rel="stylesheet">
     <link rel="icon" href="/skagogames.ico" type="image/x-icon" />
