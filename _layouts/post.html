@@ -7,6 +7,12 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 
+    <!-- Twitter (X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:description" content="{{ page.excerpt | default: site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
+
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description }}">
@@ -14,7 +20,7 @@
 
     <link href="{{ '/assets/css/post.css' | relative_url }}" rel="stylesheet">
     <link rel="icon" href="/skagogames.ico" type="image/x-icon" />
-    
+
     <style>
       body {
         margin: 0;
