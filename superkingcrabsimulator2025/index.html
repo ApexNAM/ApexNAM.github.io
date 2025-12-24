@@ -1,16 +1,16 @@
 <html>
     <head>
-        <meta property="og:title" content="Super Kingcrab Simulator">
-        <meta property="og:description" content="Destroy it! And liberate it!">
-        <meta property="og:image" content="https://apexnam.github.io/superkingcrabsimulator2025/srcs/logos/SKAGOGAMES_BLOG_OG_YDKK_EDITON_v2.png">
+        <meta property="og:title" content="{{ page.title }}">
+        <meta property="og:description" content="{{ page.excerpt | default: site.description }}">
+        <meta property="og:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://apexnam.github.io/superkingcrabsimulator2025/">
+        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 
         <!-- Twitter (X) -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Super Kingcrab Simulator">
-        <meta name="twitter:description" content="Destroy it! And liberate it!">
-        <meta name="twitter:image" content="https://apexnam.github.io/superkingcrabsimulator2025/srcs/logos/SKAGOGAMES_BLOG_OG_YDKK_EDITON_v2.png">
+        <meta name="twitter:title" content="{{ page.title }}">
+        <meta name="twitter:description" content="{{ page.excerpt | default: site.description }}">
+        <meta name="twitter:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
 
         <meta charset="utf-8">
         <meta name ="Super Kingcrab Simulator" content="Super Kingcrab Simulator's Blog">
