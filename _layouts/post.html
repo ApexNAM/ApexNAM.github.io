@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.excerpt | default: site.description }}">
+    <meta property="og:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description }}">
