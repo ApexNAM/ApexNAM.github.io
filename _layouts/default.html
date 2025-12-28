@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
-  <meta name="description" content="{{ site.description }}">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- 스타일시트나 폰트 로딩 -->
-  <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
-  <link rel="icon" href="/skagogames.ico" type="image/x-icon" />
-
+    {% include head.html %}
 </head>
 <body>
-  <main>
-    {{ content }}
-  </main>
+
+    {% include header.html %}
+
+    <main>
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
 </body>
 </html>

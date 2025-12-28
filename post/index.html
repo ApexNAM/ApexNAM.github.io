@@ -1,0 +1,15 @@
+---
+layout: default
+title: "게시글 Posts"
+paginate: true
+---
+
+{% for post in paginator.posts %}
+    <p>
+        <a href="{{ post.url }}">
+            [{{ post.tags[0] }}] {{ post.title }}
+        </a>
+    </p>
+{% endfor %}
+
+{% include pagination.html %}

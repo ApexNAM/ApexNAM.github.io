@@ -1,0 +1,13 @@
+---
+layout: default
+title: "공지사항 Notifications"
+---
+
+{% for post in site.categories.notification %}
+    <p class="notice">
+        <a href="{{ post.url }}">
+            [공지] {{ post.title }}
+            <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+        </a>
+    </p>
+{% endfor %}

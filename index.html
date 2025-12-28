@@ -1,124 +1,25 @@
 ---
 layout: default
-paginate: true
 title: "SkagoGames. made in Skago."
 description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
 ---
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name ="SkagoGames" content="SkagoGame's Website">
-        <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
-        <title>{{ page.title | default: "SkagoGames" }}</title>
-    </head>
+<section class="section">
+    <h1>공지사항</h1>
+    {% for post in site.categories.notification limit:3 %}
+        <p class="notice">
+            <a href="{{ post.url }}">[공지] {{ post.title }}</a>
+        </p>
+    {% endfor %}
+</section>
 
-    <body>
-        <header class="header">
-            <div class="navBar__logo">
-                <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="SkagoGames Logo" height="80px">
-            </div>
-
-            <nav class="navBar">
-                <ul class="navBar__menu">
-                    <li><a href="#notice">공지사항 Notice</a></li>
-                    <li><a href="#post">게시글 Post</a></li>
-                    <li><a href="#games">게임 Games</a></li>
-                    <li><a href="#contact">연락처 Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-
-        <!-- 🔹 섹션들 -->
-
-        <section id="notice" class="section">
-            <h1 class="center_font">공지사항 Notice</h1>
-            <ul>
-                {% for post in site.categories.notification %}
-                    <p class="game-list center_font notice">
-                        <a href="{{ post.url }}">
-                            [공지 Notice] {{ post.title }}
-                            <span> - {{ post.date | date: "%Y-%m-%d" }}</span>
-                        </a>
-                    </p>
-                {% endfor %}
-            </ul>
-        </section>
-
-
-
-        <section id="post" class="section">
-            <h1 class="center_font">게시글 POST</h1>
-            <ul>
-                {% for post in paginator.posts %}
-                    <p class="game-list center_font">
-                        <a href="{{ post.url }}">[{{ post.tags[0] }}] {{ post.title }}<span> - {{ post.date | date: "%Y-%m-%d" }}</span></a>
-                    </p>
-                {% endfor %}
-            </ul>
-            <div class="pagination" style="text-align: center;">
-                {% if paginator.previous_page %}
-                    <a href="{{ paginator.previous_page_path }}" class="center_font"><- PREV</a>
-                {% endif %}
-
-                {% for page in (1..paginator.total_pages) %}
-                    {% if page == paginator.page %}
-                        <b>{{ page }}</b>
-                    {% elsif page == 1 %}
-                        <a href="{{ '/' | relative_url }}">{{ page }}</a>
-                    {% else %}
-                        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
-                    {% endif %}
-                {% endfor %}
-
-                {% if paginator.next_page %}
-                    <a href="{{ paginator.next_page_path }}" class="center_font">NEXT -></a>
-                {% endif %}
-            </div>
-        </section>
-
-        <section id="games" class="section">
-            <h1 class="center_font">게임 Games</h1>
-            <ul class="game-list center_font">
-                <li><a href="/torizon_telecom">Torizon : Telecom (Coming Soon)</a></li>
-                <li><a href="/superlocal">Project SuperLocal</a></li>
-                <li><a href="/superkingcrabsimulator2025">Super Kingcrab Simulator (2025)</a></li>
-                <li><a href="https://store.steampowered.com/app/2425570/Roots_Need_Control_30/">Roots Need Control 3.0 (2023)</a></li>
-                <li><a href="https://store.steampowered.com/app/1519610/Assaut/?curator_clanid=44208556">Assau!t (2021)</a></li>
-            </ul>
-        </section>
-
-        <section id="contact" class="section">
-            <h1 class="center_font">연락처 Contact</h1>
-                <div class="social-links">
-                    <a href="https://cyberapex.itch.io/" target="_blank" aria-label="GitHub">
-                        <img src="/srcs/imgs/sns_logos/itchio-logo-textless-black.png" alt="GitHub">
-                    </a>
-                    <a href="mailto:jacksoworld@naver.com" aria-label="Email">
-                        <img src="/srcs/imgs/sns_logos/At_sign.svg.png" alt="Email">
-                    </a>
-                    
-                    <a href="https://x.com/Skago_CyberApex" target="_blank" aria-label="GitHub">
-                        <img src="/srcs/imgs/sns_logos/X_logo_2023_(white).png" alt="GitHub">
-                    </a>
-                    <a href="https://www.threads.com/@cyberapex6344" target="_blank" aria-label="X">
-                        <img src="/srcs/imgs/sns_logos/Threads_(app).png" alt="X">
-                    </a>
-                    <a href="https://bsky.app/profile/cyberapex6344.bsky.social" target="_blank" aria-label="Instagram">
-                        <img src="/srcs/imgs/sns_logos/Bluesky_Logo.svg.png" alt="Instagram">
-                    </a>
-
-                    <a href="https://discord.gg/j23bms7V73" target="_blank" aria-label="Discord">
-                        <img src="/srcs/imgs/sns_logos/Discord.png" alt="Discord">
-                    </a>
-
-                </div>
-        </section>
-
-        <footer>
-            <p class="center_font" style="color: yellow;">SkagoGames. made in Skago.</p>
-        </footer>
-    </body>
-
-</html>
+<section class="section">
+    <h1>최근 게시글</h1>
+    {% for post in site.posts limit:5 %}
+        <p>
+            <a href="{{ post.url }}">
+                [{{ post.tags[0] }}] {{ post.title }}
+            </a>
+        </p>
+    {% endfor %}
+</section>
