@@ -1,4 +1,17 @@
 /* ---------------------------
+   Google-style Layout
+---------------------------- */
+.main-container {
+    max-width: 900px;     /* 구글처럼 중앙 좁은 영역 */
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ---------------------------
    1. 전역 폰트 및 기본 설정
 ---------------------------- */
 @font-face {
