@@ -5,7 +5,6 @@ paginate: true
 ---
 
 <section id="post" class="section">
-    <h1 class="center_font">게시글 POST</h1>
     <p class="about_font">
         개발일지, 후기 등 다양한 게시글을 보실 수 있습니다.
         이곳에서 저희의 경험과 근황을 전달받을 수 있지만, SNS 내 소식이 더 빠를 수 있습니다.
@@ -14,6 +13,7 @@ paginate: true
         You can receive our experiences and updates here, but news on social media may be faster.
     </p>
 
+    <h1 class="center_font">게시글 POST</h1>
     <ul>
         {% for post in paginator.posts %}
             <p class="game-list center_font">
