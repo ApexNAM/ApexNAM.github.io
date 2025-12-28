@@ -58,6 +58,12 @@ h1.center_font { color: rgb(0, 166, 255); }
     justify-content: center;
 }
 
+.social-links img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+}
+
 /* 실제 이미지 */
 .social-links a img {
     width: 100%;
