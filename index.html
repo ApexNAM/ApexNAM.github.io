@@ -48,9 +48,12 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
 
         <section id="notice" class="section">
             <h1 class="center_font">공지사항 Notice</h1>
-            {% for notice in site.notices %}
-                <p class="game-list notice">
-                    <a href="{{ notification.url }}">{{ notification.title }}</a>
+            {% for post in site.categories.notification %}
+                <p class="game-list center_font notice">
+                    <a href="{{ post.url }}">
+                        [공지] {{ post.title }}
+                        <span> - {{ post.date | date: "%Y-%m-%d" }}</span>
+                    </a>
                 </p>
             {% endfor %}
         </section>
