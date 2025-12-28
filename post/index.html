@@ -7,7 +7,7 @@ paginate: true
 <section id="post" class="section">
     <h1 class="center_font">게시글 POST</h1>
     <ul>
-        {% for post in site.posts %}
+        {% for post in paginator.posts %}
             <p class="game-list center_font">
                 <a href="{{ post.url }}">[{{ post.tags[0] }}] {{ post.title }}<span> - {{ post.date | date: "%Y-%m-%d" }}</span></a>
             </p>
