@@ -21,10 +21,11 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
 
             <nav class="navBar">
                 <ul class="navBar__menu">
-                    <li><a href="#home">About</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#games">Games</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home">소개 About</a></li>
+                    <li><a href="#notice">공지사항 Notice</a></li>
+                    <li><a href="#post">게시글 Post</a></li>
+                    <li><a href="#games">게임 Games</a></li>
+                    <li><a href="#contact">연락처 Contact</a></li>
                 </ul>
             </nav>
         </header>
@@ -45,8 +46,19 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
             </p>
         </section>
 
-        <section id="blog" class="section">
-            <h1 class="center_font">Blog</h1>
+        <section id="notice" class="section">
+            <h1 class="center_font">공지사항 Notice</h1>
+            {% for notice in site.notices %}
+                <p class="game-list notice">
+                    <a href="{{ notification.url }}">{{ notification.title }}</a>
+                </p>
+            {% endfor %}
+        </section>
+
+
+
+        <section id="post" class="section">
+            <h1 class="center_font">포스트 Post</h1>
             <ul>
                 {% for post in paginator.posts %}
                     <p class="game-list center_font">
@@ -76,7 +88,7 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
         </section>
 
         <section id="games" class="section">
-            <h1 class="center_font">Games</h1>
+            <h1 class="center_font">게임 Games</h1>
             <ul class="game-list center_font">
                 <li><a href="/torizon_telecom">Torizon : Telecom (Coming Soon)</a></li>
                 <li><a href="/superlocal">Project SuperLocal</a></li>
@@ -87,7 +99,7 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
         </section>
 
         <section id="contact" class="section">
-            <h1 class="center_font">Contact</h1>
+            <h1 class="center_font">연락처 Contact</h1>
                 <div class="social-links">
                     <a href="https://cyberapex.itch.io/" target="_blank" aria-label="GitHub">
                         <img src="/srcs/imgs/sns_logos/itchio-logo-textless-black.png" alt="GitHub">
