@@ -3,11 +3,16 @@ layout: default
 title: "공지사항 Notifications"
 ---
 
-{% for post in site.categories.notification %}
-    <p class="notice">
-        <a href="{{ post.url }}">
-            [공지] {{ post.title }}
-            <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-        </a>
-    </p>
-{% endfor %}
+<section id="notice" class="section">
+    <h1 class="center_font">공지사항 Notice</h1>
+    <ul>
+        {% for post in site.categories.notification %}
+            <p class="game-list center_font notice">
+                <a href="{{ post.url }}">
+                    [공지 Notice] {{ post.title }}
+                    <span> - {{ post.date | date: "%Y-%m-%d" }}</span>
+                </a>
+            </p>
+        {% endfor %}
+    </ul>
+</section>
