@@ -6,11 +6,16 @@ description: "Welcome to SkagoGames!"
 
 <section id="notice" class="section">
     <h1 class="center_font">공지사항 Notice</h1>
-    {% for post in site.categories.notification limit:3 %}
-        <p class="notice">
-            <a href="{{ post.url }}">[공지] {{ post.title }}</a>
-        </p>
-    {% endfor %}
+    <ul>
+        {% for post in site.categories.notification %}
+            <p class="game-list center_font notice">
+                <a href="{{ post.url }}">
+                    [공지 Notice] {{ post.title }}
+                    <span> - {{ post.date | date: "%Y-%m-%d" }}</span>
+                </a>
+            </p>
+        {% endfor %}
+    </ul>
 </section>
 
 <section id="post" class="section">
