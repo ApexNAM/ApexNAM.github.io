@@ -7,7 +7,7 @@ paginate: true
 <section id="post" class="section">
     <h1 class="center_font">게시글 POST</h1>
     <ul>
-        {% for post in site.paginator.posts %}
+        {% for post in site.posts %}
             <p class="game-list center_font">
                 <a href="{{ post.url }}">[{{ post.tags[0] }}] {{ post.title }}<span> - {{ post.date | date: "%Y-%m-%d" }}</span></a>
             </p>
@@ -15,12 +15,12 @@ paginate: true
     </ul>
     
     <div class="pagination" style="text-align: center;">
-        {% if site.paginator.previous_page %}
-            <a href="{{ site.paginator.previous_page_path }}" class="center_font"><- PREV</a>
+        {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path }}" class="center_font"><- PREV</a>
         {% endif %}
 
-        {% for page in (1..site.paginator.total_pages) %}
-            {% if page == site.paginator.page %}
+        {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
                 <b>{{ page }}</b>
             {% elsif page == 1 %}
                 <a href="{{ '/' | relative_url }}">{{ page }}</a>
@@ -29,8 +29,8 @@ paginate: true
             {% endif %}
         {% endfor %}
 
-        {% if site.paginator.next_page %}
-            <a href="{{ site.paginator.next_page_path }}" class="center_font">NEXT -></a>
+        {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" class="center_font">NEXT -></a>
         {% endif %}
     </div>
 </section>
