@@ -67,7 +67,7 @@ description: "SkagoGames 페이지에 방문해주셔서 감사합니다."
             <ul>
                 {% for post in paginator.posts %}
                     <p class="game-list center_font">
-                        <a href="{{ post.url }}">[{{ post.tags[0] }}] {{ post.title }} {{ post.title }}<span> - {{ post.date | date: "%Y-%m-%d" }}</span></a>
+                        <a href="{{ post.url }}">[{{ post.tags[0] }}] {{ post.title }}<span> - {{ post.date | date: "%Y-%m-%d" }}</span></a>
                     </p>
                 {% endfor %}
             </ul>
