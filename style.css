@@ -48,35 +48,15 @@ h1.center_font { color: rgb(0, 166, 255); }
     gap: 20px;
     margin-top: 20px;
 }
-
-/* 아이콘 컨테이너 */
-.social-links a {
+.social-links a img {
     width: 45px;
     height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-links img {
-    max-width: 70%;
-    max-height: 70%;
-    object-fit: contain;
-}
-
-/* 실제 이미지 */
-.social-links a img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* 비율 유지 */
     transition: transform 0.3s, opacity 0.3s;
 }
-
 .social-links a:hover img {
     transform: scale(1.2);
     opacity: 0.8;
 }
-
 
 /* ---------------------------
    5. 헤더 & 네비게이션
