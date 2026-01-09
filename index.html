@@ -3,3 +3,16 @@ layout: default
 title: "SkagoGames. made in Skago."
 description: "Welcome to SkagoGames!"
 ---
+
+<section id="notice" class="section">
+    <h1 class="center_font">SkagoGames. made in Skago.</h1>
+
+    {% for post in site.categories.notification limit:3 %}
+        <p class="game-list center_font notice">
+            <a href="{{ post.url }}">
+                [공지] {{ post.title }}
+                <span> - {{ post.date | date: "%Y-%m-%d" }}</span>
+            </a>
+        </p>
+    {% endfor %}
+</section>
