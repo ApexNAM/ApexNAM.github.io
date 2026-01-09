@@ -23,30 +23,3 @@ description: "Welcome to SkagoGames!"
         </p>
     {% endfor %}
 </section>
-
-<section id="post" class="section">
-    <h1 class="center_font">게시글 POST</h1>
-
-    {% for post in paginator.posts %}
-        <p class="game-list center_font">
-            <a href="{{ post.url }}">
-                [{{ post.tags[0] }}] {{ post.title }}
-                <span> - {{ post.date | date: "%Y-%m-%d" }}</span>
-            </a>
-        </p>
-    {% endfor %}
-
-    {% if paginator.total_pages > 1 %}
-    <div class="pagination" style="text-align: center;">
-        {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path }}">← PREV</a>
-        {% endif %}
-
-        <span>{{ paginator.page }} / {{ paginator.total_pages }}</span>
-
-        {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path }}">NEXT →</a>
-        {% endif %}
-    </div>
-    {% endif %}
-</section>
