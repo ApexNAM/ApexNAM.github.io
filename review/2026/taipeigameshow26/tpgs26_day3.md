@@ -1,7 +1,7 @@
 ---
 title: "3일차 : 스펀"
 layout: post
-permalink: /review/2026/taipeigameshow26/1_day3/
+permalink: /review/2026/taipeigameshow26/4_day3/
 categories:
   - review
 tags:

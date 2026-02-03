@@ -1,7 +1,7 @@
 ---
 title: "2일차 : 지우펀"
 layout: post
-permalink: /review/2026/taipeigameshow26/1_day2/
+permalink: /review/2026/taipeigameshow26/3_day2/
 categories:
   - review
 tags:

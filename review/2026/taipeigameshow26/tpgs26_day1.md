@@ -1,7 +1,7 @@
 ---
 title: "1일차 : 인상적인"
 layout: post
-permalink: /review/2026/taipeigameshow26/1_day1/
+permalink: /review/2026/taipeigameshow26/2_day1/
 categories:
   - review
 tags:
