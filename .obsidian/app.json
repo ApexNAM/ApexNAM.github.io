@@ -2,5 +2,8 @@
   "alwaysUpdateLinks": true,
   "trashOption": "local",
   "newLinkFormat": "absolute",
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "newFileLocation": "root",
+  "newFileFolderPath": "assets",
+  "attachmentFolderPath": "imgs"
 }
