@@ -1,7 +1,7 @@
 ---
 title:  "슈퍼 타이베이 시뮬레이터, 타이베이 게임쇼 2026 참여 이야기 및 후기"
 excerpt: "슈퍼 타이베이 시뮬레이터, 타이베이 게임쇼 2026 참여 이야기 및 후기"
-layout: single
+layout: post
 permalink: /review/2026/taipeigameshow26_stories/
 
 categories:
