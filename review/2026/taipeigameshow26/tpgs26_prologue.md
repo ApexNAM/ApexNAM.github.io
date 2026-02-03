@@ -1,9 +1,12 @@
 ---
-title: "② 개발 과정과 기술적 선택"
+title: "테스트"
 layout: post
+permalink: /review/2026/taipeigameshow26/0_prologue/
+categories: [review]
+tags: [taipei-game-show, tpgs2026]
 toc: true
 toc_sticky: true
-permalink: /review/2026/taipeigameshow26_stories/0_prologue
+published: true
 ---
 
 # 개요
