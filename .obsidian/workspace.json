@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "227052fd9bd04725",
+        "id": "d9f6aaef8dc8bb2b",
         "type": "tabs",
         "children": [
           {
-            "id": "403e104fa6e56ea5",
+            "id": "11f07e56ee0e317e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "review/2026/taipeigameshow26/tpgs26_prologue.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "tpgs26_prologue"
+              "title": "새 탭"
             }
           }
         ]
@@ -34,19 +30,6 @@
         "id": "5bcd6fc8a1c238c5",
         "type": "tabs",
         "children": [
-          {
-            "id": "41da195fc9990d76",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
-              },
-              "icon": "lucide-folder-closed",
-              "title": "파일 탐색기"
-            }
-          },
           {
             "id": "238862f259709d02",
             "type": "leaf",
@@ -194,10 +177,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "403e104fa6e56ea5",
+  "active": "11f07e56ee0e317e",
   "lastOpenFiles": [
-    "review/2026/taipeigameshow26/tpgs26_epilogue.md",
     "review/2026/taipeigameshow26/tpgs26_prologue.md",
+    "review/2026/taipeigameshow26/tpgs26_epilogue.md",
     "review/2026/taipeigameshow26/0_prologue.md",
     "review/2026/taipeigameshow26/tpgs26_day0.md",
     "_posts/reviews/2026/2026-02-03-taipeigameshow26_stories.md",
