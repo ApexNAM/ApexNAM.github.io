@@ -14,7 +14,7 @@ published: true
 
 # 개요
 
-![](imgs/imgs_260203/YDKK_TpGS_IndieHouse_2026_Poster.png)
+![](/imgs/imgs_260203/YDKK_TpGS_IndieHouse_2026_Poster.png)
 
 **드디어 이 글을 써본다.**
 지난 주.. 나는 타이베이 게임쇼 2026에 참여하여 슈퍼 대게 시뮬레이터를 전시 및 시연했다.
