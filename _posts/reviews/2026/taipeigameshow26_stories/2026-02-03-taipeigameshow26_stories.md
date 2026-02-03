@@ -9,7 +9,7 @@ categories:
 tags:
   - [review]
 
-toc: true
+toc: false
 toc_sticky: true
 published : true
 ---
