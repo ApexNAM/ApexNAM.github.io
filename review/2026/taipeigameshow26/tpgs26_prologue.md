@@ -23,13 +23,6 @@ published: true
 ![](/imgs/imgs_260203/wow_im_select_tgs26.png)
 
 
-> **Indie Game Exhibitor Registration**
-> *Thank you for registering as an exhibitor at TAIPEI GAME SHOW 2026.\
-> We have reviewed your profile and the result is as below.*
-> 
-> **Qualification for Exhibitor Registration:**\
-> **APPROVED**
-> 
 > *타이베이 게임 쇼 2026에 전시업체로 등록해 주셔서 감사합니다.\
 > 귀하의 프로필을 검토한 결과는 다음과 같습니다.*
 > 
