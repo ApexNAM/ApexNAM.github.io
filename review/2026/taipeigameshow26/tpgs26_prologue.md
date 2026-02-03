@@ -20,10 +20,10 @@ published: true
 그렇다. 나는 7월에 타이베이 게임쇼에 참여신청을 했었다.
 **그리고 그 메일은 이 글이 생긴 이유와 새로운 활동을 만드는 시발점이 되었다.**
 
-![](imgs/imgs_260203/wow_im_select_tgs26.png)
+![](/imgs/imgs_260203/wow_im_select_tgs26.png)
 
 
-> **Indie Game Exhibitor Registration**
+> [!NOTE] **Indie Game Exhibitor Registration**
 > *Thank you for registering as an exhibitor at TAIPEI GAME SHOW 2026. 
 > We have reviewed your profile and the result is as below.*
 > 
@@ -80,7 +80,7 @@ published: true
 
 # D-DAY
 
-![](imgs/imgs_260203/DAY0/20260126_075758.jpg)
+![](/imgs/imgs_260203/DAY0/20260126_075758.jpg)
 
 그리고 26년 1월 26일.
 타이베이로 향할 준비가 되었다.
