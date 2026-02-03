@@ -23,7 +23,7 @@ published: true
 ![](imgs/imgs_260203/wow_im_select_tgs26.png)
 
 
-> [!NOTE] **Indie Game Exhibitor Registration**
+> **Indie Game Exhibitor Registration**
 > *Thank you for registering as an exhibitor at TAIPEI GAME SHOW 2026. 
 > We have reviewed your profile and the result is as below.*
 > 
