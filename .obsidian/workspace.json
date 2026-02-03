@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4b0b090350104761",
+        "id": "227052fd9bd04725",
         "type": "tabs",
         "children": [
           {
-            "id": "186dae5edb5964e8",
+            "id": "403e104fa6e56ea5",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "review/2026/taipeigameshow26/imgs/DAY0/20260127_025325.jpg"
+                "file": "review/2026/taipeigameshow26/tpgs26_day0.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "20260127_025325"
+              "icon": "lucide-file",
+              "title": "tpgs26_day0"
             }
           }
         ]
@@ -178,29 +180,30 @@
       "daily-notes:오늘의 일일 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
-      "bases:새 베이스 생성하기": false
+      "bases:새 베이스 생성하기": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "186dae5edb5964e8",
+  "active": "403e104fa6e56ea5",
   "lastOpenFiles": [
-    "review/2026/taipeigameshow26/tpgs26_day0.md",
-    "review/2026/taipeigameshow26/imgs/DAY1/20260129_063547.jpg",
-    "2026-02-03.md",
-    "무제.canvas",
     "review/2026/taipeigameshow26/tpgs26_day1.md",
-    "review/2026/taipeigameshow26/imgs/DAY1/20260128_182120.jpg",
     "review/2026/taipeigameshow26/imgs/DAY1/20260129_072206.jpg",
-    "review/2026/taipeigameshow26/imgs/DAY1/20260128_173828.jpg",
-    "review/2026/taipeigameshow26/imgs/DAY1/20260128_174111.jpg",
-    "review/2026/taipeigameshow26/imgs/DAY1/20260128_174542.jpg",
+    "review/2026/taipeigameshow26/imgs/DAY1/20260129_063547.jpg",
+    "review/2026/taipeigameshow26/imgs/DAY1/20260128_182120.jpg",
+    "review/2026/taipeigameshow26/tpgs26_day0.md",
     "review/2026/taipeigameshow26/imgs/DAY1/20260128_180205.jpg",
+    "review/2026/taipeigameshow26/imgs/DAY1/20260128_174542.jpg",
+    "review/2026/taipeigameshow26/imgs/DAY1/20260128_174111.jpg",
+    "review/2026/taipeigameshow26/imgs/DAY1/20260128_173828.jpg",
     "review/2026/taipeigameshow26/imgs/DAY1/20260128_151216.jpg",
     "review/2026/taipeigameshow26/imgs/DAY1/20260128_135734.jpg",
-    "review/2026/taipeigameshow26/imgs/DAY1/20260128_112555.jpg",
+    "review/2026/taipeigameshow26/imgs/DAY1/20260128_111904.jpg",
+    "review/2026/taipeigameshow26/tpgs26_prologue.md",
+    "2026-02-03.md",
+    "무제.canvas",
     "review/2026/taipeigameshow26/tpgs26_day2.md",
     "review/2026/taipeigameshow26/imgs/DAY1",
     "review/2026/taipeigameshow26/imgs/DAY0",
-    "review/2026/taipeigameshow26/tpgs26_prologue.md",
     "review/2026/taipeigameshow26/tpgs26_epilogue.md",
     "review/2026/taipeigameshow26/tpgs26_day4.md",
     "review/2026/taipeigameshow26/tpgs26_day3.md",
