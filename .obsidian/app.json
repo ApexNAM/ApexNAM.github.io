@@ -1,9 +1,0 @@
-{
-  "alwaysUpdateLinks": true,
-  "trashOption": "local",
-  "newLinkFormat": "absolute",
-  "useMarkdownLinks": true,
-  "newFileLocation": "root",
-  "newFileFolderPath": "assets",
-  "attachmentFolderPath": "imgs"
-}
