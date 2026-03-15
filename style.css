@@ -239,6 +239,22 @@ footer {
     font-weight: 700;
 }
 
+/* --- 이미지 로고 크기 조절 --- */
+.navBar__logo {
+    margin-bottom: 25px; /* 로고와 아래 메뉴 사이의 넉넉한 여백 */
+}
+
+.navBar__logo img {
+    height: 130px; /* 👉 여기서 로고 크기를 확 키웁니다 (원하는 만큼 숫자 조절 가능) */
+    width: auto;   /* 원본 비율 유지 */
+    transition: transform 0.3s ease; /* 마우스 올렸을 때 부드러운 효과를 위한 준비 */
+}
+
+/* 로고에 마우스 올리면 살짝 커지는 귀여운 효과 (선택사항) */
+.navBar__logo img:hover {
+    transform: scale(1.05);
+}
+
 /* ---------------------------
     6. 반응형 최적화 (태블릿 & 모바일)
 ---------------------------- */
@@ -254,6 +270,13 @@ footer {
 @media (max-width: 600px) {
     .header {
         padding: 40px 15px 15px; /* 상단 여백 축소 */
+    }
+
+    .navBar__logo img {
+        height: 80px; /* 모바일 화면에서는 메뉴가 너무 밀려나지 않도록 적당히 축소 */
+    }
+    .navBar__logo {
+        margin-bottom: 15px;
     }
 
     /* 모바일에서는 메뉴가 여러 줄로 접힐 수 있으므로 간격과 패딩 축소 */
