@@ -165,14 +165,24 @@ h1.center_font {
     border-radius: 8px;
 }
 
+/* 하늘색 계열의 물방울 모양 버튼 (태그) */
 .post-tag {
-    font-size: 0.75rem;
-    color: var(--primary-color);
-    background: rgba(0, 166, 255, 0.1);
-    padding: 4px 10px;
-    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #0a0a0a; /* 배경이 밝아지므로 글자는 어둡게 처리하여 가독성 확보 */
+    background: linear-gradient(135deg, #00ffcc, #00a6ff); /* 하늘색~파란색 계열 */
+    padding: 6px 16px;
+    /* 왼쪽 아래(Bottom-Left)만 0으로 설정하여 물방울 형태 구현 */
+    border-radius: 15px 15px 15px 0; 
     margin-bottom: 12px;
-    font-weight: 600;
+    font-weight: 800;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 166, 255, 0.25);
+    transition: var(--transition);
+}
+
+.post-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 166, 255, 0.4);
 }
 
 .post-title {
