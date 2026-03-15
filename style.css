@@ -109,6 +109,17 @@ h1.center_font,
     font-weight: 900;
 }
 
+h2.center_font_sub,
+.center_font_sub {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    background: linear-gradient(135deg, yellow, orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
 .about_font {
     font-size: 1rem;
     color: #999;
