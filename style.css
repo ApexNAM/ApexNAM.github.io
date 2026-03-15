@@ -1,21 +1,18 @@
 /* ---------------------------
-    0. 변수 및 전역 설정
+    0. 폰트 불러오기 & 변수 설정
 ---------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 :root {
     --primary-color: #00a6ff;
     --bg-dark: #0a0a0a;
-    --card-bg: rgba(255, 255, 255, 0.07); /* 버튼 배경을 조금 더 밝게 */
+    --card-bg: rgba(255, 255, 255, 0.07);
     --border-color: rgba(255, 255, 255, 0.15);
     --transition: all 0.25s ease-out;
 }
 
-@font-face {
-    font-family: 'Pretendard';
-    src: url('{{ site.baseurl }}/srcs/fonts/Pretendard/Pretendard-Medium.otf') format('truetype');
-}
-
 body {
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 적용 */
     background-color: var(--bg-dark);
     color: #ffffff;
     margin: 0;
@@ -65,6 +62,7 @@ body {
     padding: 10px 18px;
     border-radius: 8px;
     transition: var(--transition);
+    font-weight: 500;
 }
 
 .navBar__menu a:hover {
@@ -87,15 +85,24 @@ body {
 
 h1.center_font {
     font-size: clamp(1.6rem, 5vw, 2.4rem);
+    /* 표준 background-clip 적용 */
     background: linear-gradient(135deg, #00a6ff, #00ffcc);
     background-clip: text;
-    color: transparent;
+    color: transparent; 
     margin-bottom: 30px;
-    font-weight: 800;
+    font-weight: 900;
+}
+
+.about_font {
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    font-weight: 400;
 }
 
 /* ---------------------------
-    3. 포스트 버튼 UI (핵심 수정 부분)
+    3. 포스트 버튼 UI (Torizon: Telecom 등 적용)
 ---------------------------- */
 .post-container {
     width: 100%;
@@ -106,38 +113,36 @@ h1.center_font {
     margin-top: 20px;
 }
 
-/* 개별 버튼 박스 */
 .post-card {
     width: 100%;
 }
 
 .post-card a {
     display: flex;
-    flex-direction: row; /* 가로 배열 */
-    justify-content: space-between; /* 제목 왼쪽, 날짜 오른쪽 */
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 18px 25px;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 10px; /* 약간 둥근 버튼 느낌 */
+    border-radius: 10px;
     text-decoration: none;
     color: #fff;
     box-sizing: border-box;
     transition: var(--transition);
 }
 
-/* 버튼 호버 효과 */
 .post-card a:hover {
     background: rgba(0, 166, 255, 0.1);
     border-color: var(--primary-color);
-    transform: scale(1.02); /* 버튼이 살짝 커지는 느낌 */
+    transform: scale(1.02);
     box-shadow: 0 4px 15px rgba(0, 166, 255, 0.2);
 }
 
 .post-title {
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     text-align: left;
 }
 
@@ -159,12 +164,12 @@ footer {
 }
 
 /* ---------------------------
-    5. 모바일 최적화 (텍스트 중앙 강제)
+    5. 모바일 최적화
 ---------------------------- */
 @media (max-width: 600px) {
     .post-card a {
-        flex-direction: column; /* 모바일에선 세로로 */
-        gap: 5px;
+        flex-direction: column;
+        gap: 8px;
         padding: 15px;
     }
     .post-title { text-align: center; }
