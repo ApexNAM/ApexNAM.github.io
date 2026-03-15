@@ -4,25 +4,34 @@ title: "SkagoGames. made in Skago."
 description: "Welcome to SkagoGames!"
 ---
 
-<h1 class="center_font">SkagoGames. made in Skago.</h1>
+<section class="main-container">
+    <h1 class="center_font">
+        <span class="text-yellow" style="-webkit-text-fill-color: var(--yellow-highlight);">SkagoGames.</span> 
+        <br>
+        <span class="text-yellow" style="-webkit-text-fill-color: var(--yellow-highlight);">made in Skago.</span>
+    </h1>
 
-<p class="about_font">
-    SkagoGames 홈페이지를 방문해주셔서 고맙습니다.<br>
-    현재 블로그 개편중입니다. 양해 부탁드립니다.<br><br>
+    <p class="about_font">
+        SkagoGames 홈페이지를 방문해주셔서 고맙습니다.<br>
+        현재 블로그 개편 중입니다. 양해 부탁드립니다.<br><br>
 
-    Thank you visit SkagoGames homepage.<br>
-    We are currently revamping our blog. We apologize for the inconvenience.
-</p>
+        Thank you for visiting the SkagoGames homepage.<br>
+        We are currently revamping our blog. We apologize for the inconvenience.
+    </p>
     
-<section id="notice" class="section">
-    <h1 class="center_font">공지사항 Notice</h1>
+    <div style="width: 100%; margin-top: 50px;">
+        <h2 class="center_font" style="font-size: 1.6rem; margin-bottom: 25px;">최신 공지사항 Notice</h2>
 
-    {% for post in site.categories.notification limit:3 %}
-        <p class="game-list center_font notice">
-            <a href="{{ post.url }}">
-                [공지] {{ post.title }}
-                <span> - {{ post.date | date: "%Y-%m-%d" }}</span>
-            </a>
-        </p>
-    {% endfor %}
+        <div class="post-container">
+            {% for post in site.categories.notification limit:3 %}
+                <div class="post-card">
+                    <a href="{{ post.url }}">
+                        <span class="post-tag">공지 Notice</span>
+                        <div class="post-title">{{ post.title }}</div>
+                        <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>

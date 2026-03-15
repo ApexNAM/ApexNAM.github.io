@@ -1,629 +1,225 @@
-/* ============================================================
-   SkagoGames — style.css
-   대상 파일: header.html / footer.html / index.html (각 페이지)
-   ============================================================ */
-
 /* ---------------------------
-   0. 폰트 & 변수
+    0. 폰트 불러오기 & 변수 설정
 ---------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 :root {
-    /* 브랜드 컬러 */
-    --primary:       #00e5ff;
-    --primary-dim:   rgba(0, 229, 255, 0.1);
-    --primary-glow:  rgba(0, 229, 255, 0.22);
-
-    /* 배경 */
-    --bg:            #070709;
-    --bg2:           #0e0e12;
-    --bg3:           #141418;
-    --bg-nav:        rgba(7, 7, 9, 0.85);
-
-    /* 서피스 & 보더 */
-    --surface:       rgba(255, 255, 255, 0.045);
-    --surface-hover: rgba(0, 229, 255, 0.08);
-    --border:        rgba(255, 255, 255, 0.09);
-    --border-hover:  rgba(0, 229, 255, 0.45);
-
-    /* 텍스트 */
-    --text:          #e8e8ec;
-    --text-2:        #888898;
-    --text-3:        #44445a;
-
-    /* 폰트 */
-    --font-body: 'Noto Sans KR', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-
-    /* 반경 */
-    --r-sm:  8px;
-    --r-md:  12px;
-    --r-lg:  16px;
-
-    /* 트랜지션 */
-    --ease:   cubic-bezier(0.4, 0, 0.2, 1);
-    --t-fast: 0.15s;
-    --t-mid:  0.25s;
-
-    /* 레이아웃 */
-    --max-w: 800px;
-    --pad-x: clamp(20px, 5vw, 48px);
-}
-
-/* ---------------------------
-   1. Reset & Base
----------------------------- */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
+    --primary-color: #00a6ff;     /* 파란색 */
+    --secondary-color: #00ffcc;   /* 하늘/민트색 */
+    --bg-dark: #0a0a0a;
+    --card-bg: #141414;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --yellow-highlight: #FFD700;  /* 노란색 강조용 */
+    --transition: all 0.25s ease-out;
 }
 
 body {
-    font-family: var(--font-body);
-    background-color: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--bg-dark);
+    color: #ffffff; /* 나머지 기본 글자는 하얀색 */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* 화면 전체 텍스트 중앙 정렬 기본값 */
+    word-break: keep-all;
     display: flex;
     flex-direction: column;
     align-items: center;
-    line-height: 1.7;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* 배경 grain */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.028'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-img {
-    display: block;
-}
-
-ul, ol {
-    list-style: none;
-}
-
-::selection {
-    background: rgba(0, 229, 255, 0.22);
-    color: #fff;
+    min-height: 100vh;
 }
 
 /* ---------------------------
-   2. Header & Nav
-      header.html 구조:
-      <header class="header">
-        <div class="navBar__logo"> ... </div>
-        <nav class="navBar">
-          <ul class="navBar__menu"> ... </ul>
-        </nav>
-      </header>
+    1. 헤더 & 내비게이션 (구글 스타일)
 ---------------------------- */
 .header {
     width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--pad-x);
-    height: 64px;
-    background: var(--bg-nav);
-    backdrop-filter: blur(18px) saturate(1.6);
-    -webkit-backdrop-filter: blur(18px) saturate(1.6);
-    border-bottom: 0.5px solid var(--border);
-}
-
-/* 로고 영역 */
-.navBar__logo {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.navBar__logo a {
-    display: flex;
-    align-items: center;
-    opacity: 0.92;
-    transition: opacity var(--t-fast) var(--ease);
-}
-
-.navBar__logo a:hover {
-    opacity: 1;
-}
-
-.navBar__logo img {
-    height: 36px;   /* header.html의 height="80"은 너무 크므로 CSS로 제어 */
-    width: auto;
-    object-fit: contain;
-}
-
-/* 내비 래퍼 */
-.navBar {
-    display: flex;
-    align-items: center;
-}
-
-/* 메뉴 리스트 */
-.navBar__menu {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navBar__menu li a {
-    display: block;
-    padding: 7px 14px;
-    border-radius: var(--r-sm);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: var(--text-2);
-    transition:
-        color       var(--t-fast) var(--ease),
-        background  var(--t-fast) var(--ease);
-    white-space: nowrap;
-}
-
-.navBar__menu li a:hover {
-    color: var(--text);
-    background: var(--surface-hover);
-}
-
-.navBar__menu li a.active {
-    color: var(--primary);
-    background: var(--primary-dim);
-}
-
-/* ---------------------------
-   3. 메인 콘텐츠 래퍼
----------------------------- */
-/* body > 직접 자식 요소들이 중앙 정렬되도록 */
-body > *:not(.header):not(footer) {
-    width: 100%;
-}
-
-/* ---------------------------
-   4. Section
-      <section id="..." class="section">
----------------------------- */
-.section {
-    width: 100%;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 56px var(--pad-x);
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    z-index: 1;
+    justify-content: center;
+    padding: 80px 20px 30px; /* 로고가 돋보이도록 여백 확보 */
 }
 
-/* section 사이 구분선 */
-.section + .section {
-    border-top: 0.5px solid var(--border);
-}
-
-/* ---------------------------
-   5. 타이포그래피
----------------------------- */
-
-/* h1.center_font — 섹션 타이틀 */
+/* 사이트 로고 및 메인 타이틀 (파란색&하늘색 계열 그라데이션) */
+.header-logo, 
 h1.center_font {
-    font-size: clamp(1.5rem, 5vw, 2.2rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    text-align: center;
-    margin-bottom: 28px;
-    background: linear-gradient(130deg, var(--primary) 20%, #00ffcc 100%);
+    font-size: clamp(2rem, 6vw, 3rem);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-/* p.center_font — 푸터 등 단순 중앙 텍스트 */
-p.center_font {
-    font-size: 0.9rem;
+    color: transparent; 
+    margin: 0 0 25px 0;
+    font-weight: 900;
     text-align: center;
-    color: var(--text-2);
-    font-family: var(--font-mono);
-    letter-spacing: 0.04em;
 }
 
-/* p.about_font — 본문 설명 단락 */
-.about_font {
-    font-size: clamp(0.875rem, 2.2vw, 0.975rem);
-    color: var(--text-2);
-    line-height: 1.9;
-    font-weight: 300;
-    text-align: center;
-    max-width: 640px;
-    margin-bottom: 40px;
-    word-break: keep-all;
-}
-
-/* ---------------------------
-   6. 공지 / 게시글 리스트
-      <p class="game-list center_font notice">
-      <p class="game-list center_font">
----------------------------- */
-.game-list {
+.navBar {
     width: 100%;
-    max-width: 600px;
-    text-align: left;
-}
-
-.game-list a {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.navBar__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 12px;
-    padding: 12px 16px;
-    border-radius: var(--r-sm);
-    font-family: var(--font-mono);
-    font-size: 0.88rem;
-    color: var(--text-2);
-    border: 0.5px solid transparent;
-    transition:
-        color        var(--t-fast) var(--ease),
-        border-color var(--t-fast) var(--ease),
-        background   var(--t-fast) var(--ease);
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.game-list a:hover {
-    color: var(--text);
-    background: var(--surface);
-    border-color: var(--border);
+.navBar__menu a {
+    text-decoration: none;
+    color: #cccccc;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 30px; /* 둥근 버튼 형태 */
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
-/* 날짜 span */
-.game-list a span {
-    font-size: 0.78rem;
-    color: var(--text-3);
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-/* 공지 강조 */
-.game-list.notice a {
-    color: var(--text);
-}
-
-.game-list.notice a::before {
-    content: '';
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--primary);
-    flex-shrink: 0;
-    margin-right: 4px;
-    align-self: center;
+.navBar__menu a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
 }
 
 /* ---------------------------
-   7. 포스트 / 게임 카드
-      games.html, post.html 구조:
-      <div class="post-container">
-        <div class="post-card">
-          <a href="...">
-            <span class="post-title">...</span>
-          </a>
-        </div>
-      </div>
+    2. 특정 단어 강조 (노란색)
 ---------------------------- */
-.post-container {
+/* HTML에서 class="text-yellow" 를 적용하면 됩니다. */
+.text-yellow {
+    color: var(--yellow-highlight);
+    font-weight: 700;
+}
+
+/* ---------------------------
+    3. 메인 컨테이너 & 카드형 그리드
+---------------------------- */
+.main-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+}
+
+/* 포스트 컨테이너 - 2열 그리드 구조 */
+.post-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .post-card {
     width: 100%;
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: var(--r-md);
-    overflow: hidden;
-    transition:
-        border-color var(--t-mid) var(--ease),
-        transform    var(--t-mid) var(--ease),
-        box-shadow   var(--t-mid) var(--ease);
-}
-
-.post-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45),
-                0 0 0 0.5px rgba(0, 229, 255, 0.12);
 }
 
 .post-card a {
     display: flex;
+    flex-direction: column;
+    align-items: center; /* 카드의 모든 텍스트 정중앙 배치 */
+    justify-content: center;
+    width: 100%;
+    padding: 25px 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    box-sizing: border-box;
+    transition: var(--transition);
+    text-align: center; /* 텍스트 가운데 정렬 강제 */
+}
+
+.post-card a:hover {
+    background: rgba(0, 166, 255, 0.05);
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 166, 255, 0.15);
+}
+
+/* 썸네일 영역 (첨부해주신 이미지 스타일 반영) */
+.post-thumbnail {
+    width: 100%;
+    height: 140px;
+    background-color: #11222a;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px;
-    color: var(--text);
-    gap: 12px;
-    position: relative;
+    justify-content: center;
 }
 
-/* 왼쪽 액센트 라인 */
-.post-card a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 18%;
-    height: 64%;
-    width: 2px;
-    background: var(--primary);
-    border-radius: 0 2px 2px 0;
-    opacity: 0;
-    transform: scaleY(0.4);
-    transition:
-        opacity   var(--t-mid) var(--ease),
-        transform var(--t-mid) var(--ease);
+.post-thumbnail-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #1a4555;
+    border-radius: 8px;
 }
 
-.post-card:hover a::before {
-    opacity: 1;
-    transform: scaleY(1);
-}
-
-/* 화살표 아이콘 */
-.post-card a::after {
-    content: '→';
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--text-3);
-    flex-shrink: 0;
-    transition: color var(--t-fast), transform var(--t-fast);
-}
-
-.post-card:hover a::after {
-    color: var(--primary);
-    transform: translateX(3px);
+.post-tag {
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    background: rgba(0, 166, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .post-title {
-    font-size: 0.975rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.45;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center; /* 확실한 중앙 정렬 */
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: #777;
+    text-align: center; /* 확실한 중앙 정렬 */
 }
 
 /* ---------------------------
-   8. 페이지네이션
-      <div class="pagination">
----------------------------- */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-}
-
-.pagination a,
-.pagination b {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 36px;
-    height: 36px;
-    padding: 0 10px;
-    border-radius: var(--r-sm);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--text-2);
-    border: 0.5px solid var(--border);
-    background: var(--surface);
-    transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
-}
-
-.pagination a:hover {
-    color: var(--text);
-    border-color: var(--border-hover);
-    background: var(--surface-hover);
-}
-
-.pagination b {
-    color: var(--primary);
-    border-color: rgba(0, 229, 255, 0.35);
-    background: var(--primary-dim);
-    font-weight: 500;
-}
-
-/* ---------------------------
-   9. SNS / 소셜 링크
-      contact.html:
-      <div class="social-links">
-        <a href="..."><img ...></a>
-      </div>
----------------------------- */
-.social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 8px;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: var(--r-md);
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    transition:
-        border-color var(--t-fast) var(--ease),
-        background   var(--t-fast) var(--ease),
-        transform    var(--t-fast) var(--ease);
-    overflow: hidden;
-    padding: 12px;
-}
-
-.social-links a:hover {
-    border-color: var(--border-hover);
-    background: var(--surface-hover);
-    transform: translateY(-2px);
-}
-
-.social-links img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: brightness(0) invert(1);  /* 모든 아이콘을 흰색으로 통일 */
-    opacity: 0.7;
-    transition: opacity var(--t-fast);
-}
-
-.social-links a:hover img {
-    opacity: 1;
-}
-
-/* ---------------------------
-   10. Footer
-       <footer>
-         <p class="center_font" ...>...</p>
-       </footer>
+    4. 푸터
 ---------------------------- */
 footer {
     width: 100%;
     margin-top: auto;
-    padding: 32px var(--pad-x);
-    border-top: 0.5px solid var(--border);
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
     text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-footer p.center_font {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-3) !important;  /* inline style="color:yellow" 덮어쓰기 */
-    letter-spacing: 0.06em;
 }
 
 /* ---------------------------
-   11. 접근성
+    5. 모바일 최적화 (모든 텍스트 중앙 강제)
 ---------------------------- */
-:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 3px;
-    border-radius: var(--r-sm);
-}
-
-/* ---------------------------
-   12. 스크롤바 (Webkit)
----------------------------- */
-::-webkit-scrollbar          { width: 5px; height: 5px; }
-::-webkit-scrollbar-track    { background: transparent; }
-::-webkit-scrollbar-thumb    { background: var(--border); border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.22); }
-
-/* ---------------------------
-   13. 반응형
----------------------------- */
-
-/* 태블릿 */
-@media (max-width: 768px) {
-    .section {
-        padding: 40px var(--pad-x);
-    }
-
-    .about_font {
-        text-align: left;
-    }
-}
-
-/* 모바일 */
-@media (max-width: 540px) {
+@media (max-width: 600px) {
     .header {
-        flex-direction: column;
-        height: auto;
-        padding: 12px var(--pad-x);
-        gap: 10px;
-        position: sticky;
-        top: 0;
-    }
-
-    .navBar__logo img {
-        height: 28px;
+        padding: 50px 15px 20px;
     }
 
     .navBar__menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2px;
+        flex-wrap: wrap; /* 모바일에서 메뉴가 겹치지 않도록 */
+        gap: 10px;
     }
 
-    .navBar__menu li a {
-        padding: 6px 10px;
-        font-size: 12px;
-    }
-
-    h1.center_font {
-        font-size: clamp(1.3rem, 6vw, 1.7rem);
+    .post-container {
+        grid-template-columns: 1fr; /* 모바일은 1열로 변경 */
+        gap: 15px;
     }
 
     .post-card a {
-        padding: 14px 16px;
-    }
-
-    .post-title {
-        font-size: 0.9rem;
-    }
-
-    .social-links a {
-        width: 48px;
-        height: 48px;
-        padding: 10px;
-    }
-
-    .pagination a,
-    .pagination b {
-        min-width: 32px;
-        height: 32px;
-        font-size: 12px;
+        align-items: center; 
+        text-align: center; /* 모바일에서도 무조건 가운데 정렬 유지 */
+        padding: 20px;
     }
 }
