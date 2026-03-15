@@ -1,41 +1,46 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
-        <meta name ="Super Kingcrab Simulator" content="Super Kingcrab Simulator's Blog">
-        <title>Super Kingcrab Simulator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="Project SuperLocal" content="Project SuperLocal's Blog">
+        <title>Project SuperLocal</title>
         <style>
             /* TTF 폰트 정의 */
             @font-face {
-                font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
-                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+                font-family: 'Polygothic';
+                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype');
                 font-weight: normal;
                 font-style: normal;
             }
 
-                        /* TTF 폰트 정의 */
             @font-face {
-                font-family: 'Yeongdeok'; /* 폰트 이름 자유롭게 지정 */
-                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+                font-family: 'Yeongdeok';
+                /* 💡 참고: 기존 코드에서 Yeongdeok 폰트의 경로가 Polygothic과 동일하게 지정되어 있습니다. 
+                   실제 영덕 폰트 파일이 있다면 경로를 수정해 주세요! */
+                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype');
                 font-weight: normal;
                 font-style: normal;
             }
 
             body {
                 margin: 0;
-                padding: 0;
+                padding: 40px 20px;
                 min-height: 100vh;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 background-image: url("srcs/imgs/game_logs/Yeongdeok_Kingcrab_Screenshot_2024-12-03_16-18-46.png");
                 background-size: cover;
-                background-position: center center; /* 정확히 중앙 정렬 */
+                background-position: center center;
                 background-repeat: no-repeat;
-                background-attachment: fixed; /* 스크롤 시 배경 고정 (멋있게 보임) */
+                background-attachment: fixed;
                 position: relative;
             }
             
-            
-            /* 어두운 오버레이 추가 */
+            /* 어두운 오버레이 - 가독성을 위해 약간 더 진하게 조정 */
             body::before {
                 content: '';
                 position: absolute;
@@ -43,117 +48,140 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.16); /* 검정색 반투명 오버레이 */
-                z-index: 1; /* 배경 이미지 위, 콘텐츠 아래 */
+                background-color: rgba(0, 0, 0, 0.4); 
+                z-index: 1;
             }
             
             .logo-container {
                 text-align: center;
-                background-color: rgba(23, 23, 23, 0.8);
-                padding: 20px;
-                border-radius: 10px;
-                position: relative; /* 오버레이 위에 표시 */
-                z-index: 2; /* 콘텐츠가 오버레이 위로 */
+                background-color: rgba(23, 23, 23, 0.85); /* 배경 반투명 상자 */
+                padding: 50px 30px;
+                border-radius: 15px;
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                max-width: 900px;
+                box-sizing: border-box;
+                /* 위젯들을 예쁘게 정렬하기 위한 Flexbox */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
-            /* 이미지 컨테이너 */
-            .logo-container {
-                text-align: center;
-            }
-
-            /* 로고 이미지 스타일 */
             .logo {
-                max-width: 100%; /* 반응형 유지 */
-                height: auto;    /* 비율 유지 */
-                width: 700px;    /* 원하는 크기 조절 */
+                width: 100%;
+                max-width: 700px;
+                height: auto;
+                margin: 0 auto 30px;
+                display: block;
             }
 
-            /* 텍스트 스타일 */
+            /* --- 텍스트 스타일 반응형 적용 --- */
             .text_title {
-                font-size: 83px;
+                font-size: clamp(2rem, 5vw, 65px); /* 모바일 ~ PC 크기 유연하게 */
                 color: #ffffff;
                 font-family: 'Polygothic', sans-serif;
-                line-height: 0.5; /* 줄 간격 조정 */
+                margin: 50px 0 20px;
+                line-height: 1.2;
+                word-break: keep-all;
             }
 
             .text_default {
-                font-size: 30px;
-                color: #ffffff;
+                font-size: clamp(1rem, 2.5vw, 24px);
+                color: #e0e0e0; /* 본문 텍스트는 눈이 덜 피로한 밝은 회색으로 변경 */
                 font-family: 'Yeongdeok', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1; /* 줄 간격 조정 */
+                margin: 0;
+                line-height: 1.6;
+                word-break: keep-all;
             }
-
-            .text_blog_title {
-                font-size: 45px;
-                color: peru;
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.5; /* 줄 간격 조정 */
-            }
-
-            .text_blog_title_older {
-                font-size: 35px;
-                color: rgb(179, 179, 179);
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.1; /* 줄 간격 조정 */
-            }
-
 
             .text_down {
-                font-size: 25px;
+                font-size: clamp(1rem, 2.5vw, 20px);
                 color: #ffffff;
                 font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 5.0; /* 줄 간격 조정 */
-            }
-
-            /* 링크 스타일 */
-            .text_default a {
-                color: #1a73e8; /* 링크 색상 */
-                text-decoration: none; /* 밑줄 제거 */
-            }
-
-            .text_default a:hover {
-                text-decoration: underline; /* 마우스 오버 시 밑줄 */
+                margin: 60px 0 20px;
             }
 
             .intro-kor,
             .intro-eng {
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }           
+                margin: 30px 0;
+                width: 100%;
+            }
+
+            /* --- 스팀/itch.io 위젯 반응형 컨테이너 (핵심) --- */
+            .widget-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                max-width: 650px; /* 위젯의 최대 크기 제한 */
+            }
+
+            iframe {
+                max-width: 100%; /* 화면 밖으로 튀어나가는 것 방지 */
+                border-radius: 8px; /* 위젯 테두리 둥글게 */
+            }
+
+            /* --- 모바일 전용 디자인 --- */
+            @media screen and (max-width: 768px) {
+                body {
+                    padding: 20px 15px;
+                    display: block; /* 콘텐츠가 길어질 때 세로 중앙정렬이 화면 상단을 잘라먹는 것 방지 */
+                }
+                
+                .logo-container {
+                    padding: 30px 15px;
+                    margin: 0 auto;
+                }
+
+                .text_title {
+                    font-size: 32px;
+                    margin: 30px 0 15px;
+                }
+
+                /* PC용 줄바꿈 무시 */
+                .desktop-br {
+                    display: none;
+                }
+            }
         </style>
     </head>
 
     <body>
         <div class="logo-container">
-            <img src="./srcs/logos/Project_SuperLocal.png" alt="Logo" class="logo">
+            <img src="./srcs/logos/Project_SuperLocal.png" alt="SuperLocal Logo" class="logo">
 
             <p class="text_title">Like a playground.</p>
 
             <div class="intro-kor">
-                <p class="text_default">"프로젝트 SuperLocal"은 다양한 지역들을 참고하고 영감을 얻어,</p>
-                <p class="text_default">그 지역의 특산품이나 상징을 모티브로 한 ‘즐겁고 자유로운 놀이터 같은 게임’을 만드는 프로젝트입니다.</p>
+                <p class="text_default">
+                    "프로젝트 SuperLocal"은 다양한 지역들을 참고하고 영감을 얻어, <br class="desktop-br">
+                    그 지역의 특산품이나 상징을 모티브로 한 ‘즐겁고 자유로운 놀이터 같은 게임’을 만드는 프로젝트입니다.
+                </p>
             </div>
 
             <div class="intro-eng">
-                <p class="text_default">"Project SuperLocal" is a creative initiative that draws inspiration from the unique charm and symbols of different regions,</p>
-                <p class="text_default">reimagining them into playful, game-like experiences that anyone can enjoy.</p>
+                <p class="text_default">
+                    "Project SuperLocal" is a creative initiative that draws inspiration from the unique charm and symbols of different regions, <br class="desktop-br">
+                    reimagining them into playful, game-like experiences that anyone can enjoy.
+                </p>
             </div>
 
             <p class="text_title">Main Projects</p>
-            <iframe src="https://store.steampowered.com/widget/2425570/" frameborder="0" width="646" height="190"></iframe>
-            <iframe src="https://store.steampowered.com/widget/3773390/" frameborder="0" width="646" height="190"></iframe>
+            <div class="widget-container">
+                <iframe src="https://store.steampowered.com/widget/2425570/" frameborder="0" width="646" height="190"></iframe>
+                <iframe src="https://store.steampowered.com/widget/3773390/" frameborder="0" width="646" height="190"></iframe>
+            </div>
 
-            <p class="text_title">Other Projects</p>
-            <iframe frameborder="0" src="https://itch.io/embed/2802264?bg_color=000000&amp;fg_color=ff2a6e&amp;link_color=df4ffe&amp;border_color=333333" width="552" height="167"><a href="https://cyberapex.itch.io/pusanstaroika">Pusanstaroika by SkagoGames</a></iframe>
-            <iframe frameborder="0" src="https://itch.io/embed/2251901?border_width=3&amp;bg_color=000000&amp;fg_color=eeeeee&amp;link_color=30ff03&amp;border_color=df0000" width="556" height="171"><a href="https://cyberapex.itch.io/chungju-apple-clay">chungju apple clay by SkagoGames</a></iframe>
-            <iframe frameborder="0" src="https://itch.io/embed/2254485?bg_color=563200&amp;fg_color=44f700&amp;link_color=28b500&amp;border_color=333333" width="552" height="167"><a href="https://cyberapex.itch.io/bubal-z">Bubal Z by SkagoGames</a></iframe>
-            <iframe frameborder="0" src="https://itch.io/embed/2306794?bg_color=000000&amp;fg_color=eeeeee&amp;link_color=ff0d0d&amp;border_color=363636" width="552" height="167"><a href="https://cyberapex.itch.io/chickenbullet">ChickenBullet by SkagoGames</a></iframe>
+            <p class="text_title" style="margin-top: 60px;">Other Projects</p>
+            <div class="widget-container">
+                <iframe frameborder="0" src="https://itch.io/embed/2802264?bg_color=000000&amp;fg_color=ff2a6e&amp;link_color=df4ffe&amp;border_color=333333" width="552" height="167"></iframe>
+                <iframe frameborder="0" src="https://itch.io/embed/2251901?border_width=3&amp;bg_color=000000&amp;fg_color=eeeeee&amp;link_color=30ff03&amp;border_color=df0000" width="556" height="171"></iframe>
+                <iframe frameborder="0" src="https://itch.io/embed/2254485?bg_color=563200&amp;fg_color=44f700&amp;link_color=28b500&amp;border_color=333333" width="552" height="167"></iframe>
+                <iframe frameborder="0" src="https://itch.io/embed/2306794?bg_color=000000&amp;fg_color=eeeeee&amp;link_color=ff0d0d&amp;border_color=363636" width="552" height="167"></iframe>
+            </div>
 
-            <p class="text_down">SkagoGames 2025. made in Skago.</p>
+            <p class="text_down">SkagoGames 2026. made in Skago.</p>
         </div>
     </body>
 </html>

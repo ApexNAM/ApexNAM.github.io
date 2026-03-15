@@ -1,10 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
-        <meta name ="Project Torizon" content="Project Torizon's website">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="Project Torizon" content="Project Torizon's website">
         <title>Torizon : Telecom</title>
         <style>
-
             @font-face {
                 font-family: 'D2Coding';
                 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
@@ -16,123 +17,155 @@
                 margin: 0;
                 padding: 0;
                 min-height: 100vh;
+                display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 background-color: rgb(255, 255, 255);
-                background-size: cover;
-                background-position: center center; /* 정확히 중앙 정렬 */
-                background-repeat: no-repeat;
-                background-attachment: fixed; /* 스크롤 시 배경 고정 (멋있게 보임) */
                 position: relative;
+                box-sizing: border-box;
+                padding: 40px 20px; /* 전체 화면 상하좌우 여백 */
             }
 
-            /* 이미지 컨테이너 */
             .logo-container {
                 text-align: center;
+                width: 100%;
+                max-width: 1000px; /* PC 환경 최대 넓이 제한 */
+                margin: 0 auto;
             }
 
-            /* 로고 이미지 스타일 */
             .logo {
-                max-width: 100%; /* 반응형 유지 */
-                height: auto;    /* 비율 유지 */
-                width: 700px;    /* 원하는 크기 조절 */
-                margin: 80px auto;
+                width: 100%;
+                max-width: 700px; /* 로고 최대 크기 유지 */
+                height: auto;
+                margin: 60px auto;
+                display: block;
             }
 
-            /* 텍스트 스타일 */
+            /* --- PC 기본 폰트 및 스타일 --- */
             .text_title {
                 font-size: 83px;
                 color: #0077ff;
                 font-family: 'D2Coding', monospace;
-                line-height: 0.5; /* 줄 간격 조정 */
+                line-height: 1.1;
+                margin: 40px 0 20px;
+                word-break: keep-all;
             }
 
             .text_default {
                 font-size: 30px;
                 color: #000000;
                 font-family: 'D2Coding', monospace;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1; /* 줄 간격 조정 */
+                margin: 0;
+                line-height: 1.6;
+                word-break: keep-all;
             }
 
             .text_blog_title {
                 font-size: 45px;
                 color: rgb(255, 0, 0);
                 font-family: 'D2Coding', monospace;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.5; /* 줄 간격 조정 */
+                margin: 0 0 20px 0;
+                line-height: 1.3;
             }
-
-            .text_blog_title_older {
-                font-size: 35px;
-                color: rgb(179, 179, 179);
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.1; /* 줄 간격 조정 */
-            }
-
 
             .text_down {
                 font-size: 25px;
                 color: #0077ff;
                 font-family: 'D2Coding', monospace;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 5.0; /* 줄 간격 조정 */
+                margin: 60px 0;
+                line-height: 1.5;
             }
 
-            /* 링크 스타일 */
-            .text_default a {
-                color: #1a73e8; /* 링크 색상 */
-                text-decoration: none; /* 밑줄 제거 */
+            /* 리스트 컨테이너 (G-STAR 등 경험 목록) */
+            .experience-list {
+                display: inline-block;
+                text-align: left; /* PC에서도 리스트 항목은 왼쪽 정렬이 깔끔함 */
+                margin-top: 20px;
             }
 
-            .text_default a:hover {
-                text-decoration: underline; /* 마우스 오버 시 밑줄 */
+            .intro-kor {
+                margin: 60px 0;
             }
 
-            .intro-kor,
-            .intro-eng {
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }           
+            /* --- 모바일 환경 최적화 (화면 너비 768px 이하일 때 발동) --- */
+            @media screen and (max-width: 768px) {
+                body {
+                    padding: 20px 15px; /* 모바일은 화면 낭비가 없도록 여백 축소 */
+                }
+
+                .logo {
+                    margin: 30px auto;
+                }
+
+                .text_title {
+                    font-size: 36px; /* 폰트 크기 대폭 축소 */
+                    margin: 30px 0 15px;
+                }
+
+                .text_default {
+                    font-size: 16px; /* 모바일 가독성 최적 크기 */
+                    line-height: 1.7;
+                }
+
+                .text_blog_title {
+                    font-size: 24px;
+                }
+
+                .text_down {
+                    font-size: 16px;
+                    margin: 40px 0;
+                }
+
+                .intro-kor {
+                    margin: 40px 0;
+                }
+
+                /* 모바일에서는 PC용 줄바꿈(<br>) 무시하여 텍스트가 자연스럽게 이어지도록 설정 */
+                .desktop-br {
+                    display: none;
+                }
+            }
         </style>
     </head>
 
     <body>
         <div class="logo-container">
             
-            <img src="./srcs/logos/Project Torizon.png" alt="Logo" class="logo">
+            <img src="./srcs/logos/Project Torizon.png" alt="Torizon Logo" class="logo">
             
             <p class="text_title">Text Horizon, It's 'T'rue.</p>            
         
-
             <div class="intro-kor">
                 <p class="text_default">
-                    Project Torizon is a 3D game series and project <br>
+                    Project Torizon is a 3D game series and project <br class="desktop-br">
                     that uses text and the letter ‘T’.<br><br>
 
-                    This series of projects began with Torizon (2022), <br>
-                    launched in 2022 at www.torizonskago.com, <br>
+                    This series of projects began with Torizon (2022), <br class="desktop-br">
+                    launched in 2022 at www.torizonskago.com, <br class="desktop-br">
                     and aims to present engaging games through the letter ‘T’ and text.
                 </p>
             </div>
 
             <p class="text_title">List of Torizon</p>
-                <p class="text_default">
-                    Torizon (2022) <br>
-                    Torizon : Telecom (Comming Soon!) <br>
-                </p>
+            <p class="text_default">
+                Torizon (2022) <br>
+                Torizon : Telecom (Coming Soon!) <br>
+            </p>
 
             <p class="text_title">Experiences Torizon</p>
             <p class="text_blog_title">Torizon : Telecom</p>
+            
+            <div class="experience-list">
                 <p class="text_default">
                     1. G-STAR 2025 Indie Showcase 2.0 Galaxy (A-01) <br>
                     2. G-STAR 2025 Indie Award Nominees (Player's Voice)<br> 
                     3. POCKET GAMER CONNECTS SUMMIT KOREA 2025 (No.7) <br>
                 </p>
+            </div>
 
-            <img src="./srcs/screenshots/ProjectTorizon_Wallpaper.png" alt="Logo" class="logo">
-            <p class="text_down"> SkagoGames. made in Skago.</p>
+            <img src="./srcs/screenshots/ProjectTorizon_Wallpaper.png" alt="Torizon Wallpaper" class="logo" style="margin-top: 80px;">
+            <p class="text_down">SkagoGames. made in Skago.</p>
         </div>
     </body>
 </html>

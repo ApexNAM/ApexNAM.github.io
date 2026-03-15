@@ -1,40 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
-        <meta name ="Super Kingcrab Simulator" content="Super Kingcrab Simulator's Blog">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="Super Kingcrab Simulator" content="Super Kingcrab Simulator's Blog">
         <title>Super Kingcrab Simulator</title>
         <link rel="icon" type="image/png" href="./srcs/logos/ydkk_icon.png"/>
         <style>
             /* TTF 폰트 정의 */
             @font-face {
-                font-family: 'Polygothic'; /* 폰트 이름 자유롭게 지정 */
-                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype'); /* 폰트 경로 */
+                font-family: 'Polygothic';
+                src: url('./srcs/fonts/Polygothic-Light.ttf') format('truetype');
                 font-weight: normal;
                 font-style: normal;
             }
 
-                        /* TTF 폰트 정의 */
             @font-face {
-                font-family: 'Yeongdeok'; /* 폰트 이름 자유롭게 지정 */
-                src: url('./srcs/fonts/Yeongdeok Sea.ttf') format('truetype'); /* 폰트 경로 */
+                font-family: 'Yeongdeok';
+                src: url('./srcs/fonts/Yeongdeok Sea.ttf') format('truetype');
                 font-weight: normal;
                 font-style: normal;
             }
 
             body {
                 margin: 0;
-                padding: 0;
+                padding: 40px 20px;
                 min-height: 100vh;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 background-image: url('./srcs/imgs/20251013191712_1.jpg');
                 background-size: cover;
-                background-position: center center; /* 정확히 중앙 정렬 */
+                background-position: center center;
                 background-repeat: no-repeat;
-                background-attachment: fixed; /* 스크롤 시 배경 고정 (멋있게 보임) */
+                background-attachment: fixed;
                 position: relative;
             }
-            
             
             /* 어두운 오버레이 추가 */
             body::before {
@@ -44,163 +47,217 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.16); /* 검정색 반투명 오버레이 */
-                z-index: 1; /* 배경 이미지 위, 콘텐츠 아래 */
+                background-color: rgba(0, 0, 0, 0.4); /* 가독성을 위해 살짝 더 어둡게 조정 */
+                z-index: 1;
             }
             
             .logo-container {
                 text-align: center;
-                background-color: rgba(23, 23, 23, 0.8);
-                padding: 20px;
-                border-radius: 10px;
-                position: relative; /* 오버레이 위에 표시 */
-                z-index: 2; /* 콘텐츠가 오버레이 위로 */
+                background-color: rgba(23, 23, 23, 0.85);
+                padding: 50px 30px;
+                border-radius: 15px;
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                max-width: 900px; /* PC 최대 너비 제한 */
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
-            /* 이미지 컨테이너 */
-            .logo-container {
-                text-align: center;
-            }
-
-            /* 로고 이미지 스타일 */
+            /* 메인 및 스크린샷 등 큰 이미지 */
             .logo {
-                max-width: 100%; /* 반응형 유지 */
-                height: auto;    /* 비율 유지 */
-                width: 700px;    /* 원하는 크기 조절 */
+                width: 100%;
+                max-width: 700px;
+                height: auto;
+                margin: 0 auto 30px;
+                display: block;
+                border-radius: 8px; /* 스크린샷 테두리 둥글게 */
             }
 
+            /* 심의 등급 등 작은 이미지 */
             .other_logo {
-                max-width: 100%; /* 반응형 유지 */
-                height: auto;    /* 비율 유지 */
-                width: 200px;    /* 원하는 크기 조절 */
-                margin-top: 60px; /* 줄 간격 조정 */
-                margin-bottom: 30px;
+                width: 100%;
+                max-width: 200px;
+                height: auto;
+                margin: 30px auto 15px;
+                display: block;
             }
 
-            /* 텍스트 스타일 */
+            /* 플랫폼 로고 (스팀, 스토브) 전용 스타일 */
+            .platform_logo {
+                max-width: 180px;
+                height: auto;
+                margin: 10px 15px;
+                display: inline-block;
+                vertical-align: middle;
+                transition: transform 0.2s ease;
+            }
+
+            .platform_logo:hover {
+                transform: scale(1.05);
+            }
+
+            /* --- 반응형 텍스트 스타일 --- */
             .text_title {
-                font-size: 83px;
+                font-size: clamp(2rem, 6vw, 83px);
                 color: #ffffff;
                 font-family: 'Polygothic', sans-serif;
-                line-height: 0.5; /* 줄 간격 조정 */
+                margin: 60px 0 20px;
+                line-height: 1.1;
+                word-break: keep-all;
+            }
+
+            /* 최상단 Wishlist 타이틀만 여백 축소 */
+            .text_title.first-title {
+                margin-top: 20px;
             }
 
             .text_default {
-                font-size: 30px;
-                color: #ffffff;
+                font-size: clamp(1rem, 2.5vw, 30px);
+                color: #e0e0e0; /* 눈이 편안한 밝은 회색 */
                 font-family: 'Yeongdeok', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1; /* 줄 간격 조정 */
-                
+                margin: 0;
+                line-height: 1.6;
+                word-break: keep-all;
             }
-
-            .text_blog_title {
-                font-size: 45px;
-                color: peru;
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.5; /* 줄 간격 조정 */
-            }
-
-            .text_blog_title_older {
-                font-size: 35px;
-                color: rgb(179, 179, 179);
-                font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 1.1; /* 줄 간격 조정 */
-            }
-
 
             .text_down {
-                font-size: 25px;
+                font-size: clamp(1rem, 3vw, 25px);
                 color: #ffffff;
                 font-family: 'Polygothic', sans-serif;
-                margin: 0; /* 기본 마진 제거 */
-                line-height: 5.0; /* 줄 간격 조정 */
+                margin: 60px 0 20px;
             }
 
             /* 링크 스타일 */
-            .text_default a {
-                color: #1a73e8; /* 링크 색상 */
-                text-decoration: none; /* 밑줄 제거 */
+            a.text_default {
+                color: #4da3ff;
+                text-decoration: underline;
+                font-family: 'Polygothic', sans-serif;
             }
 
-            .text_default a:hover {
-                text-decoration: underline; /* 마우스 오버 시 밑줄 */
+            a.text_default:hover {
+                color: #80c1ff;
             }
 
-            .intro-kor,
-            .intro-eng {
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }           
+            /* --- 위젯 & 비디오 반응형 처리 --- */
+            .widget-container {
+                width: 100%;
+                max-width: 646px;
+                margin: 0 auto;
+            }
+
+            .video-container {
+                width: 100%;
+                max-width: 560px; /* 원래 유튜브 지정 가로 크기 */
+                margin: 0 auto;
+                aspect-ratio: 16 / 9; /* 최신 비율 유지 CSS */
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+            }
+
+            /* --- 모바일 전용 환경설정 --- */
+            @media screen and (max-width: 768px) {
+                body {
+                    padding: 20px 15px;
+                    display: block; /* 세로 길이 문제 해결 */
+                }
+
+                .logo-container {
+                    padding: 30px 15px;
+                    margin: 0 auto;
+                }
+
+                .text_title {
+                    font-size: 36px;
+                    margin: 40px 0 15px;
+                }
+
+                .desktop-br {
+                    display: none; /* 모바일에서 어색한 줄바꿈 방지 */
+                }
+
+                .platform_logo {
+                    max-width: 140px; /* 모바일에서는 플랫폼 로고 크기 축소 */
+                }
+            }
         </style>
     </head>
 
     <body>
         <div class="logo-container">
-            <img src="./srcs/logos/SUPER_KINGCRAB_SIMULATOR_LOGO_EN.png" alt="Logo" class="logo">
+            <img src="./srcs/logos/SUPER_KINGCRAB_SIMULATOR_LOGO_EN.png" alt="Super Kingcrab Simulator Logo" class="logo">
 
-            <p class="text_title">Wishlist on Steam!!!</p>
-            <iframe src="https://store.steampowered.com/widget/3773390/" frameborder="0" width="646" height="190"></iframe>     
+            <p class="text_title first-title">Wishlist on Steam!!!</p>
+            <div class="widget-container" style="height: 190px;">
+                <iframe src="https://store.steampowered.com/widget/3773390/" frameborder="0"></iframe>     
+            </div>
 
             <p class="text_title">Trailer</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/jPkpTVb2BdM?si=wDhtaGkh-_KItrvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/jPkpTVb2BdM?si=wDhtaGkh-_KItrvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
             
-            <div class="intro-kor">
-                <p class="text_default">슈퍼 대게 시뮬레이터는 대게가 되어, 납치된 수많은 대게들을 해방시키면서</p>
-                <p class="text_default">주요 도시를 파괴하는 3인칭 파괴 액션 (준)오픈월드 어드벤처 게임입니다.</p>
-
+            <div style="margin: 50px 0;">
+                <p class="text_default">
+                    슈퍼 대게 시뮬레이터는 대게가 되어, 납치된 수많은 대게들을 해방시키면서 <br class="desktop-br">
+                    주요 도시를 파괴하는 3인칭 파괴 액션 (준)오픈월드 어드벤처 게임입니다.
+                </p>
             </div>
 
-            <div class="intro-eng">
-                <p class="text_default">Super Kingcrab Simulator is a third-person destruction action (semi) open-world</p>
-                <p class="text_default">adventure game where you become a mighty king crab,</p>
-                <p class="text_default">liberate countless kidnapped crabs, and lay waste to major cities.</p>
+            <div style="margin: 0 0 50px 0;">
+                <p class="text_default" style="font-family: 'Polygothic', sans-serif;">
+                    Super Kingcrab Simulator is a third-person destruction action (semi) open-world <br class="desktop-br">
+                    adventure game where you become a mighty king crab, <br class="desktop-br">
+                    liberate countless kidnapped crabs, and lay waste to major cities.
+                </p>
             </div>
-
 
             <p class="text_title">Screenshots</p>
-            <img src="./srcs/imgs/20251013190237_1.jpg" alt="Logo" class="logo">
-            <img src="./srcs/imgs/20251013190913_1.jpg" alt="Logo" class="logo">
-            <img src="./srcs/imgs/20251013190704_1.jpg" alt="Logo" class="logo">
-            <img src="./srcs/imgs/20251013191712_1.jpg" alt="Logo" class="logo">
+            <img src="./srcs/imgs/20251013190237_1.jpg" alt="Screenshot 1" class="logo">
+            <img src="./srcs/imgs/20251013190913_1.jpg" alt="Screenshot 2" class="logo">
+            <img src="./srcs/imgs/20251013190704_1.jpg" alt="Screenshot 3" class="logo">
+            <img src="./srcs/imgs/20251013191712_1.jpg" alt="Screenshot 4" class="logo">
 
             <p class="text_title">Platforms</p>
-            
-            <a href="https://store.steampowered.com/app/3773390/" target="_blank">
-                <img src="srcs/logos/Steam_2016_logo_white.png" alt="Steam">
-            </a>
-
-            <a href="https://store.onstove.com/ko/games/101493" target="_blank">
-                <img src="srcs/logos/STOVE_INDIE_LOGO.png" alt="Stove Indie">
-            </a>
+            <div>
+                <a href="https://store.steampowered.com/app/3773390/" target="_blank">
+                    <img src="srcs/logos/Steam_2016_logo_white.png" alt="Steam" class="platform_logo">
+                </a>
+                <a href="https://store.onstove.com/ko/games/101493" target="_blank">
+                    <img src="srcs/logos/STOVE_INDIE_LOGO.png" alt="Stove Indie" class="platform_logo">
+                </a>
+            </div>
 
             <p class="text_title">List of Showcase</p>
-            <img src="./srcs/logos/IFG_Selected_YDKK.png" alt="Logo" class="logo">
-            <img src="./srcs/logos/PlayX4_Selected_YDKK.png" alt="Logo" class="logo">
-            <img src="./srcs/logos/Build051_Selected_YDKK.png" alt="Logo" class="logo">
-            <img src="./srcs/logos/SeoulGameTown_Selected_YDKK.png" alt="Logo" class="logo">
-            <img src="./srcs/logos/TaipeiGameShow_Selected_YDKK.png" alt="Logo" class="logo">
+            <img src="./srcs/logos/IFG_Selected_YDKK.png" alt="IFG" class="logo">
+            <img src="./srcs/logos/PlayX4_Selected_YDKK.png" alt="PlayX4" class="logo">
+            <img src="./srcs/logos/Build051_Selected_YDKK.png" alt="Build051" class="logo">
+            <img src="./srcs/logos/SeoulGameTown_Selected_YDKK.png" alt="Seoul Game Town" class="logo">
+            <img src="./srcs/logos/TaipeiGameShow_Selected_YDKK.png" alt="Taipei Game Show" class="logo">
             
             <p class="text_title">PressKit</p>
-            <a href="https://drive.google.com/drive/folders/18lKGaquYoXcNLGNsSNpobRTuTldm-UXs?usp=sharing" class="text_default">Google Drive</a>
-
+            <a href="https://drive.google.com/drive/folders/18lKGaquYoXcNLGNsSNpobRTuTldm-UXs?usp=sharing" class="text_default" target="_blank">Google Drive</a>
 
             <p class="text_title">Other</p>
-            <img src="./srcs/imgs/GRAC_12.png" alt="Logo" class="other_logo">
-            <img src="./srcs/imgs/GRAC_Violence.png" alt="Logo" class="other_logo">
-            <p class="text_default">등급분류번호 (GRAC) : SGHS-SP-250610-0005</p>
-            <p class="text_default">등급분류일 : 2025.06.10 14:44</p>
+            
+            <img src="./srcs/imgs/GRAC_12.png" alt="GRAC 12" class="other_logo">
+            <img src="./srcs/imgs/GRAC_Violence.png" alt="GRAC Violence" class="other_logo">
+            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">등급분류번호 (GRAC) : SGHS-SP-250610-0005</p>
+            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">등급분류일 : 2025.06.10 14:44</p>
 
+            <img src="./srcs/imgs/index_icon_03.jpg" alt="Taiwan Rating" class="other_logo" style="margin-top: 60px;">
+            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">產品名稱(中文)：超級帝王蟹模擬器</p>
+            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">產品名稱(原文)：Super Kingcrab Simulator</p>
+            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">遊戲類型：冒險</p>
+            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">上市日期：2025/07/01</p> 
 
-            <img src="./srcs/imgs/index_icon_03.jpg" alt="Logo" class="other_logo">
-            <p class="text_default">產品名稱(中文)：超級帝王蟹模擬器</p>
-            <p class="text_default">產品名稱(原文)：Super Kingcrab Simulator</p>
-            <p class="text_default">遊戲類型：冒險</p>
-            <p class="text_default">上市日期：2025/07/01</p> 
-
-            <p class="text_down">SkagoGames 2025. made in Skago.</p>
+            <p class="text_down">SkagoGames 2026. made in Skago.</p>
         </div>
     </body>
 </html>
