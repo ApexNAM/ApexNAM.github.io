@@ -60,21 +60,23 @@ body {
 .post-header {
   width: 100%;
   text-align: center;
-  padding: 48px 24px 28px;
+  padding: 28px 24px 24px;
   border-bottom: 1px solid var(--border);
   background-color: var(--bg);
 }
 
 .post-header a {
   display: inline-block;
+  line-height: 0; /* 이미지 아래 인라인 여백 제거 */
   text-decoration: none;
 }
 
 .post-header .logo {
+  height: 80px;
   width: auto;
-  max-width: 260px;
+  max-width: 240px;
   display: block;
-  margin: 0 auto 24px;
+  margin: 0 auto 20px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -134,12 +136,12 @@ main {
 
 @media (max-width: 600px) {
   .post-header {
-    padding: 32px 16px 20px;
+    padding: 20px 16px 18px;
   }
 
   .post-header .logo {
-    height: 70px;
-    margin-bottom: 18px;
+    height: 60px;
+    margin-bottom: 14px;
   }
 
   .markdown-body {
