@@ -132,11 +132,11 @@ h1.center_font,
     align-items: center;
 }
 
-/* 포스트 컨테이너 - 2열 그리드 구조 */
+/* 포스트 컨테이너 - PC 화면에서 3열(가로 3개) 구조로 변경 */
 .post-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 여기를 2에서 3으로 변경! */
     gap: 20px;
     margin-top: 30px;
 }
