@@ -1,165 +1,196 @@
 /* ---------------------------
-   Google-style Layout
+    0. 변수 및 전역 설정
 ---------------------------- */
-.main-container {
-    max-width: 900px;     /* 구글처럼 중앙 좁은 영역 */
-    margin: 0 auto;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+:root {
+    --primary-color: #00a6ff;
+    --bg-dark: #0a0a0a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-/* ---------------------------
-   1. 전역 폰트 및 기본 설정
----------------------------- */
 @font-face {
-    font-family: Pretendard;
+    font-family: 'Pretendard';
     src: url('{{ site.baseurl }}/srcs/fonts/Pretendard/Pretendard-Medium.otf') format('truetype');
 }
 
 body {
-    position: relative;
-    font-family: Pretendard, sans-serif;
-    background-color: black;
-    color: white;
+    font-family: 'Pretendard', sans-serif;
+    background-color: var(--bg-dark);
+    color: #ffffff;
     margin: 0;
     padding: 0;
+    text-align: center; /* 기본 텍스트 중앙 정렬 */
+    word-break: keep-all;
 }
 
 /* ---------------------------
-   2. 텍스트 정렬
+    1. 헤더 & 내비게이션 (상단 고정)
 ---------------------------- */
-.default_font { font-family: Pretendard; }
-.center_font { font-family: Pretendard; text-align: center; }
-.about_font { font-family: Pretendard; text-align: center; white-space: pre-line; }
-h1.center_font { color: rgb(0, 166, 255); }
-
-/* ---------------------------
-   3. 게임 리스트
----------------------------- */
-.game-list { list-style: none; padding: 0; margin: 0; }
-.game-list li { margin: 10px 0; }
-.game-list a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1.2rem;
-    transition: all 0.2s ease;
-}
-.game-list a:hover {
-    color: #0066ff;
-    font-size: 25px;
-}
-
-/* ---------------------------
-   4. SNS 링크
----------------------------- */
-.social-links {
+.header {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-.social-links a img {
-    width: 45px;
-    height: 45px;
-    transition: transform 0.3s, opacity 0.3s;
-}
-.social-links a:hover img {
-    transform: scale(1.2);
-    opacity: 0.8;
-}
-
-/* ---------------------------
-   5. 헤더 & 네비게이션
----------------------------- */
-.header { display: flex; flex-direction: column; align-items: center; padding-top: 20px; }
-
-.navBar__logo {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.navBar__logo img {
-    max-height: 160px;   /* 세로 크기를 제한 */
-    height: auto;       /* 비율 유지 */
-    max-width: 100%;    /* 부모 영역을 넘지 않도록 */
-    width: auto;        /* 자동 비율 유지 */
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
 }
 
 .navBar {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 10px 0;
     position: sticky;
     top: 0;
-    backdrop-filter: blur(6px);
-    z-index: 100;
+    backdrop-filter: blur(12px);
+    background-color: rgba(10, 10, 10, 0.8);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.navBar__logo img {
+    max-height: 100px;
+    height: auto;
+    margin: 15px 0;
 }
 
 .navBar__menu {
     display: flex;
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-    font-family: Pretendard;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    flex-wrap: wrap; /* 모바일에서 줄바꿈 */
+    list-style: none;
+    padding: 15px 0;
+    margin: 0;
+    flex-wrap: wrap;
 }
 
-.navBar__menu li { color: white; transition: font-size 0.2s ease; }
 .navBar__menu a {
     text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: all 0.25s ease;
+    color: #bbb;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 15px;
+    transition: var(--transition);
 }
+
 .navBar__menu a:hover {
-    background-color: rgb(0, 166, 255);
-    color: black;
-    font-weight: bold;
-    font-size: 1.5rem;
+    color: var(--primary-color);
+    background: rgba(0, 166, 255, 0.1);
+    border-radius: 8px;
 }
 
 /* ---------------------------
-   6. 페이지네이션
+    2. 메인 컨테이너
 ---------------------------- */
-.pagination { text-align: center; }
-.post-link, .pagination-link { display: inline-block; transition: transform 0.2s ease; }
-.post-link:hover, .pagination-link:hover { transform: scale(1.1); }
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 자식 요소들 가로 중앙 정렬 */
+}
+
+/* 타이틀 (SkagoGames...) */
+h1.center_font {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #00a6ff, #00ffcc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.about_font {
+    font-size: 1.1rem;
+    color: #999;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
 
 /* ---------------------------
-   7. 모바일 전용 조정
+    3. 포스트 및 게임 리스트 (중앙 정렬 핵심)
 ---------------------------- */
-@media (max-width: 767px) {
-    body { font-size: 16px; }
+/* 리스트 컨테이너 자체를 중앙으로 */
+.game-list, .post-list, .posts {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; /* 좌우 여백 자동 */
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 내부 아이템들 중앙 정렬 */
+}
+
+.game-list li, .post-list li, .posts li {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 포스트 카드 디자인 */
+.game-list a, .post-link, .posts a {
+    display: block;
+    width: 100%; /* 부모(li) 안에서 꽉 차게 */
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center; /* 카드 내부 텍스트 중앙 */
+    transition: var(--transition);
+}
+
+.game-list a:hover, .post-link:hover, .posts a:hover {
+    border-color: var(--primary-color);
+    background: rgba(0, 166, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------------------------
+    4. SNS 및 하단 정보
+---------------------------- */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.social-links a img {
+    width: 40px;
+    height: 40px;
+    transition: var(--transition);
+    opacity: 0.7;
+}
+
+.social-links a:hover img {
+    transform: scale(1.2);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px var(--primary-color));
+}
+
+footer {
+    margin-top: 80px;
+    padding-bottom: 40px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* ---------------------------
+    5. 모바일 미세 조정
+---------------------------- */
+@media (max-width: 768px) {
+    .main-container { padding: 40px 15px; }
     
-    h1.center_font { font-size: 1.8rem; }
-    .game-list a { font-size: 1rem; }
-    .game-list a:hover { font-size: 1.2rem; }
+    .navBar__menu { gap: 10px; }
+    .navBar__menu a { font-size: 0.9rem; padding: 6px 10px; }
 
-    .navBar__menu {
-        flex-direction: column; /* 메뉴 세로 정렬 */
-        gap: 10px;
-    }
-
-    .navBar__menu a {
+    .game-list a, .post-link {
         font-size: 1rem;
-        padding: 6px 10px;
-    }
-
-    .navBar__menu a:hover { font-size: 1.2rem; }
-
-    .social-links {
-        flex-wrap: wrap;
-        gap: 15px;
+        padding: 15px;
     }
 }
