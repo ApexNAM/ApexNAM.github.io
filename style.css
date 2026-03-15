@@ -1,177 +1,961 @@
 /* ---------------------------
-    0. 폰트 불러오기 & 변수 설정
+    0. 폰트 & 변수
 ---------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap');
 
 :root {
-    --primary-color: #00a6ff;
-    --bg-dark: #0a0a0a;
-    --card-bg: rgba(255, 255, 255, 0.07);
-    --border-color: rgba(255, 255, 255, 0.15);
-    --transition: all 0.25s ease-out;
-}
+    /* 브랜드 컬러 */
+    --primary:       #00e5ff;
+    --primary-dim:   rgba(0, 229, 255, 0.1);
+    --primary-glow:  rgba(0, 229, 255, 0.25);
+    --accent:        #7b61ff;
 
-body {
-    font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 적용 */
-    background-color: var(--bg-dark);
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    word-break: keep-all;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    /* 배경 레이어 */
+    --bg:            #070709;
+    --bg2:           #0e0e12;
+    --bg3:           #141418;
+    --bg-nav:        rgba(7, 7, 9, 0.82);
+
+    /* 서피스 */
+    --surface:       rgba(255, 255, 255, 0.04);
+    --surface-hover: rgba(0, 229, 255, 0.07);
+
+    /* 보더 */
+    --border:        rgba(255, 255, 255, 0.08);
+    --border-hover:  rgba(0, 229, 255, 0.4);
+
+    /* 텍스트 */
+    --text-primary:   #e8e8ec;
+    --text-secondary: #888898;
+    --text-muted:     #444455;
+
+    /* 폰트 패밀리 */
+    --font-body:    'Noto Sans KR', sans-serif;
+    --font-mono:    'DM Mono', monospace;
+    --font-display: 'Bebas Neue', sans-serif;
+
+    /* 라디우스 */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    /* 트랜지션 */
+    --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+    --t-fast:   0.15s;
+    --t-normal: 0.25s;
+    --t-slow:   0.4s;
+
+    /* 레이아웃 */
+    --max-w:       1120px;
+    --max-w-cards: 560px;
+
+    /* 스페이싱 */
+    --space-xs:  8px;
+    --space-sm:  16px;
+    --space-md:  24px;
+    --space-lg:  40px;
+    --space-xl:  64px;
+    --space-2xl: 80px;
 }
 
 /* ---------------------------
-    1. 헤더 & 내비게이션
+    1. Reset & Base
+---------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* grain 오버레이 */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+::selection {
+    background: rgba(0, 229, 255, 0.25);
+    color: #fff;
+}
+
+/* ---------------------------
+    2. 내비게이션
 ---------------------------- */
 .header {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
 }
 
 .navBar {
     width: 100%;
     position: sticky;
     top: 0;
-    backdrop-filter: blur(12px);
-    background-color: rgba(10, 10, 10, 0.85);
-    border-bottom: 1px solid var(--border-color);
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 5vw, 60px);
+    height: 58px;
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    background-color: var(--bg-nav);
+    border-bottom: 0.5px solid var(--border);
+}
+
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+    animation: dot-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.7); }
 }
 
 .navBar__menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 4px;
     list-style: none;
-    padding: 12px 0;
+    padding: 10px 12px;
     margin: 0;
 }
 
 .navBar__menu a {
-    text-decoration: none;
-    color: #aaa;
-    padding: 10px 18px;
-    border-radius: 8px;
-    transition: var(--transition);
+    display: block;
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
     font-weight: 500;
-}
-
-.navBar__menu a:hover {
-    color: #fff;
-    background: var(--primary-color);
-}
-
-/* ---------------------------
-    2. 메인 컨테이너 & 섹션
----------------------------- */
-.main-container, .section {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1.center_font {
-    font-size: clamp(1.6rem, 5vw, 2.4rem);
-    /* 표준 background-clip 적용 */
-    background: linear-gradient(135deg, #00a6ff, #00ffcc);
-    background-clip: text;
-    color: transparent; 
-    margin-bottom: 30px;
-    font-weight: 900;
-}
-
-.about_font {
-    font-size: 1rem;
-    color: #999;
-    margin-bottom: 40px;
-    line-height: 1.7;
-    font-weight: 400;
-}
-
-/* ---------------------------
-    3. 포스트 버튼 UI (Torizon: Telecom 등 적용)
----------------------------- */
-.post-container {
-    width: 100%;
-    max-width: 550px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.post-card {
-    width: 100%;
-}
-
-.post-card a {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 18px 25px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    text-decoration: none;
-    color: #fff;
-    box-sizing: border-box;
-    transition: var(--transition);
-}
-
-.post-card a:hover {
-    background: rgba(0, 166, 255, 0.1);
-    border-color: var(--primary-color);
-    transform: scale(1.02);
-    box-shadow: 0 4px 15px rgba(0, 166, 255, 0.2);
-}
-
-.post-title {
-    font-size: 1.05rem;
-    font-weight: 700;
-    text-align: left;
-}
-
-.post-date {
-    font-size: 0.85rem;
-    color: #777;
-    margin-left: 15px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    transition:
+        color      var(--t-fast) var(--ease),
+        background var(--t-fast) var(--ease);
     white-space: nowrap;
 }
 
+.navBar__menu a:hover,
+.navBar__menu a:focus-visible {
+    color: var(--text-primary);
+    background: var(--surface-hover);
+    outline: none;
+}
+
+.navBar__menu a.active {
+    color: var(--primary);
+    background: var(--primary-dim);
+}
+
+.nav-cta {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    padding: 7px 18px;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid var(--primary);
+    color: var(--primary);
+    background: var(--primary-dim);
+    transition: background var(--t-fast), box-shadow var(--t-fast);
+    white-space: nowrap;
+}
+
+.nav-cta:hover {
+    background: rgba(0, 229, 255, 0.18);
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.2);
+}
+
+/* 햄버거 */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text-secondary);
+    border-radius: 2px;
+    transition: var(--t-normal);
+}
+
+/* 모바일 풀스크린 메뉴 */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 58px 0 0 0;
+    background: rgba(7, 7, 9, 0.97);
+    backdrop-filter: blur(24px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 999;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--text-secondary);
+    padding: 14px 40px;
+    border-radius: var(--radius-sm);
+    width: 200px;
+    text-align: center;
+    border: 0.5px solid var(--border);
+    transition: color var(--t-fast), border-color var(--t-fast);
+}
+
+.mobile-menu a:hover {
+    color: var(--primary);
+    border-color: rgba(0, 229, 255, 0.3);
+}
+
 /* ---------------------------
-    4. 푸터
+    3. 히어로 섹션
+---------------------------- */
+.hero {
+    position: relative;
+    min-height: 72vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px clamp(20px, 6vw, 80px) 60px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+}
+
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.hero-orb-1 {
+    width: 420px; height: 420px;
+    background: rgba(0, 229, 255, 0.07);
+    top: -80px; left: -60px;
+}
+
+.hero-orb-2 {
+    width: 320px; height: 320px;
+    background: rgba(123, 97, 255, 0.07);
+    bottom: -40px; right: -40px;
+}
+
+.hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 0.5px;
+    background: var(--primary);
+}
+
+h1.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+h1.hero-title em {
+    font-style: normal;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.5px rgba(0, 229, 255, 0.7);
+}
+
+/* 기존 .center_font 호환 */
+h1.center_font {
+    font-size: clamp(1.75rem, 6vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--primary) 30%, #00ffcc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: var(--space-md);
+}
+
+.hero-desc,
+.about_font {
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    color: var(--text-secondary);
+    line-height: 1.85;
+    font-weight: 300;
+    max-width: 520px;
+    margin-bottom: var(--space-lg);
+    word-break: keep-all;
+}
+
+.about_font {
+    text-align: center;
+    max-width: 600px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-primary {
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    background: var(--primary);
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 229, 255, 0.35);
+}
+
+.btn-ghost {
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid var(--border-hover);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-family: var(--font-mono);
+    transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+
+.btn-ghost:hover {
+    border-color: var(--primary);
+    color: var(--text-primary);
+}
+
+.hero-scroll {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    animation: scroll-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+    0%, 100% { transform: scaleY(1); opacity: 0.6; }
+    50%       { transform: scaleY(0.5); opacity: 0.2; }
+}
+
+/* ---------------------------
+    4. 섹션 공통
+---------------------------- */
+.main-container,
+.section {
+    width: 100%;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: var(--space-2xl) clamp(20px, 6vw, 80px);
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: var(--space-lg);
+}
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--primary);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+}
+
+.section-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    transition: color var(--t-fast) var(--ease);
+    white-space: nowrap;
+}
+
+.section-link:hover { color: var(--primary); }
+
+/* ---------------------------
+    5. 포스트 카드
+---------------------------- */
+.post-container {
+    width: 100%;
+    max-width: var(--max-w-cards);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: var(--space-sm);
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+.post-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition:
+        border-color var(--t-normal) var(--ease),
+        transform    var(--t-normal) var(--ease),
+        box-shadow   var(--t-normal) var(--ease);
+    position: relative;
+}
+
+.post-card:hover {
+    border-color: rgba(0, 229, 255, 0.35);
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 0.5px rgba(0, 229, 255, 0.15);
+}
+
+.post-card.featured { grid-column: span 2; }
+
+.post-thumb {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg3);
+}
+
+.post-card:not(.featured) .post-thumb { aspect-ratio: 16 / 9; }
+.post-card.featured        .post-thumb { aspect-ratio: 21 / 9; }
+
+.post-thumb img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform var(--t-slow) var(--ease);
+}
+
+.post-card:hover .post-thumb img { transform: scale(1.04); }
+
+.thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg3);
+}
+
+.thumb-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--primary-dim);
+    border: 0.5px solid rgba(0, 229, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumb-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--primary);
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.post-body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.post-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    border-radius: 5px;
+    border: 0.5px solid var(--border);
+    color: var(--text-secondary);
+    background: var(--surface);
+    transition: border-color var(--t-fast), color var(--t-fast);
+}
+
+.post-card:hover .tag { border-color: rgba(0, 229, 255, 0.2); }
+
+.tag.primary {
+    color: var(--primary);
+    background: var(--primary-dim);
+    border-color: rgba(0, 229, 255, 0.25);
+}
+
+.post-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+.post-card.featured .post-title { font-size: 18px; }
+
+.post-summary {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--border);
+}
+
+.post-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 400;
+}
+
+.post-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 12px;
+    transition: border-color var(--t-fast), background var(--t-fast);
+}
+
+.post-card:hover .post-arrow {
+    border-color: var(--primary);
+    background: var(--primary-dim);
+}
+
+.post-arrow svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--text-secondary);
+    fill: none;
+    stroke-width: 2;
+}
+
+.post-card:hover .post-arrow svg { stroke: var(--primary); }
+
+/* ---------------------------
+    6. 게임 카드
+---------------------------- */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+.game-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition:
+        border-color var(--t-normal) var(--ease),
+        transform    var(--t-normal) var(--ease),
+        box-shadow   var(--t-normal) var(--ease);
+}
+
+.game-card:hover {
+    border-color: rgba(123, 97, 255, 0.45);
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 0.5px rgba(123, 97, 255, 0.15);
+}
+
+.game-cover {
+    aspect-ratio: 4 / 3;
+    background: var(--bg3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-cover-art {
+    font-family: var(--font-display);
+    font-size: 48px;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.06);
+}
+
+.game-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    border-radius: 5px;
+}
+
+.game-status.dev {
+    background: rgba(0, 229, 255, 0.12);
+    color: var(--primary);
+    border: 0.5px solid rgba(0, 229, 255, 0.25);
+}
+
+.game-status.release {
+    background: rgba(123, 97, 255, 0.12);
+    color: #a78bfa;
+    border: 0.5px solid rgba(123, 97, 255, 0.25);
+}
+
+.game-status.soon {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: 0.5px solid var(--border);
+}
+
+.game-body { padding: 16px 18px 18px; }
+
+.game-genre {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.game-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+.game-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-weight: 300;
+}
+
+/* ---------------------------
+    7. About 스트립
+---------------------------- */
+.about-strip {
+    width: 100%;
+    background: var(--bg2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 60px clamp(20px, 6vw, 80px);
+}
+
+.about-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.stat-card {
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-num {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    color: var(--primary);
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+}
+
+/* ---------------------------
+    8. 푸터
 ---------------------------- */
 footer {
     width: 100%;
     margin-top: auto;
-    padding: 50px 0;
-    border-top: 1px solid var(--border-color);
+    padding: 40px clamp(20px, 6vw, 80px);
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-logo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 0.08em;
+}
+
+.footer-copy {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    transition: color var(--t-fast) var(--ease);
+}
+
+.footer-links a:hover { color: var(--primary); }
+
+/* ---------------------------
+    9. 페이지 로드 애니메이션
+---------------------------- */
+@keyframes fadein {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.hero-eyebrow { animation: fadein 0.6s 0.1s both; }
+h1.hero-title { animation: fadein 0.6s 0.2s both; }
+.hero-desc    { animation: fadein 0.6s 0.35s both; }
+.hero-btns    { animation: fadein 0.6s 0.48s both; }
+.hero-scroll  { animation: fadein 0.6s 0.62s both; }
+
+/* ---------------------------
+    10. 접근성
+---------------------------- */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
 }
 
 /* ---------------------------
-    5. 모바일 최적화
+    11. 스크롤바 (Webkit)
 ---------------------------- */
-@media (max-width: 600px) {
-    .post-card a {
-        flex-direction: column;
-        gap: 8px;
-        padding: 15px;
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------------------------
+    12. 반응형
+---------------------------- */
+@media (max-width: 768px) {
+    .main-container,
+    .section {
+        padding: var(--space-lg) var(--space-sm);
     }
-    .post-title { text-align: center; }
-    .post-date { margin-left: 0; }
+
+    .post-card.featured { grid-column: span 1; }
+    .posts-grid         { grid-template-columns: 1fr; }
+    .games-grid         { grid-template-columns: repeat(2, 1fr); }
+
+    .about-inner { grid-template-columns: 1fr; gap: 36px; }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-links { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    .navBar__menu { gap: 2px; padding: 8px; }
+    .navBar__menu a { padding: 7px 12px; font-size: 0.85rem; }
+    .hamburger { display: flex; }
+
+    .hero { min-height: 85vh; padding: 60px 20px 48px; }
+
+    .posts-grid { grid-template-columns: 1fr; }
+    .games-grid { grid-template-columns: 1fr; }
+
+    .post-title  { font-size: 0.95rem; }
+    .post-date   { margin-left: 0; font-size: 0.78rem; }
+    .about_font  { text-align: left; }
+
+    .about-stats { grid-template-columns: 1fr 1fr; }
 }
