@@ -328,3 +328,79 @@
 .markdown-body li > p {
   margin-bottom: 0.5em;
 }
+
+/* =========================================
+   10. 포스트 헤더 & 푸터 (post layout 전용)
+   ========================================= */
+
+.post-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
+}
+
+.post-header .logo {
+  max-width: 220px;
+  height: auto;
+  width: auto;
+  margin: 0 auto 20px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.post-header .logo:hover {
+  transform: scale(1.04);
+}
+
+.post-header__title {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+.post-header__date {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  color: var(--yellow-highlight);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.post-footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 40px;
+}
+
+.post-footer .footer-text {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .post-header {
+    padding: 28px 16px 16px;
+  }
+
+  .post-header .logo {
+    max-width: 150px;
+    margin-bottom: 14px;
+  }
+
+  .post-footer {
+    padding: 30px 16px;
+  }
+}
