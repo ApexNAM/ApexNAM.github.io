@@ -25,6 +25,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 /* ---------------------------
@@ -86,14 +87,15 @@ body {
 
 h1.center_font {
     font-size: clamp(1.8rem, 5vw, 2.5rem);
+    /* 웹킷 없이 그라데이션 텍스트 처리 */
     background: linear-gradient(135deg, #00a6ff, #00ffcc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* fill-color 대신 투명 컬러 사용 */
     margin-bottom: 20px;
 }
 
 /* ---------------------------
-    3. 포스트 카드 (가운데 정렬 해결)
+    3. 포스트 및 시리즈 카드
 ---------------------------- */
 .post-container {
     width: 100%;
@@ -112,7 +114,7 @@ h1.center_font {
 
 .post-card a {
     display: flex;
-    flex-direction: column; /* 제목과 날짜 세로 정렬 */
+    flex-direction: column;
     align-items: center;
     width: 100%;
     padding: 20px;
@@ -128,6 +130,11 @@ h1.center_font {
     border-color: var(--primary-color);
     background: rgba(0, 166, 255, 0.1);
     transform: translateY(-3px);
+}
+
+.post-title {
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .post-date {
@@ -150,7 +157,15 @@ footer {
     5. 모바일 최적화
 ---------------------------- */
 @media (max-width: 768px) {
-    .navBar__menu { gap: 10px; padding: 10px; }
-    .navBar__menu a { font-size: 0.9rem; padding: 5px 10px; }
-    .post-card a { padding: 15px; }
+    .navBar__menu { 
+        gap: 10px; 
+        padding: 10px; 
+    }
+    .navBar__menu a { 
+        font-size: 0.9rem; 
+        padding: 5px 10px; 
+    }
+    .post-card a { 
+        padding: 15px; 
+    }
 }
