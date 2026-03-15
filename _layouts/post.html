@@ -20,16 +20,15 @@
     <meta name="twitter:description" content="{{ page.excerpt | default: site.description }}">
     <meta name="twitter:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
 
-    <link href="{{ '/assets/css/markdown.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/post.css' | relative_url }}" rel="stylesheet">
     <link rel="icon" href="/skagogames.ico" type="image/x-icon">
   </head>
 
   <body>
 
-    <!-- 헤더 -->
     <header class="post-header">
       <a href="{{ site.baseurl }}/">
-        <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
+        <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="SkagoGames 로고" class="logo">
       </a>
       <h1 class="post-header__title">{{ page.title }}</h1>
       {% if page.date %}
@@ -37,14 +36,12 @@
       {% endif %}
     </header>
 
-    <!-- 본문 -->
     <main>
       <div class="markdown-body">
         {{ content }}
       </div>
     </main>
 
-    <!-- 푸터 -->
     <footer class="post-footer">
       <p class="footer-text">SkagoGames. made in Skago.</p>
     </footer>
