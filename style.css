@@ -93,7 +93,7 @@ h1.center_font {
     font-size: clamp(1.8rem, 5vw, 2.8rem);
     font-weight: 800;
     background: linear-gradient(135deg, #00a6ff, #00ffcc);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
 }
