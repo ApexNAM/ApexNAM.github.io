@@ -225,7 +225,7 @@ h1.center_font,
 }
 
 /* ---------------------------
-    5. 푸터
+    5. 푸터 & 하단 텍스트
 ---------------------------- */
 footer {
     width: 100%;
@@ -233,6 +233,22 @@ footer {
     padding: 40px 0;
     border-top: 1px solid var(--border-color);
     text-align: center;
+}
+
+/* 푸터 전용 작고 깔끔한 텍스트 */
+.footer-text {
+    font-size: 0.85rem; /* 작고 부담 없는 크기 */
+    color: #888; /* 은은한 회색 */
+    margin: 0;
+    font-weight: 500;
+}
+
+/* 푸터 안에서 노란색 포인트를 줄 때 크기 유지 */
+.footer-text.text-yellow,
+.footer-text .text-yellow {
+    color: var(--yellow-highlight);
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
 /* ---------------------------
