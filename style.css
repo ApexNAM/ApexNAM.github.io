@@ -20,14 +20,18 @@ body {
     color: #ffffff;
     margin: 0;
     padding: 0;
-    text-align: center; /* 기본 텍스트 중앙 정렬 */
+    text-align: center;
     word-break: keep-all;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ---------------------------
-    1. 헤더 & 내비게이션 (상단 고정)
+    1. 헤더 & 내비게이션
 ---------------------------- */
 .header {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,12 +48,6 @@ body {
     z-index: 1000;
 }
 
-.navBar__logo img {
-    max-height: 100px;
-    height: auto;
-    margin: 15px 0;
-}
-
 .navBar__menu {
     display: flex;
     justify-content: center;
@@ -58,14 +56,11 @@ body {
     list-style: none;
     padding: 15px 0;
     margin: 0;
-    flex-wrap: wrap;
 }
 
 .navBar__menu a {
     text-decoration: none;
     color: #bbb;
-    font-size: 1rem;
-    font-weight: 500;
     padding: 8px 15px;
     transition: var(--transition);
 }
@@ -77,120 +72,85 @@ body {
 }
 
 /* ---------------------------
-    2. 메인 컨테이너
+    2. 메인 컨테이너 & 섹션
 ---------------------------- */
-.main-container {
+.main-container, .section {
+    width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 자식 요소들 가로 중앙 정렬 */
+    align-items: center;
 }
 
-/* 타이틀 (SkagoGames...) */
 h1.center_font {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    font-weight: 800;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     background: linear-gradient(135deg, #00a6ff, #00ffcc);
-    background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
 }
 
-.about_font {
-    font-size: 1.1rem;
-    color: #999;
-    margin-bottom: 40px;
-    line-height: 1.6;
-}
-
 /* ---------------------------
-    3. 포스트 및 게임 리스트 (중앙 정렬 핵심)
+    3. 포스트 카드 (가운데 정렬 해결)
 ---------------------------- */
-/* 리스트 컨테이너 자체를 중앙으로 */
-.game-list, .post-list, .posts {
+.post-container {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto; /* 좌우 여백 자동 */
-    padding: 0;
-    list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 내부 아이템들 중앙 정렬 */
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.game-list li, .post-list li, .posts li {
+.post-card {
     width: 100%;
-    margin-bottom: 15px;
     display: flex;
     justify-content: center;
 }
 
-/* 포스트 카드 디자인 */
-.game-list a, .post-link, .posts a {
-    display: block;
-    width: 100%; /* 부모(li) 안에서 꽉 차게 */
+.post-card a {
+    display: flex;
+    flex-direction: column; /* 제목과 날짜 세로 정렬 */
+    align-items: center;
+    width: 100%;
     padding: 20px;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     text-decoration: none;
     color: #fff;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center; /* 카드 내부 텍스트 중앙 */
     transition: var(--transition);
 }
 
-.game-list a:hover, .post-link:hover, .posts a:hover {
+.post-card a:hover {
     border-color: var(--primary-color);
     background: rgba(0, 166, 255, 0.1);
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
 }
 
 /* ---------------------------
-    4. SNS 및 하단 정보
+    4. 푸터
 ---------------------------- */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 50px;
-}
-
-.social-links a img {
-    width: 40px;
-    height: 40px;
-    transition: var(--transition);
-    opacity: 0.7;
-}
-
-.social-links a:hover img {
-    transform: scale(1.2);
-    opacity: 1;
-    filter: drop-shadow(0 0 8px var(--primary-color));
-}
-
 footer {
-    margin-top: 80px;
-    padding-bottom: 40px;
-    color: #555;
-    font-size: 0.9rem;
+    width: 100%;
+    margin-top: auto;
+    padding: 60px 0;
+    border-top: 1px solid var(--border-color);
 }
 
 /* ---------------------------
-    5. 모바일 미세 조정
+    5. 모바일 최적화
 ---------------------------- */
 @media (max-width: 768px) {
-    .main-container { padding: 40px 15px; }
-    
-    .navBar__menu { gap: 10px; }
-    .navBar__menu a { font-size: 0.9rem; padding: 6px 10px; }
-
-    .game-list a, .post-link {
-        font-size: 1rem;
-        padding: 15px;
-    }
+    .navBar__menu { gap: 10px; padding: 10px; }
+    .navBar__menu a { font-size: 0.9rem; padding: 5px 10px; }
+    .post-card a { padding: 15px; }
 }
