@@ -28,7 +28,7 @@ body {
 }
 
 /* ---------------------------
-    1. 헤더 & 내비게이션 (구글 스타일)
+    1. 헤더 & 내비게이션 (아이폰 iOS 스타일)
 ---------------------------- */
 .header {
     width: 100%;
@@ -36,35 +36,29 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px 30px; /* 로고가 돋보이도록 여백 확보 */
-}
-
-/* 사이트 로고 및 메인 타이틀 (파란색&하늘색 계열 그라데이션) */
-.header-logo, 
-h1.center_font {
-    font-size: clamp(2rem, 6vw, 3rem);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent; 
-    margin: 0 0 25px 0;
-    font-weight: 900;
-    text-align: center;
+    padding: 60px 20px 20px;
 }
 
 .navBar {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* iOS 특유의 반투명 유리(블러) 효과 */
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navBar__menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 10px; /* 버튼 사이 간격 */
     list-style: none;
     padding: 0;
     margin: 0;
@@ -72,21 +66,25 @@ h1.center_font {
 
 .navBar__menu a {
     text-decoration: none;
-    color: #cccccc;
-    padding: 10px 20px;
-    border: 1px solid var(--border-color);
-    border-radius: 30px; /* 둥근 버튼 형태 */
-    transition: var(--transition);
-    font-weight: 500;
+    color: #e5e5ea; /* iOS 기본 라이트 그레이 텍스트 */
+    padding: 10px 22px;
+    background: rgba(255, 255, 255, 0.06); /* 평소: 은은한 반투명 배경 */
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 999px; /* 완벽한 둥근 알약 형태 */
+    font-weight: 600;
     font-size: 0.95rem;
+    /* 쫀득하고 부드러운 전환 효과 (iOS 스타일 타이밍 함수) */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
+/* 마우스 오버 시 파란색으로 확실하게 변경 */
 .navBar__menu a:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #fff;
+    color: #ffffff;
+    background: linear-gradient(135deg, #007AFF, #00a6ff); /* 애플 시스템 블루 계열 그라데이션 */
+    border-color: transparent;
+    transform: scale(1.06); /* 살짝 튀어오르는 효과 */
+    box-shadow: 0 6px 16px rgba(0, 122, 255, 0.35); /* 파란색 그림자 빛번짐 */
 }
-
 /* ---------------------------
     2. 특정 단어 강조 (노란색)
 ---------------------------- */
