@@ -2,10 +2,10 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{{ page.excerpt | default: site.description }}">
@@ -21,36 +21,33 @@
     <meta name="twitter:image" content="{{ site.url }}{{ page.og_image | default: site.default_og_image }}">
 
     <link href="{{ '/assets/css/post.css' | relative_url }}" rel="stylesheet">
-    <link rel="icon" href="/skagogames.ico" type="image/x-icon" />
-
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: rgb(0, 0, 0);
-        color: white;
-      }
-    </style>
+    <link rel="icon" href="/skagogames.ico" type="image/x-icon">
   </head>
 
   <body>
-    <header style="text-align:center; margin:30px 0;">
-        <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
 
-        <h1 style="font-family:'Pretendard'; color: white;">{{ page.title }}</h1>
-        {% if page.date %}
-          <p style="font-family:'Pretendard'; color:yellow;">{{ page.date | date: "%Y-%m-%d" }}</p>
-        {% endif %}
+    <!-- 헤더 -->
+    <header class="post-header">
+      <a href="{{ site.baseurl }}/">
+        <img src="{{ site.baseurl }}/srcs/logos/SG_Logo_Title_White.png" alt="Logo" class="logo">
+      </a>
+      <h1 class="post-header__title">{{ page.title }}</h1>
+      {% if page.date %}
+        <p class="post-header__date">{{ page.date | date: "%Y-%m-%d" }}</p>
+      {% endif %}
     </header>
 
+    <!-- 본문 -->
     <main>
       <div class="markdown-body">
         {{ content }}
       </div>
     </main>
 
-    <footer style="text-align:center; margin:50px 0; font-family:'Polygothic', sans-serif; font-size:14px; color:rgb(255, 255, 255);">
-      SkagoGames. made in Skago.
+    <!-- 푸터 -->
+    <footer class="post-footer">
+      <p class="footer-text">SkagoGames. made in Skago.</p>
     </footer>
+
   </body>
 </html>
