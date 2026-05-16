@@ -4,6 +4,57 @@ title: "SkagoGames. made in Skago."
 description: "Welcome to SkagoGames!"
 ---
 
+<style>
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(0, 166, 255, 0.5), 0 0 30px rgba(0, 166, 255, 0.2);
+      border-color: rgba(0, 166, 255, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(0, 166, 255, 1), 0 0 60px rgba(0, 166, 255, 0.4);
+      border-color: #00a6ff;
+    }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) skewX(-15deg); }
+    100% { transform: translateX(250%) skewX(-15deg); }
+  }
+
+  .post-card.is-latest a {
+    animation: glow-pulse 2.5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .post-card.is-latest a::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .latest-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #00a6ff, #0055cc);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 166, 255, 0.7);
+    z-index: 1;
+  }
+</style>
+
 <section class="main-container">
     <h1 class="center_font">SkagoGames. made in Skago.</h1>
 
@@ -28,7 +79,7 @@ description: "Welcome to SkagoGames!"
         </div>
     </div>
     
-    <h1 class="center_font">List of Games</h1>
+    <h1 class="center_font" style="margin-top: 60px;">List of Games</h1>
 
     <p class="about_font">
         제작된 게임들은 아래와 같습니다.<br>
@@ -38,7 +89,7 @@ description: "Welcome to SkagoGames!"
         For games uploaded on other platforms, please refer to our itch.io page.
     </p>
 
-    <div style="width: 100%; margin-top: 60px;">
+    <div style="width: 100%; margin-top: 24px;">
         <h2 class="center_font" style="font-size: 1.6rem; margin-bottom: 10px;">시리즈 Series</h2>
         <div class="post-container">
             <div class="post-card">
@@ -75,13 +126,14 @@ description: "Welcome to SkagoGames!"
 
         <h2 class="center_font" style="font-size: 1.6rem; margin-top: 40px; margin-bottom: 10px;">일반 게임 Games</h2>
         <div class="post-container">
-            <div class="post-card">
+            <div class="post-card is-latest">
                 <a href="https://store.steampowered.com/app/4599560/Torizon_Telecom/">
+                    <span class="latest-badge">NEW</span>
                     <div class="post-thumbnail">
                         <img src="/games/srcs/TorizonTelecom_Logo.png" alt="Torizon : Telecom 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                     </div>
                     <span class="post-tag">Steam (Coming Soon)</span>
-                    <div class="post-title">Torizon : Telecom</div>
+                    <div class="post-title">Torizon Telecom</div>
                     <div class="post-date">FPS</div>
                 </a>
             </div>
@@ -189,8 +241,6 @@ description: "Welcome to SkagoGames!"
                     <div class="post-date">아펙스</div>
                 </a>
             </div>
-        </div>
-
         </div>
     </div>
 </section>
