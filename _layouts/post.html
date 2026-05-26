@@ -22,6 +22,22 @@
 
     <link href="{{ '/assets/css/post.css' | relative_url }}" rel="stylesheet">
     <link rel="icon" href="/skagogames.ico" type="image/x-icon">
+
+    <!-- MathJax — $...$ 인라인, $$...$$ 블럭 수식 지원 -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath:  [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
   </head>
 
   <body>
@@ -45,6 +61,114 @@
     <footer class="post-footer">
       <p class="footer-text">SkagoGames. made in Skago.</p>
     </footer>
+
+    <script>
+    (function () {
+
+      /* ── 콜아웃 변환 (Obsidian > [!TYPE] → styled callout) ── */
+      var typeMap = {
+        note:      { icon: 'ℹ️',  label: 'NOTE',      color: 'note'      },
+        info:      { icon: 'ℹ️',  label: 'INFO',      color: 'note'      },
+        abstract:  { icon: '📋', label: 'ABSTRACT',  color: 'note'      },
+        summary:   { icon: '📋', label: 'SUMMARY',   color: 'note'      },
+        tldr:      { icon: '📋', label: 'TL;DR',     color: 'note'      },
+        tip:       { icon: '💡', label: 'TIP',       color: 'tip'       },
+        hint:      { icon: '💡', label: 'HINT',      color: 'tip'       },
+        important: { icon: '🔷', label: 'IMPORTANT', color: 'important' },
+        warning:   { icon: '⚠️', label: 'WARNING',   color: 'warning'   },
+        caution:   { icon: '⚠️', label: 'CAUTION',   color: 'warning'   },
+        attention: { icon: '⚠️', label: 'ATTENTION', color: 'warning'   },
+        danger:    { icon: '🔴', label: 'DANGER',    color: 'danger'    },
+        error:     { icon: '🔴', label: 'ERROR',     color: 'danger'    },
+        bug:       { icon: '🐛', label: 'BUG',       color: 'danger'    },
+        failure:   { icon: '❌', label: 'FAILURE',   color: 'danger'    },
+        fail:      { icon: '❌', label: 'FAIL',      color: 'danger'    },
+        missing:   { icon: '❌', label: 'MISSING',   color: 'danger'    },
+        success:   { icon: '✅', label: 'SUCCESS',   color: 'success'   },
+        check:     { icon: '✅', label: 'CHECK',     color: 'success'   },
+        done:      { icon: '✅', label: 'DONE',      color: 'success'   },
+        question:  { icon: '❓', label: 'QUESTION',  color: 'question'  },
+        help:      { icon: '❓', label: 'HELP',      color: 'question'  },
+        faq:       { icon: '❓', label: 'FAQ',       color: 'question'  },
+        example:   { icon: '🔍', label: 'EXAMPLE',   color: 'example'   },
+        quote:     { icon: '💬', label: 'QUOTE',     color: 'quote'     },
+        cite:      { icon: '💬', label: 'CITE',      color: 'quote'     }
+      };
+
+      document.querySelectorAll('.markdown-body blockquote').forEach(function (bq) {
+        var firstP = bq.querySelector('p:first-child');
+        if (!firstP) return;
+
+        /* [!TYPE], [!TYPE+], [!TYPE-], [!TYPE Custom Title] 패턴 매칭 */
+        var m = firstP.textContent.trim().match(/^\[!([\w]+)([+\-]?)(?:\s+([\s\S]*))?$/);
+        if (!m) return;
+
+        var type   = m[1].toLowerCase();
+        var mode   = m[2];               /* '+' 펼침 | '-' 접힘 | '' 고정 */
+        var cTitle = (m[3] || '').trim();
+        var info   = typeMap[type] || { icon: '📌', label: type.toUpperCase(), color: 'note' };
+        var label  = cTitle || info.label;
+
+        bq.classList.add('callout', 'callout-' + info.color);
+
+        /* 본문 노드 수집 */
+        var bodyFrag = document.createDocumentFragment();
+        Array.from(bq.children).slice(1).forEach(function (c) { bodyFrag.appendChild(c); });
+        var bodyDiv = document.createElement('div');
+        bodyDiv.className = 'callout-body';
+        bodyDiv.appendChild(bodyFrag);
+
+        firstP.remove();
+        bq.innerHTML = '';
+
+        var titleHTML = '<span class="callout-icon">' + info.icon + '</span>'
+                      + '<span class="callout-label">' + label + '</span>';
+
+        if (mode === '+' || mode === '-') {
+          /* 접기/펼치기 */
+          var details = document.createElement('details');
+          if (mode !== '-') details.open = true;
+
+          var summary = document.createElement('summary');
+          var titleDiv = document.createElement('div');
+          titleDiv.className = 'callout-title';
+          titleDiv.innerHTML = titleHTML + '<span class="callout-fold">&#9654;</span>';
+          summary.appendChild(titleDiv);
+
+          details.appendChild(summary);
+          details.appendChild(bodyDiv);
+          bq.appendChild(details);
+        } else {
+          /* 고정 */
+          var titleDiv2 = document.createElement('div');
+          titleDiv2.className = 'callout-title';
+          titleDiv2.innerHTML = titleHTML;
+          bq.appendChild(titleDiv2);
+          bq.appendChild(bodyDiv);
+        }
+      });
+
+      /* ── 코드 블럭 언어 레이블 ── */
+      document.querySelectorAll('.markdown-body [class*="language-"]').forEach(function (wrapper) {
+        var highlight = wrapper.querySelector('.highlight');
+        if (!highlight) return;
+
+        var langClass = Array.from(wrapper.classList).find(function (c) {
+          return c.startsWith('language-') && !c.includes('highlighter');
+        });
+        if (!langClass) return;
+
+        var lang = langClass.replace('language-', '').trim();
+        if (!lang) return;
+
+        var lbl = document.createElement('span');
+        lbl.className = 'code-lang';
+        lbl.textContent = lang;
+        highlight.appendChild(lbl);
+      });
+
+    })();
+    </script>
 
   </body>
 </html>

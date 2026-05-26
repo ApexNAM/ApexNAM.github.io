@@ -8,7 +8,7 @@
 }
 
 /* =========================================
-   CSS 변수 (style.css와 완전 동일)
+   CSS 변수
    ========================================= */
 
 :root {
@@ -35,7 +35,7 @@
 }
 
 /* =========================================
-   body — 전체 배경 통일
+   body
    ========================================= */
 
 body {
@@ -67,7 +67,7 @@ body {
 
 .post-header a {
   display: inline-block;
-  line-height: 0; /* 이미지 아래 인라인 여백 제거 */
+  line-height: 0;
   text-decoration: none;
 }
 
@@ -124,7 +124,6 @@ main {
   font-size: 17px;
   line-height: 1.75;
   color: var(--text);
-  /* background는 body에서 상속 — 별도 지정 없음 */
 }
 
 @media (max-width: 900px) {
@@ -190,14 +189,19 @@ main {
   text-decoration: underline;
 }
 
+/* =========================================
+   수평선
+   ========================================= */
+
 .markdown-body hr {
   border: none;
-  border-top: 1px solid var(--border);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
   margin: 3em 0;
 }
 
 /* =========================================
-   인용문 & 콜아웃
+   인용문 (일반 blockquote)
    ========================================= */
 
 .markdown-body blockquote {
@@ -219,18 +223,93 @@ main {
   margin-bottom: 0;
 }
 
-.callout-note {
-  border-left: 3px solid var(--primary);
-  background: rgba(0, 187, 255, 0.07);
-  padding: 12px 16px;
-  margin: 1.5em 0;
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
 @media (max-width: 600px) {
   .markdown-body blockquote {
     padding: 10px 14px;
   }
+}
+
+/* =========================================
+   콜아웃  (Obsidian  >  [!TYPE]  문법)
+   ========================================= */
+
+/* 타입별 색상 토큰 */
+.callout-note      { --co: #00bbff; --co-bg: rgba(0, 187, 255, 0.07); }
+.callout-tip       { --co: #00ffcc; --co-bg: rgba(0, 255, 204, 0.07); }
+.callout-important { --co: #8957e5; --co-bg: rgba(137, 87, 229, 0.07); }
+.callout-warning   { --co: #e3b341; --co-bg: rgba(227, 179, 65, 0.07); }
+.callout-danger    { --co: #f85149; --co-bg: rgba(248, 81, 73, 0.07); }
+.callout-success   { --co: #3fb950; --co-bg: rgba(63, 185, 80, 0.07); }
+.callout-question  { --co: #e3b341; --co-bg: rgba(227, 179, 65, 0.07); }
+.callout-example   { --co: #bc8cff; --co-bg: rgba(188, 140, 255, 0.07); }
+.callout-quote     { --co: #8b949e; --co-bg: rgba(139, 148, 158, 0.07); }
+
+/* 베이스 오버라이드 */
+.markdown-body blockquote.callout {
+  border-left: 3px solid var(--co, var(--primary));
+  background: var(--co-bg, rgba(0, 187, 255, 0.07));
+  padding: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 0.9em;
+  color: var(--co, var(--primary));
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  letter-spacing: 0.03em;
+}
+
+.callout-icon {
+  font-size: 1em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.callout-fold {
+  margin-left: auto;
+  font-size: 0.75em;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.callout-body {
+  padding: 12px 16px;
+}
+
+.callout-body > p:first-child { margin-top: 0; }
+.callout-body > p:last-child  { margin-bottom: 0; }
+
+/* 접기/펼치기 */
+.callout details {
+  display: block;
+}
+
+.callout details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.callout details > summary::-webkit-details-marker { display: none; }
+.callout details > summary:focus { outline: none; }
+
+.callout details > summary .callout-title {
+  border-bottom: none;
+}
+
+.callout details[open] > summary .callout-title {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.callout details[open] > summary .callout-fold {
+  transform: rotate(90deg);
 }
 
 /* =========================================
@@ -274,8 +353,83 @@ main {
   }
 }
 
+/* 언어 레이블 */
+.markdown-body .highlight {
+  position: relative;
+}
+
+.code-lang {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 0.7em;
+  color: var(--text-muted);
+  font-family: 'Consolas', monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
 /* =========================================
-   테이블
+   신택스 하이라이트  (Rouge 다크 테마)
+   ========================================= */
+
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs   { color: #8b949e; font-style: italic; }
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr   { color: #ff7b72; }
+.highlight .kt   { color: #ffa657; }
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc   { color: #a5d6ff; }
+.highlight .sd   { color: #a5d6ff; font-style: italic; }
+.highlight .se,
+.highlight .si   { color: #79c0ff; }
+.highlight .sr   { color: #a5d6ff; }
+
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo   { color: #79c0ff; }
+
+.highlight .na   { color: #79c0ff; }
+.highlight .nb   { color: #e6edf3; }
+.highlight .nc,
+.highlight .nn   { color: #ffa657; }
+.highlight .nf,
+.highlight .fm   { color: #d2a8ff; }
+.highlight .no   { color: #79c0ff; }
+.highlight .nd   { color: #d2a8ff; }
+.highlight .nt   { color: #7ee787; }
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi   { color: #ffa657; }
+
+.highlight .o,
+.highlight .ow   { color: #ff7b72; }
+.highlight .p    { color: #e6edf3; }
+.highlight .ge   { font-style: italic; }
+.highlight .err  { color: #f85149; background: rgba(248, 81, 73, 0.15); border-radius: 3px; }
+.highlight .gh   { color: #79c0ff; font-weight: bold; }
+.highlight .gp   { color: #8b949e; }
+
+/* =========================================
+   테이블 (Obsidian Bases 호환)
    ========================================= */
 
 .markdown-body table {
@@ -286,6 +440,8 @@ main {
   display: block;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
 }
 
 .markdown-body th,
@@ -293,17 +449,26 @@ main {
   border: 1px solid var(--border);
   padding: 10px 14px;
   text-align: left;
-  white-space: nowrap;
 }
 
 .markdown-body th {
   background: rgba(0, 187, 255, 0.12);
   font-weight: 700;
-  color: var(--text);
+  color: var(--primary);
+  white-space: nowrap;
 }
 
-.markdown-body tr:nth-child(even) {
+.markdown-body td {
+  word-break: break-word;
+}
+
+.markdown-body tr:nth-child(even) td {
   background: rgba(255, 255, 255, 0.03);
+}
+
+.markdown-body tr:hover td {
+  background: rgba(0, 187, 255, 0.05);
+  transition: background 0.15s ease;
 }
 
 @media (max-width: 600px) {
@@ -326,7 +491,6 @@ main {
   display: block;
 }
 
-/* 헤더 로고는 위에서 별도 처리 */
 .logo {
   max-width: 100%;
   height: auto;
@@ -334,7 +498,7 @@ main {
 }
 
 /* =========================================
-   강조 & 옵시디언 기능
+   강조 & 태스크 리스트
    ========================================= */
 
 .markdown-body mark {
@@ -369,6 +533,22 @@ main {
 }
 
 /* =========================================
+   수식 (MathJax)
+   ========================================= */
+
+.markdown-body .MathJax {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body mjx-container[display="true"] {
+  display: block;
+  overflow-x: auto;
+  padding: 0.8em 0;
+  text-align: center;
+}
+
+/* =========================================
    각주
    ========================================= */
 
@@ -380,7 +560,7 @@ main {
 
 .markdown-body .footnotes {
   margin-top: 3em;
-  padding-top: 1em;
+  padding-top: 1.2em;
   border-top: 1px solid var(--border);
   font-size: 0.88em;
   color: var(--text-muted);
@@ -388,6 +568,24 @@ main {
 
 .markdown-body .footnotes ol {
   padding-left: 20px;
+}
+
+.markdown-body .footnotes li {
+  margin-bottom: 0.5em;
+  line-height: 1.65;
+}
+
+.markdown-body .footnotes .reversefootnote {
+  color: var(--primary);
+  text-decoration: none;
+  margin-left: 4px;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.markdown-body .footnotes .reversefootnote:hover {
+  color: var(--secondary);
+  opacity: 1;
 }
 
 /* =========================================
