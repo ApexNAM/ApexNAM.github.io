@@ -1,16 +1,14 @@
 ---
-title:  "2026년 3월 후기"
-excerpt: "2026년 3월 후기"
+title: 2026년 3월 후기
+excerpt: 2026년 3월 후기
 layout: post
-
 categories:
   - review
 tags:
-  - [review]
-
+  - - review
 toc: true
 toc_sticky: true
-published : true
+published: true
 ---
 
 # 개요
