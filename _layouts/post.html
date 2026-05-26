@@ -148,6 +148,59 @@
         }
       });
 
+      /* ── 각주 툴팁 ── */
+      (function () {
+        var tip = null;
+        var hideTimer = null;
+
+        function buildTip(anchor) {
+          var id = (anchor.getAttribute('href') || '').replace('#', '');
+          var fnEl = document.getElementById(id);
+          if (!fnEl) return null;
+
+          var clone = fnEl.cloneNode(true);
+          var back = clone.querySelector('.reversefootnote');
+          if (back) back.remove();
+
+          var el = document.createElement('div');
+          el.className = 'fn-tooltip';
+          el.innerHTML = clone.innerHTML.trim();
+          document.body.appendChild(el);
+          return el;
+        }
+
+        function placeTip(el, anchor) {
+          var ar = anchor.getBoundingClientRect();
+          var tr = el.getBoundingClientRect();
+          var gap = 7;
+          var top = ar.top - tr.height - gap;
+          if (top < 8) top = ar.bottom + gap;
+          var left = ar.left + ar.width / 2 - tr.width / 2;
+          left = Math.max(8, Math.min(left, window.innerWidth - tr.width - 8));
+          el.style.top  = top  + 'px';
+          el.style.left = left + 'px';
+        }
+
+        document.querySelectorAll('.markdown-body a.footnote').forEach(function (a) {
+          a.addEventListener('mouseenter', function () {
+            clearTimeout(hideTimer);
+            if (tip) { tip.remove(); tip = null; }
+            tip = buildTip(a);
+            if (!tip) return;
+            placeTip(tip, a);
+            requestAnimationFrame(function () { tip && tip.classList.add('fn-tooltip--visible'); });
+          });
+          a.addEventListener('mouseleave', function () {
+            hideTimer = setTimeout(function () {
+              if (tip) {
+                tip.classList.remove('fn-tooltip--visible');
+                setTimeout(function () { if (tip) { tip.remove(); tip = null; } }, 150);
+              }
+            }, 80);
+          });
+        });
+      }());
+
       /* ── 코드 블럭 언어 레이블 ── */
       document.querySelectorAll('.markdown-body [class*="language-"]').forEach(function (wrapper) {
         var highlight = wrapper.querySelector('.highlight');
