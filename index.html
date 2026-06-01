@@ -53,6 +53,50 @@ description: "Welcome to SkagoGames!"
     box-shadow: 0 0 10px rgba(0, 166, 255, 0.7);
     z-index: 1;
   }
+
+  /* 종료된 프로젝트 */
+  .post-card.terminated {
+    opacity: 0.65;
+    cursor: default;
+  }
+
+  .post-card.terminated > div {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .post-card.terminated .post-thumbnail img {
+    filter: grayscale(100%);
+  }
+
+  .post-card.terminated .post-tag {
+    background: rgba(90, 90, 90, 0.35) !important;
+    color: #777 !important;
+    border-color: rgba(90, 90, 90, 0.4) !important;
+  }
+
+  .post-card.terminated .post-title {
+    color: #666 !important;
+  }
+
+  .post-card.terminated .post-date {
+    color: #555 !important;
+  }
+
+  .terminated-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(50, 50, 50, 0.88);
+    color: #999;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
+  }
 </style>
 
 <section class="main-container">
@@ -157,15 +201,16 @@ description: "Welcome to SkagoGames!"
                     <div class="post-date">프로젝트 토라이즌</div>
                 </a>
             </div>
-            <div class="post-card">
-                <a href="https://www.game-ping.kr/posts/116">
-                    <div class="post-thumbnail">
+            <div class="post-card terminated">
+                <div>
+                    <div class="post-thumbnail" style="position: relative;">
                         <img src="/games/srcs/TzechiangDevlog_Title.png" alt="자강일지 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <span class="terminated-badge">서비스 종료</span>
                     </div>
                     <span class="post-tag text-yellow">Devlog</span>
                     <div class="post-title">Tze-chiang Devlog</div>
                     <div class="post-date">自強日誌 (자강일지)</div>
-                </a>
+                </div>
             </div>
         </div>
     </div>
