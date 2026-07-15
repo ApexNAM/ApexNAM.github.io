@@ -65,6 +65,88 @@
     <script>
     (function () {
 
+      /* ── Obsidian 호환: 이미지 경로·위키링크·URL 자동 보정 ── */
+      (function () {
+        var root = document.querySelector('.markdown-body');
+        if (!root) return;
+
+        var IMG_DIR = '/srcs/imgs/post_imgs/';
+
+        /* 1) 상대 경로 이미지 → 사이트 루트 기준 절대 경로 */
+        root.querySelectorAll('img').forEach(function (img) {
+          var src = img.getAttribute('src') || '';
+          if (src && src.charAt(0) !== '/' &&
+              !/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(src)) {
+            img.setAttribute('src', '/' + src);
+          }
+        });
+
+        /* 2) 텍스트로 남은 ![[파일.png]] 임베드와 맨 URL 처리 */
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode: function (n) {
+            var p = n.parentNode;
+            while (p && p !== root) {
+              var t = p.nodeName;
+              if (t === 'A' || t === 'CODE' || t === 'PRE' ||
+                  t === 'SCRIPT' || t === 'STYLE') return NodeFilter.FILTER_REJECT;
+              p = p.parentNode;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        var textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+        var pattern = /!\[\[([^\]|]+?)(?:\|([^\]]*))?\]\]|https?:\/\/[A-Za-z0-9\-._~:/?#@!$&'()*+,;=%]+/g;
+
+        textNodes.forEach(function (node) {
+          var text = node.nodeValue;
+          if (!/!\[\[|https?:\/\//.test(text)) return;
+
+          var frag = document.createDocumentFragment();
+          var last = 0, m;
+          pattern.lastIndex = 0;
+
+          while ((m = pattern.exec(text))) {
+            frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+            last = pattern.lastIndex;
+
+            if (m[0].charAt(0) === '!') {
+              /* ![[파일.png]] 또는 ![[파일.png|400]] → <img> */
+              var target = m[1].trim();
+              var opt    = (m[2] || '').trim();
+              var src    = target.indexOf('/') !== -1 ? target : IMG_DIR + target;
+              if (src.charAt(0) !== '/') src = '/' + src;
+
+              var img = document.createElement('img');
+              img.src = encodeURI(src);
+              img.alt = /^\d+$/.test(opt) || !opt ? target : opt;
+              img.style.maxWidth = /^\d+$/.test(opt) ? opt + 'px' : '600px';
+              img.style.height = 'auto';
+              frag.appendChild(img);
+            } else {
+              /* 맨 URL → 클릭 가능한 링크 (끝에 붙은 문장부호는 제외) */
+              var url = m[0], trail = '';
+              while (/[.,;:!?'"”’]$/.test(url) ||
+                     (url.slice(-1) === ')' && url.indexOf('(') === -1)) {
+                trail = url.slice(-1) + trail;
+                url = url.slice(0, -1);
+              }
+              var a = document.createElement('a');
+              a.href = url;
+              a.textContent = url;
+              a.target = '_blank';
+              a.rel = 'noopener';
+              frag.appendChild(a);
+              if (trail) frag.appendChild(document.createTextNode(trail));
+            }
+          }
+
+          frag.appendChild(document.createTextNode(text.slice(last)));
+          node.parentNode.replaceChild(frag, node);
+        });
+      }());
+
       /* ── 콜아웃 변환 (Obsidian > [!TYPE] → styled callout) ── */
       var typeMap = {
         note:      { icon: 'ℹ️',  label: 'NOTE',      color: 'note'      },

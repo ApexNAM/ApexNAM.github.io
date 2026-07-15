@@ -10,7 +10,7 @@ toc: true
 toc_sticky: true
 published: true
 ---
-![](srcs/imgs/post_imgs/BIC2026_TorizonTelecom%20(1).png)
+![BIC 2026 Torizon Telecom](/srcs/imgs/post_imgs/BIC2026_TorizonTelecom.png){: style="max-width: 600px; height: auto;" }
 
 안녕하세요. 아펙스입니다.
 **Torizon Telecom이 BIC 2026에 참여합니다!**
@@ -31,8 +31,8 @@ BIC 활동 후기 글도 작성할 예정이오니
 자세한 공지와 소식은
 SNS를 참고 부탁드립니다.
 
-X (트위터) : https://x.com/Skago_CyberApex
-인스타그램 : https://www.instagram.com/cyberapex6344/
+X (트위터) : [https://x.com/Skago_CyberApex](https://x.com/Skago_CyberApex)
+인스타그램 : [https://www.instagram.com/cyberapex6344/](https://www.instagram.com/cyberapex6344/)
 
 그럼.. 많은 관심 부탁드립니다.
 감사합니다.
