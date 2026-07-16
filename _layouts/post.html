@@ -181,20 +181,40 @@
         var firstP = bq.querySelector('p:first-child');
         if (!firstP) return;
 
-        /* [!TYPE], [!TYPE+], [!TYPE-], [!TYPE Custom Title] 패턴 매칭 */
-        var m = firstP.textContent.trim().match(/^\[!([\w]+)([+\-]?)(?:\s+([\s\S]*))?$/);
+        /* 첫 줄(<br> 이전)만 떼어 [!...] 헤더인지 검사
+           — hard_wrap 때문에 제목과 본문이 한 <p>에 섞여 들어옴 */
+        var nodes   = Array.prototype.slice.call(firstP.childNodes);
+        var brIdx   = -1;
+        for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].nodeName === 'BR') { brIdx = i; break; }
+        }
+        var headNodes = brIdx === -1 ? nodes : nodes.slice(0, brIdx);
+        var restNodes = brIdx === -1 ? []    : nodes.slice(brIdx + 1);
+        var headText  = headNodes.map(function (n) { return n.textContent; })
+                                 .join('').trim();
+
+        /* [!TYPE], [!TYPE]-, [!TYPE] 제목, [!한글 문구도 OK] 패턴 매칭 */
+        var m = headText.match(/^\[!([^\]\n]+)\]([+\-]?)[ \t]*([\s\S]*)$/);
         if (!m) return;
 
-        var type   = m[1].toLowerCase();
-        var mode   = m[2];               /* '+' 펼침 | '-' 접힘 | '' 고정 */
-        var cTitle = (m[3] || '').trim();
-        var info   = typeMap[type] || { icon: '📌', label: type.toUpperCase(), color: 'note' };
-        var label  = cTitle || info.label;
+        var typeKey = m[1].trim().toLowerCase();
+        var mode    = m[2];              /* '+' 펼침 | '-' 접힘 | '' 고정 */
+        var cTitle  = (m[3] || '').trim();
+
+        /* 모르는 타입은 Obsidian처럼 ✏️ 아이콘 + 괄호 안 문구를 제목으로 */
+        var info  = typeMap[typeKey] || { icon: '✏️', label: m[1].trim(), color: 'note' };
+        var label = (cTitle || info.label)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
         bq.classList.add('callout', 'callout-' + info.color);
 
-        /* 본문 노드 수집 */
+        /* 본문 노드 수집: 첫 <p>에서 헤더 뒤에 남은 줄 + 나머지 형제 요소 */
         var bodyFrag = document.createDocumentFragment();
+        if (restNodes.length) {
+          var restP = document.createElement('p');
+          restNodes.forEach(function (n) { restP.appendChild(n); });
+          bodyFrag.appendChild(restP);
+        }
         Array.from(bq.children).slice(1).forEach(function (c) { bodyFrag.appendChild(c); });
         var bodyDiv = document.createElement('div');
         bodyDiv.className = 'callout-body';
