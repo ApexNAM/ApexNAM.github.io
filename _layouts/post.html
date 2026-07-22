@@ -121,7 +121,9 @@
               var img = document.createElement('img');
               img.src = encodeURI(src);
               img.alt = /^\d+$/.test(opt) || !opt ? target : opt;
-              img.style.maxWidth = /^\d+$/.test(opt) ? opt + 'px' : '600px';
+              /* 지정 폭이 화면보다 크면 화면 폭에 맞춤 */
+              img.style.maxWidth = /^\d+$/.test(opt)
+                ? 'min(' + opt + 'px, 100%)' : 'min(600px, 100%)';
               img.style.height = 'auto';
               frag.appendChild(img);
             } else {
@@ -162,6 +164,22 @@
         if (textFree && table.querySelector('img')) {
           table.classList.add('image-table');
           wrap.classList.add('table-wrap--image');
+        }
+      });
+
+      /* ── 이미지 모바일 최적화: 지연 로딩 + Obsidian 리사이즈 문법 ── */
+      document.querySelectorAll('.markdown-body img').forEach(function (img, i) {
+        /* 첫 이미지는 즉시 로드(LCP), 나머지는 지연 로딩 */
+        if (i > 0) img.loading = 'lazy';
+        img.decoding = 'async';
+
+        /* ![alt|400](경로) — alt 뒤에 붙는 Obsidian 폭 지정 처리 */
+        var alt = img.getAttribute('alt') || '';
+        var m = alt.match(/^(.*)\|(\d+)\s*$/);
+        if (m) {
+          img.setAttribute('alt', m[1].trim());
+          img.style.maxWidth = 'min(' + m[2] + 'px, 100%)';
+          img.style.height = 'auto';
         }
       });
 

@@ -523,6 +523,27 @@ main {
     padding: 8px 10px;
     font-size: 0.88em;
   }
+
+  /* 이미지 전용 표 → 모바일에선 세로 스택 (나란히 붙어 작아지는 문제 방지) */
+  .markdown-body table.image-table,
+  .markdown-body table.image-table thead,
+  .markdown-body table.image-table tbody,
+  .markdown-body table.image-table tr,
+  .markdown-body table.image-table th,
+  .markdown-body table.image-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .markdown-body table.image-table th,
+  .markdown-body table.image-table td {
+    padding: 4px 0;
+  }
+
+  .markdown-body table.image-table th:empty,
+  .markdown-body table.image-table td:empty {
+    display: none;
+  }
 }
 
 /* =========================================
@@ -535,6 +556,13 @@ main {
   margin: 1.5em 0;
   border-radius: var(--radius);
   display: block;
+}
+
+@media (max-width: 600px) {
+  .markdown-body img {
+    margin: 1.2em auto; /* 화면보다 좁은 이미지는 가운데 정렬 */
+    border-radius: 6px;
+  }
 }
 
 .logo {
