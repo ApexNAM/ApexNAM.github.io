@@ -147,6 +147,24 @@
         });
       }());
 
+      /* ── 테이블: 스크롤 래퍼 + 이미지 전용 표 갤러리화 ── */
+      document.querySelectorAll('.markdown-body table').forEach(function (table) {
+        var wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        table.parentNode.insertBefore(wrap, table);
+        wrap.appendChild(table);
+
+        /* 모든 셀에 텍스트 없이 이미지만 있으면 갤러리 스타일 적용 */
+        var cells = table.querySelectorAll('th, td');
+        var textFree = Array.prototype.every.call(cells, function (c) {
+          return !c.textContent.trim();
+        });
+        if (textFree && table.querySelector('img')) {
+          table.classList.add('image-table');
+          wrap.classList.add('table-wrap--image');
+        }
+      });
+
       /* ── 콜아웃 변환 (Obsidian > [!TYPE] → styled callout) ── */
       var typeMap = {
         note:      { icon: 'ℹ️',  label: 'NOTE',      color: 'note'      },

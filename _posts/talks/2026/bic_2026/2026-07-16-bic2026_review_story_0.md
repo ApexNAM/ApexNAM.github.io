@@ -10,7 +10,7 @@ tags:
   - talk
 toc: true
 toc_sticky: true
-published: true
+published: false
 ---
 # BIC 2026 후기 0회
 
