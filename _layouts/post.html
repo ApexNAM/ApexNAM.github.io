@@ -181,6 +181,15 @@
           img.style.maxWidth = 'min(' + m[2] + 'px, 100%)';
           img.style.height = 'auto';
         }
+
+        /* width 속성이 화면 폭을 넘지 않게 클램프 (잘림 방지) */
+        var w = img.getAttribute('width');
+        if (w && /^\d+$/.test(w)) {
+          img.removeAttribute('width');
+          img.removeAttribute('height');
+          img.style.maxWidth = 'min(' + w + 'px, 100%)';
+          img.style.height = 'auto';
+        }
       });
 
       /* ── 콜아웃 변환 (Obsidian > [!TYPE] → styled callout) ── */
@@ -337,6 +346,44 @@
             }, 80);
           });
         });
+      }());
+
+      /* ── Mermaid 차트 (Obsidian ```mermaid 블럭) ── */
+      (function () {
+        var els = document.querySelectorAll('.markdown-body [class*="language-mermaid"]');
+        if (!els.length) return;
+
+        /* Rouge 래퍼(div.highlighter-rouge) 전체를 mermaid 컨테이너로 교체 */
+        var seen = [];
+        els.forEach(function (el) {
+          var box = el.closest('div.highlighter-rouge') || el.closest('pre') || el;
+          if (seen.indexOf(box) !== -1) return;
+          seen.push(box);
+
+          var code = box.querySelector('code') || box;
+          var pre = document.createElement('pre');
+          pre.className = 'mermaid';
+          pre.textContent = code.textContent;
+          box.parentNode.replaceChild(pre, box);
+        });
+
+        /* 차트가 있는 글에서만 라이브러리 로드 */
+        import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs')
+          .then(function (mod) {
+            var mermaid = mod.default;
+            mermaid.initialize({
+              startOnLoad: false,
+              theme: 'dark',
+              themeVariables: {
+                fontFamily: "'Pretendard', sans-serif",
+                darkMode: true
+              }
+            });
+            return mermaid.run({ querySelector: '.mermaid' });
+          })
+          .catch(function (e) {
+            console.warn('mermaid 로드 실패:', e);
+          });
       }());
 
       /* ── 코드 블럭 언어 레이블 ── */

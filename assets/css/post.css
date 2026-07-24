@@ -571,6 +571,40 @@ main {
   width: auto;
 }
 
+/* 임베드(유튜브 iframe·비디오)도 화면 폭 안에 */
+.markdown-body iframe,
+.markdown-body video {
+  max-width: 100%;
+  border-radius: var(--radius);
+}
+
+/* =========================================
+   Mermaid 차트
+   ========================================= */
+
+.markdown-body pre.mermaid {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 2em 0;
+  text-align: center;
+  overflow-x: auto;       /* 축소해도 넓은 차트는 좌우 스크롤 */
+  -webkit-overflow-scrolling: touch;
+  color: var(--text-muted); /* 렌더 전/실패 시 원본 텍스트 색 */
+}
+
+.markdown-body pre.mermaid svg {
+  max-width: 100%;        /* 모바일에선 화면 폭에 맞게 축소 */
+  height: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .markdown-body pre.mermaid {
+    font-size: 0.85em;
+  }
+}
+
 /* =========================================
    강조 & 태스크 리스트
    ========================================= */
