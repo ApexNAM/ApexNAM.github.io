@@ -190,6 +190,18 @@
           img.style.maxWidth = 'min(' + w + 'px, 100%)';
           img.style.height = 'auto';
         }
+
+        /* 고정 px 인라인 스타일(kramdown IAL `{: style="max-width:600px" }` 등)은
+           인라인이라 스타일시트를 이겨서 좁은 화면에서 사진이 잘림
+           → min(지정폭, 100%)으로 바꿔 화면 폭을 절대 넘지 않게 함 */
+        var mw = img.style.maxWidth;
+        if (mw && mw.indexOf('min(') === -1 && /^\d+(\.\d+)?px$/.test(mw.trim())) {
+          img.style.maxWidth = 'min(' + mw.trim() + ', 100%)';
+        }
+        if (/^\d+(\.\d+)?px$/.test((img.style.width || '').trim())) {
+          img.style.maxWidth = 'min(' + img.style.width.trim() + ', 100%)';
+          img.style.width = 'auto';
+        }
       });
 
       /* ── 콜아웃 변환 (Obsidian > [!TYPE] → styled callout) ── */
