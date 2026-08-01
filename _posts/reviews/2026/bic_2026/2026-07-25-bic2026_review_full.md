@@ -17,7 +17,7 @@ published: false
 
 ![](srcs/imgs/post_imgs/Pasted%20image%2020260716134317.png)
 
-처음으로 BIC에 선정되었다.
+**처음으로 BIC에 선정되었다.**
 
 지금까지는 관람객이나 서포터즈 (빅커넥터즈 4기)로 BIC에 놀러갔었지만
 이번에는 전시자로 참여하게 되었다.
@@ -34,6 +34,7 @@ published: false
 
 ## 프롤로그 (전시 이전)
 
-1. [프롤로그 1장: 나의 첫 BIC 전시의 시작](_posts/talks/2026/bic_2026/2026-07-16-bic2026_review_story_0.md)
-2. [프롤로그 2장: BIC를 준비하자.](_posts/talks/2026/bic_2026/2026-07-22-bic2026_review_story_1.md)
-3. 
+1. [프롤로그 1장: 나의 첫 BIC 전시의 시작](_posts/reviews/2026/bic_2026/2026-07-16-bic2026_review_story_0.md)
+2. [프롤로그 2장: BIC를 준비하자.](_posts/reviews/2026/bic_2026/2026-07-22-bic2026_review_story_1.md)
+3. [프롤로그 3장: 데모데이](_posts/reviews/2026/bic_2026/2026-07-25-bic2026_review_story_2.md)
+4. [프롤로그 4장: 숙소와 네트워킹](_posts/reviews/2026/bic_2026/2026-07-30-bic2026_review_story_3.md)
