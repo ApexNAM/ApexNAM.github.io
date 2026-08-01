@@ -149,6 +149,96 @@
         });
       }());
 
+      /* ── Obsidian 파이프 표 복구 ──
+         hard_wrap 때문에 kramdown이 `| a | b |` 표를 표로 인식하지 못하고
+         <br>로 이어진 한 문단으로 뱉어낸다. 그 문단을 진짜 <table>로 되돌린다.
+         (kramdown이 구분선 `---`을 —(em대시)로 바꿔놓으므로 함께 인식) */
+      (function () {
+        var SEP = /^[\s|:.\-‐-―]+$/;   /* 구분선: -, –, — 등 허용 */
+
+        function stripTags(s) {
+          var d = document.createElement('div');
+          d.innerHTML = s;
+          return d.textContent;
+        }
+        function isRow(s) {
+          var t = stripTags(s).trim();
+          return t.charAt(0) === '|' && t.indexOf('|', 1) !== -1;
+        }
+        function isSep(s) {
+          var t = stripTags(s).trim();
+          return isRow(s) && SEP.test(t) && /[-‐-―]/.test(t);
+        }
+        function cells(s) {
+          var t = s.trim().replace(/^\s*\|/, '').replace(/\|\s*$/, '');
+          return t.split('|');
+        }
+
+        Array.prototype.forEach.call(
+          document.querySelectorAll('.markdown-body p'), function (p) {
+          if (p.textContent.indexOf('|') === -1) return;
+          if (p.querySelector('code, pre')) return;   /* 코드 안의 | 는 건드리지 않음 */
+
+          var lines = p.innerHTML.split(/<br\s*\/?>/i);
+          if (lines.length < 2) return;
+
+          /* 표 줄이 연속으로 이어지는 구간 찾기 (구분선이 반드시 포함되어야 함) */
+          var start = -1, end = -1;
+          for (var i = 0; i < lines.length; i++) {
+            if (!isRow(lines[i])) {
+              if (start !== -1) break;
+              continue;
+            }
+            if (start === -1) start = i;
+            end = i;
+          }
+          if (start === -1) return;
+
+          var sepIdx = -1;
+          for (var j = start; j <= end; j++) {
+            if (isSep(lines[j])) { sepIdx = j; break; }
+          }
+          /* 구분선이 없거나 맨 첫 줄이면 표가 아님 */
+          if (sepIdx <= start) return;
+
+          var table = document.createElement('table');
+          var thead = document.createElement('thead');
+          var tbody = document.createElement('tbody');
+
+          for (var k = start; k <= end; k++) {
+            if (k === sepIdx) continue;
+            var isHead = k < sepIdx;
+            var tr = document.createElement('tr');
+            cells(lines[k]).forEach(function (c) {
+              var cell = document.createElement(isHead ? 'th' : 'td');
+              cell.innerHTML = c.trim();
+              tr.appendChild(cell);
+            });
+            (isHead ? thead : tbody).appendChild(tr);
+          }
+
+          if (thead.children.length) table.appendChild(thead);
+          if (tbody.children.length) table.appendChild(tbody);
+
+          /* 표 앞뒤에 남은 줄은 문단으로 되살림 */
+          function makeP(arr) {
+            var txt = arr.join('<br>').replace(/^(?:\s|<br\s*\/?>)+|(?:\s|<br\s*\/?>)+$/gi, '');
+            if (!txt) return null;
+            var el = document.createElement('p');
+            el.innerHTML = txt;
+            return el;
+          }
+          var before = makeP(lines.slice(0, start));
+          var after  = makeP(lines.slice(end + 1));
+
+          var parent = p.parentNode;
+          if (before) parent.insertBefore(before, p);
+          parent.insertBefore(table, p);
+          if (after) parent.insertBefore(after, p);
+          p.remove();
+        });
+      }());
+
       /* ── 테이블: 스크롤 래퍼 + 이미지 전용 표 갤러리화 ── */
       document.querySelectorAll('.markdown-body table').forEach(function (table) {
         var wrap = document.createElement('div');
