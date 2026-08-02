@@ -12,13 +12,14 @@ toc: true
 toc_sticky: true
 published: true
 ---
-[2026-08-02-review_of_seoulgametown2](_posts/reviews/2026/2026-08-02-review_of_seoulgametown2.md)> [!늦은 후기 글이다. ]
+
+# 개요
+
+> [!NOTE] 늦은 후기 글이다. 
 > 사실 행사 자체는 6.25에서 6.26까지 진행했었는데 
 > 후기글을 쓰는 걸 까먹고 있었다.
 > 
 > 간단하게 써보겠다.
-
-# 개요
 
 | ![](srcs/imgs/post_imgs/Pasted%20image%2020260802011006.png) | ![](srcs/imgs/post_imgs/Pasted%20image%2020260802011607.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
