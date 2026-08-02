@@ -13,7 +13,7 @@ tags:
   - bic2026
 toc: true
 toc_sticky: true
-published: true
+published: false
 ---
 
 # BIC까지 D-23. 

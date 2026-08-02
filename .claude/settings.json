@@ -4,7 +4,8 @@
       "PowerShell($p = \"c:\\\\SkagoGames_Project\\\\ApexNAM.github.io\"; Write-Output \"=== .gitignore ===\"; Get-Content \"$p\\\\.gitignore\" | Out-String; Write-Output \"=== assets 추적 상태 ===\"; git -C $p ls-files assets | Out-String; Write-Output \"=== post_imgs 추적 상태 ===\"; git -C $p ls-files srcs/imgs/post_imgs | Out-String)",
       "PowerShell(Write-Output \"node:\"; try { node -v } catch { \"없음\" }; Write-Output \"npx:\"; try { npx -v } catch { \"없음\" }; Write-Output \"chrome:\"; $c = @\\(\"$env:ProgramFiles\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"${env:ProgramFiles\\(x86\\)}\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"$env:LOCALAPPDATA\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"$env:ProgramFiles\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\",\"${env:ProgramFiles\\(x86\\)}\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"\\); foreach \\($x in $c\\) { if \\(Test-Path $x\\) { $x } })",
       "PowerShell(node \"C:\\\\Users\\\\jacks\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--SkagoGames-Project-ApexNAM-github-io\\\\710adf14-e43f-48f3-89b3-c26809acfd07\\\\scratchpad\\\\verify.js\")",
-      "PowerShell(node \"C:\\\\Users\\\\jacks\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--SkagoGames-Project-ApexNAM-github-io\\\\710adf14-e43f-48f3-89b3-c26809acfd07\\\\scratchpad\\\\verify-before.js\")"
+      "PowerShell(node \"C:\\\\Users\\\\jacks\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--SkagoGames-Project-ApexNAM-github-io\\\\710adf14-e43f-48f3-89b3-c26809acfd07\\\\scratchpad\\\\verify-before.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\jacks\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--SkagoGames-Project-ApexNAM-github-io\\\\710adf14-e43f-48f3-89b3-c26809acfd07\\\\scratchpad\\\\verify-links.js\")"
     ]
   }
 }

@@ -12,8 +12,12 @@ tags:
   - bic2026
 toc: true
 toc_sticky: true
-published: true
+published: false
 ---
+
+> [!NOTE] 이 페이지는 아직 미완성된 글입니다.
+> 추후 업데이트 예정
+
 
 ![](srcs/imgs/post_imgs/Pasted%20image%2020260716134317.png)
 
@@ -36,3 +40,5 @@ published: true
 
 1. [프롤로그 1장: 나의 첫 BIC 전시의 시작](_posts/reviews/2026/bic_2026/2026-07-16-bic2026_review_story_0.md)
 2. [프롤로그 2장: BIC를 준비하자.](_posts/reviews/2026/bic_2026/2026-07-22-bic2026_review_story_1.md)
+3. [프롤로그 3장: 데모데이](_posts/reviews/2026/bic_2026/2026-07-25-bic2026_review_story_2.md)
+4. [프롤로그 4장: 숙소와 네트워킹](_posts/reviews/2026/bic_2026/2026-07-30-bic2026_review_story_3.md)

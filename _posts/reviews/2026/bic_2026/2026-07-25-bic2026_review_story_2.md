@@ -8,6 +8,7 @@ tags:
   - review
   - bic
   - bic2026
+  - talk
 toc: true
 toc_sticky: true
 published: false
