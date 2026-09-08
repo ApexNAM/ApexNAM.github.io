@@ -13,7 +13,7 @@ toc_sticky: true
 published : true
 ---
 
-![이미지 설명](/srcs/imgs/post_imgs/project_tv/project_tv_0.png){: style="max-width: 600px; height: auto;" }
+![이미지 설명](/srcs/imgs/post_imgs/project_tv/project_tv_0.png)
 
 
 안녕하세요. 아펙스입니다.
