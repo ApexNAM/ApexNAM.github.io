@@ -670,7 +670,7 @@
     })();
     </script>
 
-    <script id="link-preview-data" type="application/json">{{ page.link_previews | default: '{}' | jsonify | replace: '</', '<\/' }}</script>
+    <script id="link-preview-data" type="application/json">{% if page.link_previews %}{{ page.link_previews | jsonify | replace: '</', '<\/' }}{% else %}{}{% endif %}</script>
     <script src="{{ '/assets/js/link-previews.js' | relative_url }}" defer></script>
   </body>
 </html>
