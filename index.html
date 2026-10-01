@@ -4,219 +4,43 @@ title: "SkagoGames. made in Skago."
 description: "Welcome to SkagoGames!"
 ---
 
-<style>
-  @keyframes glow-pulse {
-    0%, 100% {
-      box-shadow: 0 0 10px rgba(0, 166, 255, 0.5), 0 0 30px rgba(0, 166, 255, 0.2);
-      border-color: rgba(0, 166, 255, 0.7);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(0, 166, 255, 1), 0 0 60px rgba(0, 166, 255, 0.4);
-      border-color: #00a6ff;
-    }
-  }
+<div class="logo-background" data-logo-scene data-model="{{ '/assets/SkagoGames_Logo_ThreeD.gltf' | relative_url }}" aria-hidden="true"></div>
+<section class="studio-hero page-width">
+  <div class="studio-intro">
+    <h1>SkagoGames.<br><span>made in Skago.</span></h1>
+    <p class="hero-english">완전한 끝에서 새로운 시작까지.<br>From the complete end to a new beginning.</p>
+    <div class="studio-actions"><a class="site-button primary" href="#games">게임 Games ↗</a><a class="site-button" href="/post/">게시글 POST →</a></div>
+  </div>
+</section>
+<section class="page-width home-section" id="games">
+  <div class="section-header"><div><h2>List of Games</h2></div><a class="text-link" href="/games/">모든 게임 ↗</a></div>
+  <p class="archive-description">제작된 게임들은 아래와 같습니다.<br>그 외에 다른 플랫폼으로 업로드된 게임은 itch.io 페이지를 참고 부탁드립니다.<br><br>The games we have developed are as follows.<br>For games uploaded on other platforms, please refer to our itch.io page.</p>
+  <h2 class="section-heading">게임 Games</h2>
+  {% include game-cards.html %}
+</section>
 
-  @keyframes shimmer {
-    0% { transform: translateX(-100%) skewX(-15deg); }
-    100% { transform: translateX(250%) skewX(-15deg); }
-  }
+<section class="page-width home-section" data-post-browser>
+  <div class="section-header"><div><h2>게시글 POST</h2></div><div class="section-tools"><div class="view-switch" role="group" aria-label="포스트 보기 방식"><button type="button" data-view="gallery" aria-pressed="true">▦ 갤러리</button><button type="button" data-view="list" aria-pressed="false">☰ 리스트</button></div><a class="text-link" href="/post/">모든 포스트 ↗</a></div></div>
+  <div class="journal-collection" data-post-collection data-layout="gallery">
+    {% for post in site.posts limit:6 %}
+      {% include post-card.html %}
+    {% endfor %}
+  </div>
+</section>
 
-  .post-card.is-latest a {
-    animation: glow-pulse 2.5s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
-  }
+<section class="page-width home-section" data-post-browser data-storage-key="skago-notice-view" data-default-view="list">
+  <div class="section-header"><div><h2>최신 공지사항 Notice</h2></div><div class="section-tools"><div class="view-switch" role="group" aria-label="공지사항 보기 방식"><button type="button" data-view="gallery" aria-pressed="false">▦ 갤러리</button><button type="button" data-view="list" aria-pressed="true">☰ 리스트</button></div><a class="text-link" href="/notice/">공지 전체 ↗</a></div></div>
+  <div class="journal-collection" data-post-collection data-layout="list">
+    {% for post in site.categories.notification limit:3 %}
+      {% include post-card.html %}
+    {% endfor %}
+  </div>
+</section>
 
-  .post-card.is-latest a::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    animation: shimmer 3s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  .latest-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: linear-gradient(135deg, #00a6ff, #0055cc);
-    color: #fff;
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 20px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    box-shadow: 0 0 10px rgba(0, 166, 255, 0.7);
-    z-index: 1;
-  }
-
-  /* 종료된 프로젝트 */
-  .post-card.terminated {
-    opacity: 0.65;
-    cursor: default;
-  }
-
-  .post-card.terminated > div {
-    cursor: default;
-    pointer-events: none;
-  }
-
-  .post-card.terminated .post-thumbnail img {
-    filter: grayscale(100%);
-  }
-
-  .post-card.terminated .post-tag {
-    background: rgba(90, 90, 90, 0.35) !important;
-    color: #777 !important;
-    border-color: rgba(90, 90, 90, 0.4) !important;
-  }
-
-  .post-card.terminated .post-title {
-    color: #666 !important;
-  }
-
-  .post-card.terminated .post-date {
-    color: #555 !important;
-  }
-
-  .terminated-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(50, 50, 50, 0.88);
-    color: #999;
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 20px;
-    letter-spacing: 0.08em;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 1;
-  }
-</style>
-
-<section class="main-container">
-    <h1 class="center_font">SkagoGames. made in Skago.</h1>
-
-    <p class="about_font">
-        완전한 끝에서 새로운 시작까지.<br>
-        From the complete end to a new beginning.
-    </p>
-    
-    <div style="width: 100%; margin-top: 50px;">
-        <h2 class="center_font" style="font-size: 1.6rem; margin-bottom: 25px;">최신 공지사항 Notice</h2>
-
-        <div class="post-container">
-            {% for post in site.categories.notification limit:3 %}
-                <div class="post-card">
-                    <a href="{{ post.url }}">
-                        <span class="post-tag">공지 Notice</span>
-                        <div class="post-title">{{ post.title }}</div>
-                        <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-    
-    <h1 class="center_font" style="margin-top: 60px;">List of Games</h1>
-
-    <p class="about_font">
-        제작된 게임들은 아래와 같습니다.<br>
-        그 외에 다른 플랫폼으로 업로드된 게임은 itch.io 페이지를 참고 부탁드립니다.<br><br>
-
-        The games we have developed are as follows.<br>
-        For games uploaded on other platforms, please refer to our itch.io page.
-    </p>
-
-    <div style="width: 100%; margin-top: 24px;">
-        <h2 class="center_font" style="font-size: 1.6rem; margin-bottom: 10px;">게임 Games</h2>
-        <div class="post-container">
-            <div class="post-card is-latest">
-                <a href="https://store.steampowered.com/app/4599560/Torizon_Telecom/">
-                    <span class="latest-badge">NEW</span>
-                    <div class="post-thumbnail">
-                        <img src="/games/srcs/TorizonTelecom_Logo.png" alt="Torizon : Telecom 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                    </div>
-                    <span class="post-tag">Steam (Coming Soon)</span>
-                    <div class="post-title">Torizon Telecom</div>
-                    <div class="post-date">FPS</div>
-                </a>
-            </div>
-            <div class="post-card">
-                <a href="/superkingcrabsimulator2025">
-                    <div class="post-thumbnail">
-                        <img src="/games/srcs/YDKK_Logo.jpg" alt="Super Kingcrab Simulator 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                    </div>
-                    <span class="post-tag">Steam</span>
-                    <div class="post-title">Super Kingcrab Simulator</div>
-                    <div class="post-date">Simulation</div>
-                </a>
-            </div>
-            <div class="post-card">
-                <a href="https://store.steampowered.com/app/2425570/Roots_Need_Control_30/">
-                    <div class="post-thumbnail">
-                        <img src="/games/srcs/Roots_Need_Control_30_Logo.jpg" alt="Roots Need Control 3.0 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                    </div>
-                    <span class="post-tag">Steam</span>
-                    <div class="post-title">Roots Need Control 3.0</div>
-                    <div class="post-date">Defense</div>
-                </a>
-            </div>
-            <div class="post-card">
-                <a href="https://store.steampowered.com/app/1519610/Assaut/?curator_clanid=44208556">
-                    <div class="post-thumbnail">
-                        <img src="/games/srcs/Assault_Logo.jpg" alt="Assau!t 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                    </div>
-                    <span class="post-tag">Steam</span>
-                    <div class="post-title">Assau!t</div>
-                    <div class="post-date">FPS</div>
-                </a>
-            </div>
-        </div>
-
-        <h2 class="center_font" style="font-size: 1.6rem; margin-top: 40px; margin-bottom: 10px;">시리즈 Series</h2>
-        <div class="post-container">
-            <div class="post-card">
-                <a href="/superlocal">
-                    <div class="post-thumbnail">
-                        <img src="/games/srcs/SuperLocal_Logo.jpg" alt="Project SuperLocal 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                    </div>
-                    <span class="post-tag text-yellow">Franchise</span>
-                    <div class="post-title">Project SuperLocal</div>
-                    <div class="post-date">프로젝트 SuperLocal</div>
-                </a>
-            </div>
-            <div class="post-card">
-                <a href="/torizonskago">
-                    <div class="post-thumbnail">
-                        <img src="/games/srcs/Torizon_Logo.png" alt="Project Torizon 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                    </div>
-                    <span class="post-tag text-yellow">Franchise</span>
-                    <div class="post-title">Project Torizon</div>
-                    <div class="post-date">프로젝트 토라이즌</div>
-                </a>
-            </div>
-            <div class="post-card terminated">
-                <div>
-                    <div class="post-thumbnail" style="position: relative;">
-                        <img src="/games/srcs/TzechiangDevlog_Title.png" alt="자강일지 썸네일" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                        <span class="terminated-badge">서비스 종료</span>
-                    </div>
-                    <span class="post-tag text-yellow">Devlog</span>
-                    <div class="post-title">Tze-chiang Devlog</div>
-                    <div class="post-date">自強日誌 (자강일지)</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="page-width home-section contact-section">
 
     <div style="width: 100%; margin-top: 60px;">
-       <h1 class="center_font">연락처 Contact</h1>
+       <h2 class="center_font">연락처 Contact</h2>
         <p class="about_font" style="margin-bottom: 20px;">
             협업 및 문의 사항은 아래 링크를 참고해주시기 바랍니다.<br>
             For collaboration and inquiries, please refer to the links below.
@@ -289,3 +113,7 @@ description: "Welcome to SkagoGames!"
         </div>
     </div>
 </section>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+</script>
+<script type="module" src="{{ '/assets/js/logo-3d.js' | relative_url }}"></script>

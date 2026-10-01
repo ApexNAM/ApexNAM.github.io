@@ -1,16 +1,16 @@
 <header class="header">
     <div class="navBar__logo">
-        <link rel="icon" href="/skagogames.ico" type="image/x-icon"/>
         <a href="{{ '/' | relative_url }}">
             <img src="{{ site.baseurl }}/srcs/logos/SkagoGames_NewLogo_2026_W.png" alt="SkagoGames Logo">
         </a>
     </div>
 
-    <nav class="navBar">
+    <nav class="navBar" aria-label="주 메뉴">
         <ul class="navBar__menu">
-            <li><a href="/about/">Introduction</a></li>
-            <li><a href="/notice/">Notice</a></li>
-            <li><a href="/post/">Post</a></li>
+            <li><a href="{{ '/games/' | relative_url }}">게임 <span>Games</span></a></li>
+            <li><a href="{{ '/post/' | relative_url }}">포스트 <span>Posts</span></a></li>
+            <li><a href="{{ '/notice/' | relative_url }}">공지 <span>Notice</span></a></li>
+            <li><a href="{{ '/about/' | relative_url }}">소개 <span>About</span></a></li>
         </ul>
     </nav>
 </header>

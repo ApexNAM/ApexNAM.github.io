@@ -1,0 +1,12 @@
+.markdown-body .link-preview-wrap { margin: 24px 0; }
+.markdown-body a.link-preview { display: flex; align-items: stretch; gap: 20px; padding: 22px; border: 1px solid rgba(73,186,255,.25); border-radius: 16px; background: linear-gradient(125deg,#132331,#10171f); color: #e6edf3; text-decoration: none; overflow: hidden; transition: border-color .2s, background .2s; }
+.markdown-body a.link-preview:hover, .markdown-body a.link-preview:focus-visible { border-color: #ffe14a; background: #182733; }
+.link-preview__copy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 8px; }
+.link-preview__site { color: #ffe14a; font-size: 12px; letter-spacing: .04em; }
+.link-preview__title { color: #f3f6fa; font-size: 17px; line-height: 1.5; overflow-wrap: anywhere; }
+.link-preview__description { color: #a9bac8; font-size: 14px; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.link-preview__url { color: #7c9ab1; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.markdown-body .link-preview__image { width: 150px; height: 110px; flex: 0 0 150px; align-self: center; object-fit: cover; margin: 0; border-radius: 10px; }
+.link-preview__icon { align-self: center; font-size: 28px; color: #49baff; }
+@media(max-width:600px) { .markdown-body a.link-preview { padding: 16px; gap: 12px; } .link-preview__title { font-size: 15px; } .link-preview__description { font-size: 13px; } .markdown-body .link-preview__image { width: 76px; height: 90px; flex-basis: 76px; } }
+@media(prefers-reduced-motion:reduce) { .markdown-body a.link-preview { transition: none; } }

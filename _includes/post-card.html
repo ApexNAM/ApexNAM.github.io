@@ -1,0 +1,26 @@
+<article class="journal-card">
+  <a href="{{ post.url | relative_url }}">
+    <div class="journal-image">
+      {% if post.thumbnail or post.image or post.og_image %}
+        {% assign cover = post.thumbnail | default: post.image | default: post.og_image %}
+        <img src="{{ cover | relative_url | escape }}" alt="" loading="lazy">
+      {% elsif post.content contains '<img' %}
+        {% assign image_parts = post.content | split: '<img' %}
+        {% assign image_fragment = image_parts[1] | split: 'src="' | last | split: '"' | first %}
+        {% assign first_character = image_fragment | slice: 0, 1 %}
+        {% unless first_character == '/' or image_fragment contains '://' or image_fragment contains 'data:' %}
+          {% assign image_fragment = image_fragment | prepend: '/' %}
+        {% endunless %}
+        <img src="{{ image_fragment | escape }}" alt="" loading="lazy">
+      {% else %}
+        <img src="{{ site.default_og_image | relative_url }}" alt="" loading="lazy" class="default-thumbnail">
+      {% endif %}
+    </div>
+    <div class="journal-copy">
+      <div class="journal-meta"><span>{{ post.categories | first | default: 'Post' | escape }}</span><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time></div>
+      <h3>{{ post.title | escape }}</h3>
+      <p>{{ post.excerpt | strip_html | truncate: 110 | escape }}</p>
+    </div>
+    <span class="journal-arrow" aria-hidden="true">↗</span>
+  </a>
+</article>

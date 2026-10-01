@@ -1,54 +1,16 @@
 ---
 layout: default
 title: "게시글 Posts"
-paginate: true
+description: "SkagoGames의 개발일지, 후기, 그리고 일상."
 ---
-
-<section id="post" class="main-container">
-    <h1 class="center_font">게시글 POST</h1>
-    
-    <p class="about_font">
-        개발일지, 후기 등 다양한 게시글을 보실 수 있습니다.<br>
-        이곳에서 저희의 경험과 근황을 전달받을 수 있지만, SNS 내 소식이 더 빠를 수 있습니다.<br><br>
-
-        You can find various posts such as development diaries and reviews.<br>
-        You can receive our experiences and updates here, but news on social media may be faster.
-    </p>
-
-    <div class="post-container">
-        {% for post in paginator.posts %}
-            <div class="post-card">
-                <a href="{{ post.url }}">
-                    {% if post.tags[0] %}
-                        <span class="post-tag">{{ post.tags[0] }}</span>
-                    {% else %}
-                        <span class="post-tag">Post</span>
-                    {% endif %}
-                    
-                    <div class="post-title">{{ post.title }}</div>
-                    <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-    
-    <div class="pagination" style="margin-top: 50px; display: flex; gap: 20px; justify-content: center; align-items: center; font-weight: 500;">
-        {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path }}" class="post-tag" style="text-decoration: none; margin-bottom: 0;"><- PREV</a>
-        {% endif %}
-
-        {% for page in (1..paginator.total_pages) %}
-            {% if page == paginator.page %}
-                <b style="color: var(--primary-color); font-size: 1.1rem; font-weight: 900;">{{ page }}</b>
-            {% elsif page == 1 %}
-                <a href="{{ '/' | relative_url }}" style="color: #aaa; text-decoration: none; transition: color 0.2s;">{{ page }}</a>
-            {% else %}
-                <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" style="color: #aaa; text-decoration: none; transition: color 0.2s;">{{ page }}</a>
-            {% endif %}
-        {% endfor %}
-
-        {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path }}" class="post-tag" style="text-decoration: none; margin-bottom: 0;">NEXT -></a>
-        {% endif %}
-    </div>
+<section class="page-width home-section archive-page" data-post-browser>
+  <div class="section-header"><div><h1>게시글 POST</h1><p class="archive-description">개발일지, 후기 등 다양한 게시글을 보실 수 있습니다.<br>이곳에서 저희의 경험과 근황을 전달받을 수 있지만, SNS 내 소식이 더 빠를 수 있습니다.<br><br>You can find various posts such as development diaries and reviews.<br>You can receive our experiences and updates here, but news on social media may be faster.</p></div><div class="archive-brand archive-logo-scene" data-logo-scene data-logo-mode="showcase" data-model="{{ '/assets/SkagoGames_Logo_ThreeD.gltf' | relative_url }}" role="img" aria-label="떠다니는 SkagoGames 3D 로고"><img class="logo-fallback" src="{{ '/srcs/logos/SkagoGames_NewLogo_2026_W.png' | relative_url }}" alt=""></div></div>
+  <div class="archive-toolbar"><span>{{ site.posts.size }}개의 이야기 / POSTS</span><div class="view-switch" role="group" aria-label="포스트 보기 방식"><button type="button" data-view="gallery" aria-pressed="true">▦ 갤러리</button><button type="button" data-view="list" aria-pressed="false">☰ 리스트</button></div></div>
+  <div class="journal-collection" data-post-collection data-layout="gallery">
+    {% for post in site.posts %}
+      {% include post-card.html %}
+    {% endfor %}
+  </div>
 </section>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+<script type="module" src="{{ '/assets/js/logo-3d.js' | relative_url }}"></script>

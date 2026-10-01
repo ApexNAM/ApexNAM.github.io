@@ -2,7 +2,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="Super Kingcrab Simulator" content="Super Kingcrab Simulator's Blog">
         <title>Super Kingcrab Simulator</title>
         <link rel="icon" type="image/png" href="./srcs/logos/ydkk_icon.png"/>
@@ -38,7 +38,7 @@
                 background-attachment: fixed;
                 position: relative;
             }
-            
+
             /* 어두운 오버레이 추가 */
             body::before {
                 content: '';
@@ -50,7 +50,7 @@
                 background-color: rgba(0, 0, 0, 0.4); /* 가독성을 위해 살짝 더 어둡게 조정 */
                 z-index: 1;
             }
-            
+
             .logo-container {
                 text-align: center;
                 background-color: rgba(23, 23, 23, 0.85);
@@ -187,22 +187,22 @@
                 }
             }
         </style>
-    </head>
+    <link rel="stylesheet" href="/assets/css/game-pages.css"></head>
 
-    <body>
+    <body class="game-page kingcrab"><nav class="game-nav" aria-label="게임 페이지 메뉴"><a href="/"><img src="/srcs/logos/SkagoGames_NewLogo_2026_W.png" alt="SkagoGames 홈"></a><a href="/games/">모든 게임 / All games ↗</a></nav>
         <div class="logo-container">
             <img src="./srcs/logos/SUPER_KINGCRAB_SIMULATOR_LOGO_EN.png" alt="Super Kingcrab Simulator Logo" class="logo">
 
-            <p class="text_title first-title">Wishlist on Steam!!!</p>
+            <a class="game-cta" href="https://store.steampowered.com/app/3773390/" target="_blank" rel="noopener noreferrer">Steam에서 만나보기 / View on Steam ↗</a>
             <div class="widget-container" style="height: 190px;">
-                <iframe src="https://store.steampowered.com/widget/3773390/" frameborder="0"></iframe>     
+                <iframe title="게임 영상 및 스토어 / Game video and store" loading="lazy" src="https://store.steampowered.com/widget/3773390/" frameborder="0"></iframe>
             </div>
 
-            <p class="text_title">Trailer</p>
+            <h2 class="text_title">Trailer</h2>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/jPkpTVb2BdM?si=wDhtaGkh-_KItrvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            
+
             <div style="margin: 50px 0;">
                 <p class="text_default">
                     슈퍼 대게 시뮬레이터는 대게가 되어, 납치된 수많은 대게들을 해방시키면서 <br class="desktop-br">
@@ -218,13 +218,13 @@
                 </p>
             </div>
 
-            <p class="text_title">Screenshots</p>
+            <h2 class="text_title">Screenshots</h2><div class="game-gallery">
             <img src="./srcs/imgs/20251013190237_1.jpg" alt="Screenshot 1" class="logo">
             <img src="./srcs/imgs/20251013190913_1.jpg" alt="Screenshot 2" class="logo">
             <img src="./srcs/imgs/20251013190704_1.jpg" alt="Screenshot 3" class="logo">
             <img src="./srcs/imgs/20251013191712_1.jpg" alt="Screenshot 4" class="logo">
 
-            <p class="text_title">Platforms</p>
+            </div><h2 class="text_title">Platforms</h2>
             <div>
                 <a href="https://store.steampowered.com/app/3773390/" target="_blank">
                     <img src="srcs/logos/Steam_2016_logo_white.png" alt="Steam" class="platform_logo">
@@ -234,18 +234,18 @@
                 </a>
             </div>
 
-            <p class="text_title">List of Showcase</p>
+            <h2 class="text_title">List of Showcase</h2><div class="game-gallery showcase-gallery">
             <img src="./srcs/logos/IFG_Selected_YDKK.png" alt="IFG" class="logo">
             <img src="./srcs/logos/PlayX4_Selected_YDKK.png" alt="PlayX4" class="logo">
             <img src="./srcs/logos/Build051_Selected_YDKK.png" alt="Build051" class="logo">
             <img src="./srcs/logos/SeoulGameTown_Selected_YDKK.png" alt="Seoul Game Town" class="logo">
             <img src="./srcs/logos/TaipeiGameShow_Selected_YDKK.png" alt="Taipei Game Show" class="logo">
-            
-            <p class="text_title">PressKit</p>
+
+            </div><h2 class="text_title">PressKit</h2>
             <a href="https://drive.google.com/drive/folders/18lKGaquYoXcNLGNsSNpobRTuTldm-UXs?usp=sharing" class="text_default" target="_blank">Google Drive</a>
 
-            <p class="text_title">Other</p>
-            
+            <h2 class="text_title">Other</h2>
+
             <img src="./srcs/imgs/GRAC_12.png" alt="GRAC 12" class="other_logo">
             <img src="./srcs/imgs/GRAC_Violence.png" alt="GRAC Violence" class="other_logo">
             <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">등급분류번호 (GRAC) : SGHS-SP-250610-0005</p>
@@ -255,7 +255,7 @@
             <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">產品名稱(中文)：超級帝王蟹模擬器</p>
             <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">產品名稱(原文)：Super Kingcrab Simulator</p>
             <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">遊戲類型：冒險</p>
-            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">上市日期：2025/07/01</p> 
+            <p class="text_default" style="font-size: clamp(0.9rem, 2vw, 22px);">上市日期：2025/07/01</p>
 
             <p class="text_down">SkagoGames 2026. made in Skago.</p>
         </div>
